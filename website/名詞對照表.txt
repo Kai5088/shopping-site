@@ -7,3 +7,4 @@ Wishlist 暫存清單
 Subtotal 合計
 Cart totals 總計
 View cart 前往購物車
+Stock Status庫存狀態
