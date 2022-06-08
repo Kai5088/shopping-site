@@ -1,0 +1,9 @@
+Shop Pages 商店
+My Account 我的帳號
+Shopping Cart 購物車
+Checkout 結帳
+Wishlist 暫存清單
+
+Subtotal 合計
+Cart totals 總計
+View cart 前往購物車
