@@ -160,12 +160,13 @@
                                     class="g-recaptcha"
                                     data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
                                     data-theme="light" data-size="normal"
-                                    data-callback="verify"
+                                    data-callback="loginVerifyCallback"
                                     data-expired-callback="expired"
-                                    data-error-callback="error">
+                                    data-error-callback="error"
+                                    >
                                 </div>
                                 <div class="form__group text-center">
-                                    <input type="submit" value="登入" class="btn btn-size-sm">
+                                    <input type="submit" value="登入" class="btn btn-size-sm" id="login" disabled>
                                 </div>
                             </form>
                         </div>
@@ -191,12 +192,13 @@
                                     class="g-recaptcha"
                                     data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
                                     data-theme="light" data-size="normal"
-                                    data-callback="verify"
+                                    data-callback="registerVerifyCallback"
                                     data-expired-callback="expired"
-                                    data-error-callback="error">
+                                    data-error-callback="error"
+                                    >
                                 </div>
                                 <div class="form__group text-center">
-                                    <input type="submit" value="註冊" class="btn btn-size-sm">
+                                    <input type="submit" value="註冊" class="btn btn-size-sm bt1" id="register" disabled>
                                 </div>
                             </form>
                         </div>
