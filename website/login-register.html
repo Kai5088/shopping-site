@@ -156,6 +156,14 @@
                                     <label for="billing_email" class="form__label">密碼</label>
                                     <input type="text" name="billing_email" id="billing_email" class="form__input">
                                 </div>
+                                <div
+                                    class="g-recaptcha"
+                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
+                                    data-theme="light" data-size="normal"
+                                    data-callback="verify"
+                                    data-expired-callback="expired"
+                                    data-error-callback="error">
+                                </div>
                                 <div class="form__group text-center">
                                     <input type="submit" value="登入" class="btn btn-size-sm">
                                 </div>
@@ -178,6 +186,14 @@
                                     <label for="billing_email" class="form__label">請輸入密碼</label>
                                     <input type="text" name="billing_email" id="billing_email" class="form__input" placeholder="密碼">
                                     <input type="text" name="billing_email" id="billing_email" class="form__input" placeholder="再次輸入密碼">
+                                </div>
+                                <div
+                                    class="g-recaptcha"
+                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
+                                    data-theme="light" data-size="normal"
+                                    data-callback="verify"
+                                    data-expired-callback="expired"
+                                    data-error-callback="error">
                                 </div>
                                 <div class="form__group text-center">
                                     <input type="submit" value="註冊" class="btn btn-size-sm">
@@ -725,6 +741,10 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    <script src="assets/js/login-register.js"></script>
+
+    <!-- reCAPTCHA JS -->
+    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
