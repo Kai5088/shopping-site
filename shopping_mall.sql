@@ -87,15 +87,40 @@ CREATE TABLE `cus_shopping_cart` (
 
 CREATE TABLE `goods` (
   `Goods_ID` varchar(20) NOT NULL,
-  `Goods_Name` varchar(20) NOT NULL,
+  `Goods_Name` text NOT NULL,
   `Goods_Price` bigint(20) NOT NULL,
   `Goods_Num` int(11) NOT NULL,
   `Goods_URL` text NOT NULL,
-  `Goods_specification` longtext NOT NULL,
   `Goods_Statement` longtext NOT NULL,
   `Goods_Classify` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- 傾印資料表的資料 `chatbot_hints`
+--
+INSERT INTO `goods` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Goods_URL`, `Goods_Statement`, `Goods_Classify`) VALUES
+(1, 'ASUS 華碩 Dual GeForce RTX 3060 V2 OC 12GB GDDR6 顯示卡', 13990, 
+    5, 'https://cs-d.ecimg.tw/items/DRAD1NA900CANHO/000001_1654588212.jpg', 
+    '◆ 搭載強大軸向式雙風扇，2-slot 設計達到廣泛的裝機相容性。
+    ◆ NVIDIA Ampere 串流多處理器：全新的 Ampere 串流多處理器是世界上最快、最高效的 顯示卡架構，可提升2倍FP32輸送量，帶來優異效能。
+    ◆ 第二代 RT 核心：體驗比第一代 RT 核心兩倍的輸送量，再加上支援RT和著色計算，可將光線追蹤提升到全新水平。
+    ◆ 第三代 Tensor 核心：結構性稀疏和先進人工智慧演算法（例如DLSS）使輸送量提升到2倍。該核心極大提升遊戲效能和全新的 AI 人工智慧功能。
+    ◆ 超頻版: Boost clock 1867 MHz (超頻模式)/ 1837 MHz (遊戲模式)
+    ◆ 軸向式風扇具備較小的風扇輪轂以使用更長的葉片，阻隔環則可提高向下風壓。
+    ◆ 2-slot 設計賦予小型機殼，強大的相容性與優越的散熱表現。
+    ◆ 0dB 技術讓您在相對安靜的環境下享受遊戲。
+    ◆ 不鏽鋼 I/O 擋板更堅固耐用、抗腐蝕
+    ◆ 保固：原廠三年保固
+    延長 登錄四年保固到府收送', 'GPU');
+(2, 'PNY GeForce RTX 3080 LHR 10G XLR8 顯示卡', 23999,
+    5, 'https://cs-d.ecimg.tw/items/DRADJ4A900F17LO/000001_1654483524.jpg',
+    '◆ 顯示晶片 ：NVIDIA GeForce RTX 3080
+    ◆ 記憶體 ：10GB GDDR6X
+    ◆ CUDA數 ：8704
+    ◆ 記憶體時脈：1440MHz
+    ◆ 記憶體介面：320-bit
+    ◆ 輸出端子 ：3x DP / 1x HDMI
+    ◆ 體積(長x寬x高)：317 x 115.1 x 59.9 mm', 'GPU');
 -- --------------------------------------------------------
 
 --
