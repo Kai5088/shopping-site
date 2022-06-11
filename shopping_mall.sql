@@ -120,7 +120,7 @@ INSERT INTO `goods` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Good
     ◆ 記憶體時脈：1440MHz
     ◆ 記憶體介面：320-bit
     ◆ 輸出端子 ：3x DP / 1x HDMI
-    ◆ 體積(長x寬x高)：317 x 115.1 x 59.9 mm', 'GPU');
+    ◆ 體積(長x寬x高)：317 x 115.1 x 59.9 mm', 'GPU'),
 (3, '微星 GeForce RTX 3080 SUPRIM X 10G LHR 顯示卡', 27900, 
     5, 'https://cs-c.ecimg.tw/items/DRAD1RA900F46LG/000001_1654853790.jpg', 
     '◆ 顯示晶片 ：NVIDIA® GeForce® RTX 3080
