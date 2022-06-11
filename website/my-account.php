@@ -1,67 +1,3 @@
-<?php
-    // 註冊
-    if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['verify_pw'])) {
-        include('connect-sql.php');                    
-        $account = $_POST['account'];
-        $password = $_POST['password'];
-        $verify_pw =$_POST['verify_pw'];
-        
-        // 檢查該帳號是否已註冊
-        $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['account'] . "'";
-        $data = mysqli_query($db_link, $sql_find_user);     
-        $user = mysqli_fetch_assoc($data);
-
-        // 並一同確認兩次密碼是否一致
-        if(($password == $verify_pw) && empty($user)) {     
-            // 將帳密加入資料庫
-            $random_id = "A" . (string)(random_int(1, 9999)) ;
-            $sql_query = "INSERT INTO login_customer (Cus_ID, Cus_Account, Cus_Password, Cus_Money) VALUES ('$random_id' , '$account', '$password', 50000)";
-                                    
-            mysqli_query($db_link, $sql_query);
-                                                 
-            $data = mysqli_query($db_link, $sql_find_user);      
-            $user = mysqli_fetch_assoc($data);
-
-            // 使用 session 保存登入狀態
-            session_start();
-            $_SESSION['id'] = $user['Cus_ID'];
-            $_SESSION['account'] = $user['Cus_Account'];
-            $_SESSION['password'] = $user['Cus_Password'];
-
-        }
-        else {
-            echo "<p>Duplicated Account!!!!!!!!</p>";
-        }
-    }
-
-    // 登入
-    if(isset($_POST['login_account']) && isset($_POST['login_pw'])) {
-        include('connect-sql.php');                      
-        $l_account = $_POST['login_account'];
-        $l_password = $_POST['login_pw'];
-
-        // 檢查該帳號是否已註冊
-        $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['login_account'] . "'";
-        $data = mysqli_query($db_link, $sql_find_user);     
-        $user = mysqli_fetch_assoc($data);
-
-        // 檢查輸入密碼與資料庫是否一致
-        if($l_password == $user['Cus_Password']) {
-            // 使用 session 保存登入狀態
-            session_start();
-            $_SESSION['id'] = $user['Cus_ID'];
-            $_SESSION['account'] = $user['Cus_Account'];
-            $_SESSION['password'] = $user['Cus_Password'];
-            // 登入後導向主頁
-            header("Location: index.php");
-        }
-        else {
-            echo "lololol";
-        }
-    }
-?>
-
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -82,10 +18,9 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/login-register.css">
 </head>
 
-<body> 
+<body>
 
     <!-- Preloader Start -->
     <div class="ft-preloader active">
@@ -106,7 +41,7 @@
                     <div class="container">
                         <div class="header__main">
                             <div class="header__col header__left">
-                                <a href="index.php" class="logo">
+                                <a href="index.html" class="logo">
                                     <figure class="logo--normal">
                                         <img src="assets/img/logo/logo.png" alt="Logo">
                                     </figure>
@@ -151,7 +86,7 @@
                             </div>
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="login-register.php" class="toolbar-btn">
+                                    <a href="login-register.html" class="toolbar-btn">
                                         <span>登入</span>
                                     </a>
                                 </div>
@@ -166,7 +101,7 @@
                                     </a>
                                 </div>
                                 <div class="toolbar-item">
-                                    <a href="wishlist.php" class="toolbar-btn">
+                                    <a href="wishlist.html" class="toolbar-btn">
                                         <i class="flaticon-heart"></i>
                                     </a>
                                 </div>
@@ -194,10 +129,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">登入/註冊</h1>
+                        <h1 class="page-title">我的帳號</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">主頁</a></li>
-                            <li class="current"><span>登入與註冊</span></li>
+                            <li class="current"><span>我的帳號</span></li>
                         </ul>
                     </div>
                 </div>
@@ -207,67 +142,175 @@
 
         <!-- Main Content Wrapper Start -->
         <div class="main-content-wrapper">
-            <div class="page-content-inner pt--75 pb--80">
+            <div class="page-content-inner ptb--80 ptb-md--60 pb-sm--55">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <p class="heading-color mb--30 text-center">登入您的帳號</p>
-                            <form method="post" class="form form--track" action="">
-                                <div class="form__group mb--30">
-                                    <label for="login_account" class="form__label">帳號</label>
-                                    <input type="text" name="login_account" id="login_account" class="form__input">
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="user-dashboard-tab flex-column flex-md-row">
+                                <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
+                                    <a class="nav-link active" data-toggle="pill" role="tab" href="#dashboard" aria-controls="dashboard" aria-selected="true">狀態</a>
+                                    <a class="nav-link" data-toggle="pill" role="tab" href="#orders" aria-controls="orders" aria-selected="true">訂單</a>
+                                    <a class="nav-link" data-toggle="pill" role="tab" href="#addresses" aria-controls="addresses" aria-selected="true">地址</a>
+                                    <a class="nav-link" data-toggle="pill" role="tab" href="#accountdetails" aria-controls="accountdetails" aria-selected="true">帳號資訊</a>
+                                    <a class="nav-link" href="login-register.html">登出</a>
                                 </div>
-                                <div class="form__group mb--30">
-                                    <label for="login_pw" class="form__label">密碼</label>
-                                    <input type="text" name="login_pw" id="login_pw" class="form__input">
+                                <div class="user-dashboard-tab__content tab-content">
+                                    <div class="tab-pane fade show active" id="dashboard">
+                                        <p>你好，<strong>John</strong>。（不是<strong>John</strong>？點擊<a href="login-register.html"><b>這裡</b></a>登出）</p>
+                                        <p>您在帳號資訊可以查看最近訂單、管理運送和帳單地址及修改您的密碼和個人資訊。</p>
+                                    </div>
+                                    <div class="tab-pane fade" id="orders">
+                                        <div class="message-box mb--30 d-none">
+                                            <p><i class="fa fa-check-circle"></i>No order has been made yet.</p>
+                                            <a href="shop.html">前往商店</a>
+                                        </div>
+                                        <div class="table-content table-responsive">
+                                            <table class="table text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>訂單</th>
+                                                        <th>日期</th>
+                                                        <th>狀態</th>
+                                                        <th>總計</th>
+                                                        <th>動作</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td>1</td>
+                                                        <td class="wide-column">2022/6/8</td>
+                                                        <td>處理中</td>
+                                                        <td class="wide-column">$49，共 1 件</td>
+                                                        <td><a href="product-details.html" class="btn">檢視</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>2</td>
+                                                        <td class="wide-column">2022/6/8</td>
+                                                        <td>處理中</td>
+                                                        <td class="wide-column">$49，共 1 件</td>
+                                                        <td><a href="product-details.html" class="btn">檢視</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="downloads">
+                                        <div class="message-box mb--30 d-none">
+                                            <p><i class="fa fa-exclamation-circle"></i>No downloads available yet.</p>
+                                            <a href="shop.html">前往商店</a>
+                                        </div>
+                                        <div class="table-content table-responsive">
+                                            <table class="table text-center">
+                                                <thead>
+                                                    <tr>
+                                                        <th>產品</th>
+                                                        <th>下載</th>
+                                                        <th>Expires</th>
+                                                        <th>Download</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <tr>
+                                                        <td class="wide-column">Furtrate</td>
+                                                        <td>August 10, 2018 </td>
+                                                        <td class="wide-column">Never</td>
+                                                        <td><a href="#" class="btn">Download File</a></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td class="wide-column">Furtrate</td>
+                                                        <td>August 10, 2018 </td>
+                                                        <td class="wide-column">Never</td>
+                                                        <td><a href="#" class="btn">Download File</a></td>
+                                                    </tr>
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="addresses">
+                                        <p class="mb--20">下列地址會作為結帳時的預設資料。</p>
+                                        <div class="row">
+                                            <div class="col-md-6 mb-sm--20">
+                                                <div class="text-block">
+                                                    <h4 class="mb--20">帳單地址</h4>
+                                                    <a href="">修改</a>
+                                                    <p>此欄位無資料</p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <div class="text-block">
+                                                    <h4 class="mb--20">運送地址</h4>
+                                                    <a href="">修改</a>
+                                                    <p>此欄位無資料</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="tab-pane fade" id="accountdetails">
+                                        <form action="#" class="form form--account">
+                                            <div class="row mb--20">
+                                                <div class="col-12">
+                                                    <div class="form__group">
+                                                        <label class="form__label" for="d_name">真實姓名<span class="required">*</span></label>
+                                                        <input type="text" name="d_name" id="d_name" class="form__input">
+                                                        <span class="form__notes"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb--20">
+                                                <div class="col-12">
+                                                    <div class="form__group">
+                                                        <label class="form__label" for="d_name">暱稱<span class="required">*</span></label>
+                                                        <input type="text" name="d_name" id="d_name" class="form__input">
+                                                        <span class="form__notes"></span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="row mb--20">
+                                                <div class="col-12">
+                                                    <div class="form__group">
+                                                        <label class="form__label" for="email">電子郵件地址<span class="required">*</span></label>
+                                                        <input type="email" name="email" id="email" class="form__input">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <fieldset class="form__fieldset mb--20">
+                                                <legend class="form__legend">變更密碼</legend>
+                                                <div class="row mb--20">
+                                                    <div class="col-12">
+                                                        <div class="form__group">
+                                                            <label class="form__label" for="cur_pass">目前密碼（留空以不變更）</label>
+                                                            <input type="password" name="cur_pass" id="cur_pass" class="form__input">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row mb--20">
+                                                    <div class="col-12">
+                                                        <div class="form__group">
+                                                            <label class="form__label" for="new_pass">新密碼（留空以不變更）</label>
+                                                            <input type="password" name="new_pass" id="new_pass" class="form__input">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="row">
+                                                    <div class="col-12">
+                                                        <div class="form__group">
+                                                            <label class="form__label" for="conf_new_pass">確認新密碼</label>
+                                                            <input type="password" name="conf_new_pass" id="conf_new_pass" class="form__input">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                            <div class="row">
+                                                <div class="col-12">
+                                                    <div class="form__group">
+                                                        <input type="submit" value="Save Changes" class="btn">
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
                                 </div>
-                                <div
-                                    class="g-recaptcha"
-                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
-                                    data-theme="light" data-size="normal"
-                                    data-callback="loginVerifyCallback"
-                                    data-expired-callback="expired"
-                                    data-error-callback="error"
-                                >
-                                </div>
-                                <div class="form__group text-center">
-                                    <input type="submit" value="登入" class="btn btn-size-sm" id="login" disabled>
-                                </div>
-                                
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="page-content-inner pt--75 pb--80">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <p class="heading-color mb--30 text-center">還沒有帳號嗎？現在註冊</p>
-                            <form method="post" class="form form--track" action="">
-                                <div class="form__group mb--30">
-                                    <label for="account" class="form__label">請輸入帳號</label>
-                                    <input type="text" name="account" id="account" class="form__input" placeholder="帳號">
-                                </div>
-                                <div class="form__group mb--30">
-                                    <label class="form__label">請輸入密碼</label>
-                                    <input type="text" name="password" id="password" class="form__input" placeholder="密碼">
-                                    <input type="text" name="verify_pw" id="verify_pw" class="form__input" placeholder="再次輸入密碼">
-                                </div>
-                                <div
-                                    class="g-recaptcha"
-                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
-                                    data-theme="light" data-size="normal"
-                                    data-callback="registerVerifyCallback"
-                                    data-expired-callback="expired"
-                                    data-error-callback="error"
-                                >
-                                </div>
-                                <div class="form__group text-center">
-                                    <input type="submit" value="註冊" class="btn btn-size-sm" id="register" disabled>
-                                </div>
-                                
-                            </form>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -289,7 +332,7 @@
                             <div class="address-widget">
                                 <address>403台灣台中市西區民生路140號</address>
                                 <a href="tel:+84112345678">04-2218-3199</a>
-                                <a href="mailto:info@company.com">info@expensivehouse.com</a>
+                                <a href="mailto:info@company.com">info@company.com</a>
                             </div>
                         </div>
                     </div>
@@ -635,10 +678,6 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/login-register.js"></script>
-
-    <!-- reCAPTCHA JS -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>

@@ -726,176 +726,53 @@
                 </a>
                 <div class="offcanvas-navigation__top">
                     <ul class="offcanvas-menu">
+                        <li>
+                            <a href="index.php">
+                                <span class="mm-text">主頁</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop.php">
+                                <span class="mm-text">新進商品</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="shop.php">
+                                <span class="mm-text">商店</span>
+                            </a>
+                        </li>
                         <li class="has-children">
                             <a href="#">
-                                <span class="mm-text">Home</span>
+                                <span class="mm-text">功能</span>
                             </a>
                             <ul class="sub-menu">
-                                <li class="has-children">
-                                    <a href="index.html">
-                                        <span class="mm-text">Home One</span>
+                                <li>
+                                    <a href="my-account.php">
+                                        <span class="mm-text">我的帳號</span>
                                     </a>
                                 </li>
-                                <li class="has-children">
-                                    <a href="index-02.html">
-                                        <span class="mm-text">Home Two</span>
+                                <li>
+                                    <a href="checkout.php">
+                                        <span class="mm-text">結帳</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="cart.php">
+                                        <span class="mm-text">購物車</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="wishlist.php">
+                                        <span class="mm-text">暫存清單</span>
                                     </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="shop.html">
-                                <span class="mm-text">New Arrivals</span>
+                            <a href="contact-us.php">
+                                <span class="mm-text">聯絡我們</span>
                             </a>
                         </li>
-                        <li class="has-children">
-                            <a href="#">
-                                <span class="mm-text">Shop</span>
-                            </a>
-                            <ul class="sub-menu">
-                                <li class="has-children">
-                                    <a href="#">
-                                        <span class="overlay-menu__title">Shop Layout</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="shop-fullwidth.html">
-                                                <span class="mm-text">Full Width</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop.html">
-                                                <span class="mm-text">Left Sidebar</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-right-sidebar.html">
-                                                <span class="mm-text">Right Sidebar</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-three-columns.html">
-                                                <span class="mm-text">Three Columns</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-four-columns.html">
-                                                <span class="mm-text">Four Columns</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list.html">
-                                                <span class="mm-text">Full Width</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-sidebar.html">
-                                                <span class="mm-text">Left Sidebar</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="shop-list-right-sidebar.html">
-                                                <span class="mm-text">Right Sidebar</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">
-                                        <span class="overlay-menu__title">Single Product</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="product-details.html">
-                                                <span class="mm-text">Tab Style 1</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-tab-style-2.html">
-                                                <span class="mm-text">Tab Style 2</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-tab-style-3.html">
-                                                <span class="mm-text">Tab Style 3</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-gallery-left.html">
-                                                <span class="mm-text">Gallery Left</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-gallery-right.html">
-                                                <span class="mm-text">Gallery Right</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-sticky-left.html">
-                                                <span class="mm-text">Sticky Left</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-sticky-right.html">
-                                                <span class="mm-text">Sticky Right</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-slider-box.html">
-                                                <span class="mm-text">Slider Box</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-slider-full-width.html">
-                                                <span class="mm-text">Slider Box Full Width</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-affiliate.html">
-                                                <span class="mm-text">Affiliate Proudct</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-variable.html">
-                                                <span class="mm-text">Variable Proudct</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="product-details-group.html">
-                                                <span class="mm-text">Group Product</span>
-                                            </a>
-                                        </li>
-                                    </ul>
-                                </li>
-                                <li class="has-children">
-                                    <a href="#">
-                                        <span class="overlay-menu__title">商店</span>
-                                    </a>
-                                    <ul class="sub-menu">
-                                        <li>
-                                            <a href="my-account.html">
-                                                <span class="mm-text">我的帳號</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="cart.html">
-                                                <span class="mm-text">購物車</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="checkout.html">
-                                                <span class="mm-text">結帳</span>
-                                            </a>
-                                        </li>
-                                        <li>
-                                            <a href="wishlist.html">
-                                                <span class="mm-text">暫存清單</span>
-                                            </a>
-                                        </li>                                        
-                                    </ul>
-                                </li>
-                            </ul>
-                        </li>                        
                     </ul>
                 </div>
             </div>

@@ -1,67 +1,3 @@
-<?php
-    // 註冊
-    if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['verify_pw'])) {
-        include('connect-sql.php');                    
-        $account = $_POST['account'];
-        $password = $_POST['password'];
-        $verify_pw =$_POST['verify_pw'];
-        
-        // 檢查該帳號是否已註冊
-        $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['account'] . "'";
-        $data = mysqli_query($db_link, $sql_find_user);     
-        $user = mysqli_fetch_assoc($data);
-
-        // 並一同確認兩次密碼是否一致
-        if(($password == $verify_pw) && empty($user)) {     
-            // 將帳密加入資料庫
-            $random_id = "A" . (string)(random_int(1, 9999)) ;
-            $sql_query = "INSERT INTO login_customer (Cus_ID, Cus_Account, Cus_Password, Cus_Money) VALUES ('$random_id' , '$account', '$password', 50000)";
-                                    
-            mysqli_query($db_link, $sql_query);
-                                                 
-            $data = mysqli_query($db_link, $sql_find_user);      
-            $user = mysqli_fetch_assoc($data);
-
-            // 使用 session 保存登入狀態
-            session_start();
-            $_SESSION['id'] = $user['Cus_ID'];
-            $_SESSION['account'] = $user['Cus_Account'];
-            $_SESSION['password'] = $user['Cus_Password'];
-
-        }
-        else {
-            echo "<p>Duplicated Account!!!!!!!!</p>";
-        }
-    }
-
-    // 登入
-    if(isset($_POST['login_account']) && isset($_POST['login_pw'])) {
-        include('connect-sql.php');                      
-        $l_account = $_POST['login_account'];
-        $l_password = $_POST['login_pw'];
-
-        // 檢查該帳號是否已註冊
-        $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['login_account'] . "'";
-        $data = mysqli_query($db_link, $sql_find_user);     
-        $user = mysqli_fetch_assoc($data);
-
-        // 檢查輸入密碼與資料庫是否一致
-        if($l_password == $user['Cus_Password']) {
-            // 使用 session 保存登入狀態
-            session_start();
-            $_SESSION['id'] = $user['Cus_ID'];
-            $_SESSION['account'] = $user['Cus_Account'];
-            $_SESSION['password'] = $user['Cus_Password'];
-            // 登入後導向主頁
-            header("Location: index.php");
-        }
-        else {
-            echo "lololol";
-        }
-    }
-?>
-
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -82,10 +18,9 @@
 
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/main.css">
-    <link rel="stylesheet" href="assets/css/login-register.css">
 </head>
 
-<body> 
+<body>
 
     <!-- Preloader Start -->
     <div class="ft-preloader active">
@@ -106,7 +41,7 @@
                     <div class="container">
                         <div class="header__main">
                             <div class="header__col header__left">
-                                <a href="index.php" class="logo">
+                                <a href="index.html" class="logo">
                                     <figure class="logo--normal">
                                         <img src="assets/img/logo/logo.png" alt="Logo">
                                     </figure>
@@ -151,7 +86,7 @@
                             </div>
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="login-register.php" class="toolbar-btn">
+                                    <a href="login-register.html" class="toolbar-btn">
                                         <span>登入</span>
                                     </a>
                                 </div>
@@ -166,7 +101,7 @@
                                     </a>
                                 </div>
                                 <div class="toolbar-item">
-                                    <a href="wishlist.php" class="toolbar-btn">
+                                    <a href="wishlist.html" class="toolbar-btn">
                                         <i class="flaticon-heart"></i>
                                     </a>
                                 </div>
@@ -194,10 +129,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">登入/註冊</h1>
+                        <h1 class="page-title">暫存清單</h1>
                         <ul class="breadcrumb">
                             <li><a href="index.html">主頁</a></li>
-                            <li class="current"><span>登入與註冊</span></li>
+                            <li class="current"><span>暫存清單</span></li>
                         </ul>
                     </div>
                 </div>
@@ -207,67 +142,124 @@
 
         <!-- Main Content Wrapper Start -->
         <div class="main-content-wrapper">
-            <div class="page-content-inner pt--75 pb--80">
+            <div class="page-content-inner ptb--80 ptb-md--60">
                 <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <p class="heading-color mb--30 text-center">登入您的帳號</p>
-                            <form method="post" class="form form--track" action="">
-                                <div class="form__group mb--30">
-                                    <label for="login_account" class="form__label">帳號</label>
-                                    <input type="text" name="login_account" id="login_account" class="form__input">
-                                </div>
-                                <div class="form__group mb--30">
-                                    <label for="login_pw" class="form__label">密碼</label>
-                                    <input type="text" name="login_pw" id="login_pw" class="form__input">
-                                </div>
-                                <div
-                                    class="g-recaptcha"
-                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
-                                    data-theme="light" data-size="normal"
-                                    data-callback="loginVerifyCallback"
-                                    data-expired-callback="expired"
-                                    data-error-callback="error"
-                                >
-                                </div>
-                                <div class="form__group text-center">
-                                    <input type="submit" value="登入" class="btn btn-size-sm" id="login" disabled>
-                                </div>
-                                
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="page-content-inner pt--75 pb--80">
-                <div class="container">
-                    <div class="row justify-content-center">
-                        <div class="col-lg-6">
-                            <p class="heading-color mb--30 text-center">還沒有帳號嗎？現在註冊</p>
-                            <form method="post" class="form form--track" action="">
-                                <div class="form__group mb--30">
-                                    <label for="account" class="form__label">請輸入帳號</label>
-                                    <input type="text" name="account" id="account" class="form__input" placeholder="帳號">
-                                </div>
-                                <div class="form__group mb--30">
-                                    <label class="form__label">請輸入密碼</label>
-                                    <input type="text" name="password" id="password" class="form__input" placeholder="密碼">
-                                    <input type="text" name="verify_pw" id="verify_pw" class="form__input" placeholder="再次輸入密碼">
-                                </div>
-                                <div
-                                    class="g-recaptcha"
-                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
-                                    data-theme="light" data-size="normal"
-                                    data-callback="registerVerifyCallback"
-                                    data-expired-callback="expired"
-                                    data-error-callback="error"
-                                >
-                                </div>
-                                <div class="form__group text-center">
-                                    <input type="submit" value="註冊" class="btn btn-size-sm" id="register" disabled>
-                                </div>
-                                
-                            </form>
+                    <div class="row">
+                        <div class="col-12">
+                            <div class="table-content table-responsive">
+                                <table class="table table-style-2 wishlist-table text-center">
+                                    <thead>
+                                        <tr>
+                                            <th>&nbsp;</th>
+                                            <th>&nbsp;</th>
+                                            <th class="text-left">產品</th>
+                                            <th>庫存狀態</th>
+                                            <th>價格</th>
+                                            <th>&nbsp;</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td class="product-remove text-left"><a href=""><i
+                                                        class="flaticon-cross"></i></a></td>
+                                            <td class="product-thumbnail text-left">
+                                                <img src="assets/img/products/product-11-70x88.jpg"
+                                                    alt="Product Thumnail">
+                                            </td>
+                                            <td class="product-name text-left wide-column">
+                                                <h3>
+                                                    <a href="product-details.html">Pinstripe slim-fit suit blazer</a>
+                                                </h3>
+                                            </td>
+                                            <td class="product-stock">
+                                                有
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="product-price-wrapper">
+                                                    <span class="money">$49</span>
+                                                </span>
+                                            </td>
+                                            <td class="product-action-btn">
+                                                <a href="cart.html" class="btn">加入購物車</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-remove text-left"><a href=""><i
+                                                        class="flaticon-cross"></i></a></td>
+                                            <td class="product-thumbnail text-left">
+                                                <img src="assets/img/products/product-12-70x88.jpg"
+                                                    alt="Product Thumnail">
+                                            </td>
+                                            <td class="product-name text-left wide-column">
+                                                <h3>
+                                                    <a href="product-details.html">Warm Shaker Solid Wood End Table</a>
+                                                </h3>
+                                            </td>
+                                            <td class="product-stock">
+                                                有
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="product-price-wrapper">
+                                                    <span class="money">$49</span>
+                                                </span>
+                                            </td>
+                                            <td class="product-action-btn">
+                                                <a href="cart.html" class="btn">加入購物車</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-remove text-left"><a href=""><i
+                                                        class="flaticon-cross"></i></a></td>
+                                            <td class="product-thumbnail text-left">
+                                                <img src="assets/img/products/product-13-70x88.jpg"
+                                                    alt="Product Thumnail">
+                                            </td>
+                                            <td class="product-name text-left wide-column">
+                                                <h3>
+                                                    <a href="product-details.html">Atlin Designs Mid Century Club
+                                                        Chair</a>
+                                                </h3>
+                                            </td>
+                                            <td class="product-stock">
+                                                有
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="product-price-wrapper">
+                                                    <span class="money">$49</span>
+                                                </span>
+                                            </td>
+                                            <td class="product-action-btn">
+                                                <a href="cart.html" class="btn">加入購物車</a>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td class="product-remove text-left"><a href=""><i
+                                                        class="flaticon-cross"></i></a></td>
+                                            <td class="product-thumbnail text-left">
+                                                <img src="assets/img/products/product-11-70x88.jpg"
+                                                    alt="Product Thumnail">
+                                            </td>
+                                            <td class="product-name text-left wide-column">
+                                                <h3>
+                                                    <a href="product-details.html">Contemporary 5-Light Large
+                                                        Chandelier</a>
+                                                </h3>
+                                            </td>
+                                            <td class="product-stock">
+                                                有
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="product-price-wrapper">
+                                                    <span class="money">$49</span>
+                                                </span>
+                                            </td>
+                                            <td class="product-action-btn">
+                                                <a href="cart.html" class="btn">加入購物車</a>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -289,7 +281,7 @@
                             <div class="address-widget">
                                 <address>403台灣台中市西區民生路140號</address>
                                 <a href="tel:+84112345678">04-2218-3199</a>
-                                <a href="mailto:info@company.com">info@expensivehouse.com</a>
+                                <a href="mailto:info@company.com">info@company.com</a>
                             </div>
                         </div>
                     </div>
@@ -509,30 +501,30 @@
                                     "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-double-left" },
                                     "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-double-right" }
                                 }'>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-03-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-04-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-05-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-06-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-03-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-04-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-05-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-06-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -547,8 +539,10 @@
                                         </div>
                                     </div>
                                     <h3 class="product-title mb--20">Golden Easy Spot Chair.</h3>
-                                    <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed suscipit
-                                        arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo eget,
+                                    <p class="product-short-description mb--20">Donec accumsan auctor iaculis. Sed
+                                        suscipit
+                                        arcu ligula, at egestas magna molestie a. Proin ac ex maximus, ultrices justo
+                                        eget,
                                         sodales orci. Aliquam egestas libero ac turpis pharetra, in vehicula lacus
                                         scelerisque. Vestibulum ut sem laoreet, feugiat tellus at, hendrerit arcu.</p>
                                     <div class="product-price-wrapper mb--25">
@@ -588,12 +582,14 @@
                                         </div>
                                         <a href="" class="reset_variations">Clear</a>
                                     </form>
-                                    <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
-                                        <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+                                    <div
+                                        class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
+                                        <div
+                                            class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                             <label class="quantity-label" for="qty">Quantity:</label>
                                             <div class="quantity">
-                                                <input type="number" class="quantity-input" name="qty" id="qty" value="1"
-                                                    min="1">
+                                                <input type="number" class="quantity-input" name="qty" id="qty"
+                                                    value="1" min="1">
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-shape-square btn-size-sm"
@@ -635,10 +631,6 @@
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/login-register.js"></script>
-
-    <!-- reCAPTCHA JS -->
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 
 </html>
