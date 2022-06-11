@@ -188,7 +188,7 @@ INSERT INTO `goods` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Good
     ◆ 顯卡長度：299.9 x 126.9 x 51.7 mm 11.81 x 5 x 2.04 inch
     ◆ 保固：原廠三年保固', 'GPU');
 
---耳機
+
 INSERT INTO `goods` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Goods_URL`, `Goods_Statement`, `Goods_Classify`) VALUES
 (10, 'SAMSUNG Galaxy S8 S8+ S9 S9+ AKG原廠 雙耳立體聲耳機', 580,
   5, 'https://cs-c.ecimg.tw/items/DYAQ1PA90095DYW/000001_1529648209.jpg',
