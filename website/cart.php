@@ -41,7 +41,7 @@
                     <div class="container">
                         <div class="header__main">
                             <div class="header__col header__left">
-                                <a href="index.html" class="logo">
+                                <a href="index.php" class="logo">
                                     <figure class="logo--normal">
                                         <img src="assets/img/logo/logo.png" alt="Logo">
                                     </figure>
@@ -54,7 +54,7 @@
                                 <nav class="main-navigation d-none d-lg-block">
                                     <ul class="mainmenu">
                                         <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="index.html" class="mainmenu__link">主頁</a>                                            
+                                            <a href="index.php" class="mainmenu__link">主頁</a>                                            
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-static">
                                             <a href="#" class="mainmenu__link">商店</a>                                            
@@ -64,29 +64,29 @@
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="my-account.html">我的帳號</a>
+                                                        <a href="my-account.php">我的帳號</a>
                                                     </li>
                                                     <li>
-                                                        <a href="checkout.html">結帳</a>
+                                                        <a href="checkout.php">結帳</a>
                                                     </li>
                                                     <li>
-                                                        <a href="cart.html">購物車</a>
+                                                        <a href="cart.php">購物車</a>
                                                     </li>
                                                     <li>
-                                                        <a href="wishlist.html">暫存清單</a>
+                                                        <a href="wishlist.php">暫存清單</a>
                                                     </li>
                                                 </ul>
                                             </div>
                                         </li> 
                                         <li class="mainmenu__item">
-                                            <a href="contact-us.html" class="mainmenu__link">聯絡我們</a>
+                                            <a href="contact-us.php" class="mainmenu__link">聯絡我們</a>
                                         </li>
                                     </ul>
                                 </nav>
                             </div>
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="login-register.html" class="toolbar-btn">
+                                    <a href="login-register.php" class="toolbar-btn">
                                         <span>登入</span>
                                     </a>
                                 </div>
@@ -101,7 +101,7 @@
                                     </a>
                                 </div>
                                 <div class="toolbar-item">
-                                    <a href="wishlist.html" class="toolbar-btn">
+                                    <a href="wishlist.php" class="toolbar-btn">
                                         <i class="flaticon-heart"></i>
                                     </a>
                                 </div>
@@ -131,7 +131,7 @@
                     <div class="col-12 text-center">
                         <h1 class="page-title">購物車</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">主頁</a></li>
+                            <li><a href="index.php">主頁</a></li>
                             <li class="current"><span>購物車</span></li>
                         </ul>
                     </div>
@@ -169,7 +169,7 @@
                                                         </td>
                                                         <td class="product-name text-left wide-column">
                                                             <h3>
-                                                                <a href="product-details.html">Golden Easy Spot Chair.</a>
+                                                                <a href="product-details.php">Golden Easy Spot Chair.</a>
                                                             </h3>
                                                         </td>
                                                         <td class="product-price">
@@ -195,7 +195,7 @@
                                                         </td>
                                                         <td class="product-name text-left wide-column">
                                                             <h3>
-                                                                <a href="product-details.html">Golden Easy Spot Chair.</a>
+                                                                <a href="product-details.php">Golden Easy Spot Chair.</a>
                                                             </h3>
                                                         </td>
                                                         <td class="product-price">
@@ -221,7 +221,7 @@
                                                         </td>
                                                         <td class="product-name text-left wide-column">
                                                             <h3>
-                                                                <a href="product-details.html">Golden Easy Spot Chair.</a>
+                                                                <a href="product-details.php">Golden Easy Spot Chair.</a>
                                                             </h3>
                                                         </td>
                                                         <td class="product-price">
@@ -294,7 +294,7 @@
                                         </div>
                                     </div>
                                 </div>
-                                <a href="checkout.html" class="btn btn-size-md btn-shape-square btn-fullwidth">
+                                <a href="checkout.php" class="btn btn-size-md btn-shape-square btn-fullwidth">
                                     繼續結帳
                                 </a>
                             </div>
@@ -353,13 +353,13 @@
                             <h3 class="widget-title mb--35 mb-sm--15">帳號</h3>
                             <ul class="footer-menu">
                                 <li>
-                                    <a href="my-account.html">
+                                    <a href="my-account.php">
                                         <i class="fa fa-angle-right"></i>
                                         <span>我的帳號</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="wishlist.html">
+                                    <a href="wishlist.php">
                                         <i class="fa fa-angle-right"></i>
                                         <span>暫存清單</span>
                                     </a>
@@ -479,7 +479,7 @@
                                     <img src="assets/img/products/product-11-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -491,7 +491,7 @@
                                     <img src="assets/img/products/product-12-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -503,7 +503,7 @@
                                     <img src="assets/img/products/product-13-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -513,8 +513,8 @@
                             <span class="ammount">$98.00</span>
                         </div>
                         <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
+                            <a href="cart.php" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
+                            <a href="checkout.php" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
                         </div>
                     </div>
                 </div>
@@ -627,16 +627,16 @@
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="window.location.href='cart.html'">
+                                            onclick="window.location.href='cart.php'">
                                             Add To Cart
                                         </button>
                                     </div>
                                     <div class="product-footer-meta">
                                         <p><span>Category:</span>
-                                            <a href="shop.html">Full Sweater</a>,
-                                            <a href="shop.html">SweatShirt</a>,
-                                            <a href="shop.html">Jacket</a>,
-                                            <a href="shop.html">Blazer</a>
+                                            <a href="shop.php">Full Sweater</a>,
+                                            <a href="shop.php">SweatShirt</a>,
+                                            <a href="shop.php">Jacket</a>,
+                                            <a href="shop.php">Blazer</a>
                                         </p>
                                     </div>
                                 </div>

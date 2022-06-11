@@ -41,7 +41,7 @@
                     <div class="container">
                         <div class="header__main">
                             <div class="header__col header__left">
-                                <a href="index.html" class="logo">
+                                <a href="index.php" class="logo">
                                     <figure class="logo--normal">
                                         <img src="assets/img/logo/logo.png" alt="Logo">
                                     </figure>
@@ -54,184 +54,40 @@
                                 <nav class="main-navigation d-none d-lg-block">
                                     <ul class="mainmenu">
                                         <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="index.html" class="mainmenu__link">Home</a>
-                                            <div class="inner-menu">
-                                                <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="index.html">Home One</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="index-02.html">Home Two</a>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            <a href="index.php" class="mainmenu__link">主頁</a>                                            
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-static">
-                                            <a href="#" class="mainmenu__link">Shop</a>
-                                            <div class="inner-menu megamenu-holder">
-                                                <ul class="megamenu">
-                                                    <li>
-                                                        <a class="megamenu-title" href="#">Shop Grid</a>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="shop-fullwidth.html">Full Width</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop.html">Left Sidebar</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-right-sidebar.html">Right Sidebar</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-three-columns.html">Three Columns</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-four-columns.html">Four Columns</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="megamenu-title" href="#">Shop List</a>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="shop-list.html">Full Width</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-list-sidebar.html">Left Sidebar</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="shop-list-right-sidebar.html">Right Sidebar</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="megamenu-title" href="#">Product Details</a>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="product-details.html">Tab Style 1</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-tab-style-2.html">Tab Style 2</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-tab-style-3.html">Tab Style 3</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-gallery-left.html">Gallery Left</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-gallery-right.html">Gallery Right</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-sticky-left.html">Sticky Left</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li>
-                                                        <a class="megamenu-title" href="#">Product Details</a>
-                                                        <ul>
-                                                            <li>
-                                                                <a href="product-details-sticky-right.html">Sticky Right</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-slider-box.html">Slider Box</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-slider-full-width.html">Slider Box Full Width</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-affiliate.html">Affiliate Proudct</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-variable.html">Variable Proudct</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="product-details-group.html">Group Product</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            <a href="shop.php" class="mainmenu__link">商店</a>                                            
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="#" class="mainmenu__link">Pages</a>
+                                            <a href="#" class="mainmenu__link">功能</a>
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="my-account.html">My Account</a>
+                                                        <a href="my-account.php">我的帳號</a>
                                                     </li>
                                                     <li>
-                                                        <a href="checkout.html">Checkout</a>
+                                                        <a href="checkout.php">結帳</a>
                                                     </li>
                                                     <li>
-                                                        <a href="cart.html">Cart</a>
+                                                        <a href="cart.php">購物車</a>
                                                     </li>
                                                     <li>
-                                                        <a href="compare.html">Compare</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="order-tracking.html">Track Order</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="wishlist.html">Wishlist</a>
+                                                        <a href="wishlist.php">暫存清單</a>
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </li>
-                                        <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="#" class="mainmenu__link">Blog</a>
-                                            <div class="inner-menu">
-                                                <ul class="sub-menu">
-                                                    <li class="has-children">
-                                                        <a href="#">Blog Grid</a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a href="blog-left-sidebar.html">Left Sidebar</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog.html">Right Sidebar</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-01-column.html">One Column</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-02-columns.html">Two Columns</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-03-columns.html">Three Columns</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                    <li class="has-children">
-                                                        <a href="#">Blog Details</a>
-                                                        <ul class="sub-menu">
-                                                            <li>
-                                                                <a href="blog-details-image.html">Image Post</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-details-audio.html">Audio Post</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-details-video.html">Video Post</a>
-                                                            </li>
-                                                            <li>
-                                                                <a href="blog-details-gallery.html">Gallery Post</a>
-                                                            </li>
-                                                        </ul>
-                                                    </li>
-                                                </ul>
-                                            </div>
-                                        </li>
+                                        </li> 
                                         <li class="mainmenu__item">
-                                            <a href="contact-us.html" class="mainmenu__link">Contact Us</a>
+                                            <a href="contact-us.php" class="mainmenu__link">聯絡我們</a>
                                         </li>
                                     </ul>
                                 </nav>
                             </div>
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="login-register.html" class="toolbar-btn">
-                                        <span>Login</span>
+                                    <a href="login-register.php" class="toolbar-btn">
+                                        <span>登入</span>
                                     </a>
                                 </div>
                                 <div class="toolbar-item d-block d-lg-none">
@@ -245,7 +101,7 @@
                                     </a>
                                 </div>
                                 <div class="toolbar-item">
-                                    <a href="wishlist.html" class="toolbar-btn">
+                                    <a href="wishlist.php" class="toolbar-btn">
                                         <i class="flaticon-heart"></i>
                                     </a>
                                 </div>
@@ -275,7 +131,7 @@
                     <div class="col-12 text-center">
                         <h1 class="page-title">Contact Us</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.html">Home</a></li>
+                            <li><a href="index.php">Home</a></li>
                             <li class="current"><span>Contact Us</span></li>
                         </ul>
                     </div>
@@ -365,178 +221,82 @@
                                 </figure>
                             </div>
                             <div class="address-widget">
-                                <address>1203 Town Center Orive #L 335458 USA</address>
-                                <a href="tel:+84112345678">+841 123 456 78</a>
-                                <a href="mailto:info@company.com">info@company.com</a>
+                                <address>403台灣台中市西區民生路140號</address>
+                                <a href="tel:+84112345678">04-2218-3199</a>
+                                <a href="mailto:info@company.com">info@expensivehouse.com</a>
                             </div>
                         </div>
                     </div>
-                    <div class="col footer-column-2 mb-md--33">
+                    <div class="col footer-column-5 mb-sm--33">
                         <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">Store Menu</h3>
-                            <ul class="footer-menu">
-                                <li>
-                                    <a href="shop.html">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Best Seller</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>New Arrivals</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Men</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Women</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.html">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Accessories</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                    <div class="col footer-column-3 mb-sm--33">
-                        <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">Information</h3>
+                            <h3 class="widget-title mb--35 mb-sm--15">資訊</h3>
                             <ul class="footer-menu">
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>About Us</span>
+                                        <span>關於我們</span>
+                                    </a>
+                                </li>                        
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>隱私協議</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>Delivery Information</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Privacy Policy</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Terms &amp; Conditions</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Look Books</span>
+                                        <span>取得協助</span>
                                     </a>
                                 </li>
                             </ul>
-                        </div>
-                    </div>
-                    <div class="col footer-column-4 mb-xs--33">
-                        <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">Question</h3>
-                            <div class="footer-widget">
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Help</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="order-tracking.html">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Track Order</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Support</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="shop.html">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>Shopping &amp; Delivery</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>FAQs</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
                         </div>
                     </div>
                     <div class="col footer-column-5">
                         <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">My Account</h3>
+                            <h3 class="widget-title mb--35 mb-sm--15">帳號</h3>
                             <ul class="footer-menu">
                                 <li>
-                                    <a href="my-account.html">
+                                    <a href="my-account.php">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>My Account</span>
+                                        <span>我的帳號</span>
                                     </a>
                                 </li>
                                 <li>
-                                    <a href="order-tracking.html">
+                                    <a href="wishlist.php">
                                         <i class="fa fa-angle-right"></i>
-                                        <span>Order Delivery</span>
+                                        <span>暫存清單</span>
                                     </a>
-                                </li>
-                                <li>
-                                    <a href="wishlist.html">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Wishlist</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>Newsletter</span>
-                                    </a>
-                                </li>
+                                </li>                                
                             </ul>
                         </div>
                     </div>
                 </div>
                 <div class="row ptb--20">
                     <div class="col-12 text-center">
-                        <p class="copyright-text">Copyright &copy; 2022.Company name All rights reserved.<a target="_blank" href="http://sc.chinaz.com/moban/">&#x7F51;&#x9875;&#x6A21;&#x677F;</a></p>
-                        <div class="social space-10">
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social__link">
+                        <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第五組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
+                        <!--<div class="social space-10">
+                            <a href="#" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
                                 <i class="fa fa-facebook"></i>
                                 <span class="sr-only">Facebook</span>
                             </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social__link">
+                            <a href="#" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
                                 <i class="fa fa-twitter"></i>
                                 <span class="sr-only">Twitter</span>
                             </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social__link">
+                            <a href="#" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
                                 <i class="fa fa-linkedin"></i>
                                 <span class="sr-only">Linkedin</span>
                             </a>
-                            <a href="#" target="_blank" rel="noopener noreferrer" class="social__link">
+                            <a href="#" target="_blank" rel="noopener noreferrer"
+                                class="social__link">
                                 <i class="fa fa-instagram"></i>
                                 <span class="sr-only">Instagram</span>
                             </a>
-                        </div>
+                        </div>-->
                     </div>
                 </div>
             </div>
@@ -623,7 +383,7 @@
                                     <img src="assets/img/products/product-11-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -635,7 +395,7 @@
                                     <img src="assets/img/products/product-12-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -647,7 +407,7 @@
                                     <img src="assets/img/products/product-13-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.html">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49.00</span>
                                 </div>
                             </li>
@@ -657,8 +417,8 @@
                             <span class="ammount">$98.00</span>
                         </div>
                         <div class="mini-cart__buttons">
-                            <a href="cart.html" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.html" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
+                            <a href="cart.php" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
+                            <a href="checkout.php" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
                         </div>
                     </div>
                 </div>
@@ -771,16 +531,16 @@
                                             </div>
                                         </div>
                                         <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="window.location.href='cart.html'">
+                                            onclick="window.location.href='cart.php'">
                                             Add To Cart
                                         </button>
                                     </div>
                                     <div class="product-footer-meta">
                                         <p><span>Category:</span>
-                                            <a href="shop.html">Full Sweater</a>,
-                                            <a href="shop.html">SweatShirt</a>,
-                                            <a href="shop.html">Jacket</a>,
-                                            <a href="shop.html">Blazer</a>
+                                            <a href="shop.php">Full Sweater</a>,
+                                            <a href="shop.php">SweatShirt</a>,
+                                            <a href="shop.php">Jacket</a>,
+                                            <a href="shop.php">Blazer</a>
                                         </p>
                                     </div>
                                 </div>
