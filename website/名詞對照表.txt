@@ -8,3 +8,7 @@ Subtotal 合計
 Cart totals 總計
 View cart 前往購物車
 Stock Status 庫存狀態
+
+my-account.html
+Dashboard 狀態
+Orders 訂單
