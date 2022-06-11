@@ -111,7 +111,7 @@ INSERT INTO `goods` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Good
     ◆ 0dB 技術讓您在相對安靜的環境下享受遊戲。
     ◆ 不鏽鋼 I/O 擋板更堅固耐用、抗腐蝕
     ◆ 保固：原廠三年保固
-    延長 登錄四年保固到府收送', 'GPU');
+    延長 登錄四年保固到府收送', 'GPU'),
 (2, 'PNY GeForce RTX 3080 LHR 10G XLR8 顯示卡', 23999,
     5, 'https://cs-d.ecimg.tw/items/DRADJ4A900F17LO/000001_1654483524.jpg',
     '◆ 顯示晶片 ：NVIDIA GeForce RTX 3080
