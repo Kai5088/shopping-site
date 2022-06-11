@@ -129,10 +129,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Product Details</h1>
+                        <h1 class="page-title">產品詳情</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.php">Home</a></li>
-                            <li class="current"><span>Product Details</span></li>
+                            <li><a href="index.php">主頁</a></li>
+                            <li class="current"><span>產品詳情</span></li>
                         </ul>
                     </div>
                 </div>

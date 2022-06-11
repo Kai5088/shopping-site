@@ -129,10 +129,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Contact Us</h1>
+                        <h1 class="page-title">聯絡我們</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.php">Home</a></li>
-                            <li class="current"><span>Contact Us</span></li>
+                            <li><a href="index.php">主頁</a></li>
+                            <li class="current"><span>聯絡我們</span></li>
                         </ul>
                     </div>
                 </div>

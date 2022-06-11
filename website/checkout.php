@@ -129,10 +129,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-12 text-center">
-                        <h1 class="page-title">Checkout</h1>
+                        <h1 class="page-title">結帳</h1>
                         <ul class="breadcrumb">
-                            <li><a href="index.php">Home</a></li>
-                            <li class="current"><span>Checkout</span></li>
+                            <li><a href="index.php">主頁</a></li>
+                            <li class="current"><span>結帳</span></li>
                         </ul>
                     </div>
                 </div>

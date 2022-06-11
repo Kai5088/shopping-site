@@ -6,6 +6,7 @@ $db_password = '';
 $db_name = 'shopping_mall';
 
 $db_link = @mysqli_connect($servername, $db_userName, $db_password, $db_name);
+$db_link -> set_charset("UTF8");
 if (!$db_link) {
     die('資料庫連結失敗!');
 } else {
