@@ -1,7 +1,7 @@
 <?php
+    include('connect-sql.php');
     // 註冊
-    if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['verify_pw'])) {
-        include('connect-sql.php');                    
+    if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['verify_pw'])) {                   
         $account = $_POST['account'];
         $password = $_POST['password'];
         $verify_pw =$_POST['verify_pw'];
@@ -35,8 +35,7 @@
     }
 
     // 登入
-    if(isset($_POST['login_account']) && isset($_POST['login_pw'])) {
-        include('connect-sql.php');                      
+    if(isset($_POST['login_account']) && isset($_POST['login_pw'])) {                  
         $l_account = $_POST['login_account'];
         $l_password = $_POST['login_pw'];
 

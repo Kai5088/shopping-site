@@ -1,5 +1,6 @@
 <?php
-
+// 使用方法:
+//   include ('connect-sql.php');
 $servername = "127.0.0.1";
 $db_userName = 'root';
 $db_password = '';
@@ -12,7 +13,5 @@ if (!$db_link) {
 } else {
 //    echo '資料庫連結成功';
 }
-
-mysqli_query($db_link, "SET NAMES 'utf8'");
 
 ?>
