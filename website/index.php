@@ -234,6 +234,7 @@
                                         $Goods_URL = $row['Goods_URL'];
                                         $Goods_Statement = $row['Goods_Statement'];
                                         $Goods_Classify = $row['Goods_Classify'];
+                                        $Goods_Specs = $row['Goods_Specs'];
                                         echo <<<EOL
                                         <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
                                             <div class="payne-product">
