@@ -397,10 +397,10 @@
                             </a>
                         </li>
                         <li>
-                            <a href="shop.php">
+                            <a href="shop.php?Goods_Classify=GPU">
                                 <span class="mm-text">新進商品</span>
                             </a>
-                        </li>
+                        </li> 
                         <li class="has-children">
                             <a href="#">
                                 <span class="mm-text">商店</span>
