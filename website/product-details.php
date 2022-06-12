@@ -171,6 +171,17 @@
                         $Goods_Statement = $row['Goods_Statement'];
                         $Goods_Classify = $row['Goods_Classify'];
                         $Goods_Specs = $row['Goods_Specs'];
+
+
+                        $sql = "SELECT * FROM `goods` WHERE `Goods_Classify` = '" . $Goods_Classify . "';";
+                        // $result = mysqli_query($db_link, $sql);
+                        $IDs = [];
+                        while($row = $result->fetch_assoc())
+                        {
+                            $IDs = array_push($IDs, $row['$Goods_ID']);
+                        }
+                        shuffle($IDs);
+                        print_r($IDs);
                         echo <<<EOL
                         <div class="row no-gutters mb--80 mb-md--57">
                             <div class="col-lg-7 product-main-image">
@@ -187,136 +198,18 @@
                                                 }'>
                                                     <div class="item">
                                                         <figure class="product-gallery__image zoom">
-                                                            <img src="assets/img/products/product-03-500x555.png"
+                                                            <img src="$Goods_URL"
                                                                 alt="Product">
                                                             <span class="product-badge sale">Sale</span>
                                                             <div class="product-gallery__actions">
                                                                 <button class="action-btn btn-zoom-popup"><i
                                                                         class="fa fa-eye"></i></button>
-                                                                <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
+                                                                <a href="https://www.youtube.com/watch?v=o-YBDTqX_ZU"
                                                                     class="action-btn video-popup"><i
                                                                         class="fa fa-play"></i></a>
                                                             </div>
                                                         </figure>
                                                     </div>
-                                                    <div class="item">
-                                                        <figure class="product-gallery__image zoom">
-                                                            <img src="assets/img/products/product-04-500x555.png"
-                                                                alt="Product">
-                                                            <span class="product-badge sale">Sale</span>
-                                                            <div class="product-gallery__actions">
-                                                                <button class="action-btn btn-zoom-popup"><i
-                                                                        class="fa fa-eye"></i></button>
-                                                                <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                                    class="action-btn video-popup"><i
-                                                                        class="fa fa-play"></i></a>
-                                                            </div>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="item">
-                                                        <figure class="product-gallery__image zoom">
-                                                            <img src="assets/img/products/product-05-500x555.png"
-                                                                alt="Product">
-                                                            <span class="product-badge sale">Sale</span>
-                                                            <div class="product-gallery__actions">
-                                                                <button class="action-btn btn-zoom-popup"><i
-                                                                        class="fa fa-eye"></i></button>
-                                                                <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                                    class="action-btn video-popup"><i
-                                                                        class="fa fa-play"></i></a>
-                                                            </div>
-                                                        </figure>
-                                                    </div>
-                                                    <div class="item">
-                                                        <figure class="product-gallery__image zoom">
-                                                            <img src="assets/img/products/product-06-500x555.png"
-                                                                alt="Product">
-                                                            <span class="product-badge sale">Sale</span>
-                                                            <div class="product-gallery__actions">
-                                                                <button class="action-btn btn-zoom-popup"><i
-                                                                        class="fa fa-eye"></i></button>
-                                                                <a href="https://www.youtube.com/watch?v=Rp19QD2XIGM"
-                                                                    class="action-btn video-popup"><i
-                                                                        class="fa fa-play"></i></a>
-                                                            </div>
-                                                        </figure>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="product-gallery__nav-image">
-                                            <div class="element-carousel nav-slider product-slide-nav slick-center-bottom"
-                                                data-slick-options='{
-                                                "spaceBetween": 10,
-                                                "slidesToShow": 3,
-                                                "slidesToScroll": 1,
-                                                "vertical": true,
-                                                "swipe": true,
-                                                "verticalSwiping": true,
-                                                "infinite": true,
-                                                "focusOnSelect": true,
-                                                "asNavFor": ".main-slider",
-                                                "arrows": true, 
-                                                "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-up" },
-                                                "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-down" }
-                                            }' data-slick-responsive='[
-                                                {
-                                                    "breakpoint":1200, 
-                                                    "settings": {
-                                                        "slidesToShow": 2
-                                                    } 
-                                                },
-                                                {
-                                                    "breakpoint":992, 
-                                                    "settings": {
-                                                        "slidesToShow": 3
-                                                    } 
-                                                },
-                                                {
-                                                    "breakpoint":767, 
-                                                    "settings": {
-                                                        "slidesToShow": 4,
-                                                        "vertical": false
-                                                    } 
-                                                },
-                                                {
-                                                    "breakpoint":575, 
-                                                    "settings": {
-                                                        "slidesToShow": 3,
-                                                        "vertical": false
-                                                    } 
-                                                },
-                                                {
-                                                    "breakpoint":480, 
-                                                    "settings": {
-                                                        "slidesToShow": 2,
-                                                        "vertical": false
-                                                    } 
-                                                }
-                                            ]'>
-                                                <div class="item">
-                                                    <figure class="product-gallery__nav-image--single">
-                                                        <img src="assets/img/products/product-03-270x300.jpg"
-                                                            alt="Products">
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure class="product-gallery__nav-image--single">
-                                                        <img src="assets/img/products/product-04-270x300.jpg"
-                                                            alt="Products">
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure class="product-gallery__nav-image--single">
-                                                        <img src="assets/img/products/product-05-270x300.jpg"
-                                                            alt="Products">
-                                                    </figure>
-                                                </div>
-                                                <div class="item">
-                                                    <figure class="product-gallery__nav-image--single">
-                                                        <img src="assets/img/products/product-06-270x300.jpg"
-                                                            alt="Products">
-                                                    </figure>
                                                 </div>
                                             </div>
                                         </div>
@@ -330,7 +223,7 @@
                                         <a href="#" class="next"><i class="fa fa-angle-double-right"></i></a>
                                     </div>
                                     <div class="product-rating d-flex mb--20">
-                                        <div class="star-rating star-four">
+                                        <div class="star-rating star-five">
                                             <span>Rated <strong class="rating">5.00</strong> out of 5</span>
                                         </div>
                                     </div>
@@ -339,12 +232,12 @@
                                         <span class="money">$$Goods_Price</span>
                                     </div>
                                     <form action="#" class="variation-form mb--20">
-                                        <a href="" class="reset_variations">Clear</a>
+                                        <a href="" class="reset_variations">清除</a>
                                     </form>
                                     <div
                                         class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                         <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                            <label class="quantity-label" for="pro-qty">Quantity:</label>
+                                            <label class="quantity-label" for="pro-qty">數量：</label>
                                             <div class="quantity">
                                                 <input type="number" class="quantity-input" name="pro-qty" id="pro-qty"
                                                     value="1" min="1">
@@ -390,21 +283,6 @@
                                 </div>
                             </div>
                         </div>
-                        EOL;
-                        $sql = "SELECT * FROM `goods` WHERE `Goods_Classify` = ". $Goods_Classify;
-                        $result = mysqli_query($db_link, $sql);
-                        $row = $result->fetched_rows();
-
-                        $result->num_rows;
-                        $Goods_ID = $row['Goods_ID'];
-                        $Goods_Name = $row['Goods_Name'];
-                        $Goods_Price = $row['Goods_Price'];
-                        $Goods_Num = $row['Goods_Num'];
-                        $Goods_URL = $row['Goods_URL'];
-                        $Goods_Statement = $row['Goods_Statement'];
-                        $Goods_Classify = $row['Goods_Classify'];
-                        $Goods_Specs = $row['Goods_Specs'];
-                        echo <<<EOL
                         <div class="row mb--77 mb-md--57">
                             <div class="col-12">
                                 <div class="element-carousel slick-vertical-center" data-slick-options='{
