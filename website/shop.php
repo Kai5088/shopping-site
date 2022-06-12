@@ -174,7 +174,7 @@
                                         } else {
                                         //    echo '資料庫連結成功';
                                         }
-                                        $sql = "SELECT Goods_ID, Goods_Name, Goods_Price, Goods_Num, Goods_URL, Goods_Statement, Goods_Classify FROM `goods`";
+                                        $sql = "SELECT * FROM `goods`";
                                         $result = mysqli_query($db_link, $sql);
                                         if ($result->num_rows > 0) 
                                         {

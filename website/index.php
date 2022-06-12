@@ -209,7 +209,7 @@
                         <?php 
                             include ('connect-sql.php');
                             
-                            $sql = "SELECT Goods_ID, Goods_Name, Goods_Price, Goods_Num, Goods_URL, Goods_Statement, Goods_Classify FROM `goods`";
+                            $sql = "SELECT * FROM `goods`";
                             $result = mysqli_query($db_link, $sql);
                             if ($result->num_rows > 0) 
                             {
@@ -256,7 +256,7 @@
                                                     <div class="product__info">
                                                         <div class="product__info--left">
                                                             <h3 class="product__title">
-                                                                <a href="product-details.php">$Goods_Name</a>
+                                                                <a href="product-details.php?Goods_ID=$Goods_ID">$Goods_Name</a>
                                                             </h3>
                                                             <div class="product__price">
                                                                 <span class="money">$Goods_Price</span>
