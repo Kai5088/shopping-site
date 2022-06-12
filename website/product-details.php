@@ -189,9 +189,9 @@
                         $Goods_Price = $row['Goods_Price'];
                         $Goods_Num = $row['Goods_Num'];
                         $Goods_URL = $row['Goods_URL'];
-                        $Goods_Statement = $row['Goods_Statement'];
+                        $Goods_Statement = nl2br($row['Goods_Statement']);
                         $Goods_Classify = $row['Goods_Classify'];
-                        $Goods_Specs = $row['Goods_Specs'];
+                        $Goods_Specs = nl2br($row['Goods_Specs']);
 
 
                         echo <<<EOL
