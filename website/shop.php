@@ -58,8 +58,27 @@
                                         <li class="mainmenu__item menu-item-has-children position-relative">
                                             <a href="index.php" class="mainmenu__link">主頁</a>                                            
                                         </li>
-                                        <li class="mainmenu__item menu-item-has-children position-static">
-                                            <a href="shop.php" class="mainmenu__link">商店</a>                                            
+                                        <li class="mainmenu__item menu-item-has-children position-relative">
+                                            <a href="shop.php?Goods_Classify=ALL" class="mainmenu__link">商店</a>      
+                                            <div class="inner-menu">
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=laptop">筆記型電腦</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=GPU">顯示卡</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=keyboard">鍵盤</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=mouse">滑鼠</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=earphone">耳機</a>
+                                                    </li>
+                                                </ul>
+                                            </div>                                                                                  
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-relative">
                                             <a href="#" class="mainmenu__link">功能</a>
@@ -297,16 +316,6 @@
                                     <!-- Product List End -->   
                                 </div>
                             </div>
-                            <nav class="pagination-wrap">
-                                <ul class="pagination">
-                                    <li><span class="page-number current">1</span></li>
-                                    <li><a href="#" class="page-number">2</a></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><span class="dot"></span></li>
-                                    <li><a href="#" class="page-number">16</a></li>
-                                </ul>
-                            </nav>
                         </div>
                     </div>
                 </div>
