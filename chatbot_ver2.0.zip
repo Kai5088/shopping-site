@@ -1,4 +1,5 @@
 <?php
+
 function speak($con,$txt,$ortxt)
 {
 	$sql="select reply from chatbot_hints where question like '%$txt%'";
@@ -25,7 +26,10 @@ else{
 
 function ask_product_speak($con,$txt,$ortxt)
 {
-	$sql="select * from goods where Goods_Name like '%$txt%'";
+	if($txt==""){
+		$txt="error";
+	}
+	$sql="select * from goods where upper(Goods_Name) like '%$txt%'";
 $res=mysqli_query($con,$sql);
 // if(mysqli_num_rows($res)>0){echo "fuck";}
 if(mysqli_num_rows($res)>0){
@@ -147,9 +151,9 @@ else if(preg_match("/(.*想要買*)/", $txt))
 	
 	$str_sec = explode("想要買",$txt);
 	//  print("fuck you");
-	// print_r($str_sec);
+	//print_r($str_sec);
 	// print($str_sec[1]);
-	$ortxt = $txt;$txt = $str_sec[1];ask_product_speak($con,$txt,$ortxt);
+	$ortxt = $txt;$txt = $str_sec[1];ask_product_speak($con,TRIM($txt),$ortxt);
 	// $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
 	
 }
@@ -157,7 +161,7 @@ else if(preg_match("/(.*你們有賣|有沒有賣*)/", $txt))
 {
 	
 	$str_sec = explode("賣",$txt);
-	$ortxt = $txt;$txt = $str_sec[1];ask_product_speak($con,$txt,$ortxt);
+	$ortxt = $txt;$txt = $str_sec[1];ask_product_speak($con,TRIM($txt),$ortxt);
 	// $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
 	
 }
@@ -165,7 +169,7 @@ else if(preg_match("/(.*價格*)/", $txt))
 {
 	
 	$str_sec = explode("價格",$txt);
-	$ortxt = $txt;$txt = $str_sec[1];ask_price_speak($con,$txt,$ortxt);
+	$ortxt = $txt;$txt = $str_sec[1];ask_price_speak($con,TRIM($txt),$ortxt);
 	// $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
 	
 }
