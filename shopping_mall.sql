@@ -97,7 +97,6 @@ CREATE TABLE `goods` (
 
 --
 -- 傾印資料表的資料 `goods`
---1. GPU 2. earphone 3. keyboard 4. mouse 5. laptop
 --
 INSERT INTO `goods` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Goods_URL`, `Goods_Statement`, `Goods_Classify`) VALUES
 (1, 'ASUS 華碩 Dual GeForce RTX 3060 V2 OC 12GB GDDR6 顯示卡', 13990, 
