@@ -167,8 +167,8 @@
                                                     data-duration=".3s" data-delay=".3s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AKG K701 開放式耳機延續了以往的古典風格，單元採用白色的鋼琴烤漆搭配白色的鋼絲網罩，亮麗的光澤突顯出K701優雅的氣質，鋼絲網罩和銀色鑲邊的融合，精緻時尚又大氣。　<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AKG，音訊領域最知名的品牌之一，全球四大耳機生產商之一，AKG這三個字母就是專業精神與聲音品質的代表。AKG依靠話筒、耳機和通訊設備生存，良好的銷售業績向世人證明了這一決策的正確性。</p>
                                             </div>
                                             <div class="slider-content__btn">
-                                                <a href="shop.php" class="btn-link" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".6s">馬上購買</a>
+                                                <a href="product-details.php?Goods_ID=35" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
                                             </div>
                                         </div>
                                     </div>
@@ -197,8 +197,8 @@
                                                     data-duration=".3s" data-delay=".3s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NVIDIA® GeForce RTX™ 30 系列筆記型電腦 GPU 為玩家和創作者打造出世界上最快的筆記型電腦。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;採用 NVIDIA 第二代 RTX 架構 Ampere，可提供最逼真的光線追蹤繪圖技術和 NVIDIA DLSS 等尖端人工智慧功能。</p>
                                             </div>
                                             <div class="slider-content__btn">
-                                                <a href="shop.php" class="btn-link" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".6s">馬上購買</a>
+                                                <a href="shop.php?Goods_Classify=GPU" data-animation="fadeInUp"
+                                                    data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
                                             </div>
                                         </div>
                                     </div>
