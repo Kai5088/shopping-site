@@ -206,406 +206,90 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-20-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">MSI VENTUS 2X GeForce RTX 3060 Ti</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
+                        <?php 
+                            $servername = "127.0.0.1";
+                            $db_userName = 'root';
+                            $db_password = '';
+                            $db_name = 'shopping_mall';
+
+                            $db_link = @mysqli_connect($servername, $db_userName, $db_password, $db_name);
+                            $db_link -> set_charset("UTF8");
+                            if (!$db_link) {
+                                die('資料庫連結失敗!');
+                            } else {
+                            //    echo '資料庫連結成功';
+                            }
+                            $sql = "SELECT Goods_ID, Goods_Name, Goods_Price, Goods_Num, Goods_URL, Goods_Statement, Goods_Classify FROM `goods`";
+                            $result = mysqli_query($db_link, $sql);
+                            if ($result->num_rows > 0) 
+                            {
+                                while($row = $result->fetch_assoc()) 
+                                {
+                                    if($row['Goods_Classify'] == "GPU")
+                                    {
+                                        $Goods_ID = $row['Goods_ID'];
+                                        $Goods_Name = $row['Goods_Name'];
+                                        $Goods_Price = $row['Goods_Price'];
+                                        $Goods_Num = $row['Goods_Num'];
+                                        $Goods_URL = $row['Goods_URL'];
+                                        $Goods_Statement = $row['Goods_Statement'];
+                                        $Goods_Classify = $row['Goods_Classify'];
+                                        echo <<<EOL
+                                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
+                                            <div class="payne-product">
+                                                <div class="product__inner">
+                                                    <div class="product__image">
+                                                        <figure class="product__image--holder">
+                                                            <img src="$Goods_URL" alt="Product">
+                                                        </figure>
+                                                        <a href="product-details.php" class="product-overlay"></a>
+                                                        <div class="product__action">
+                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
+                                                                <i class="fa fa-eye"></i>
+                                                                <span class="sr-only">Quick View</span>
+                                                            </a>
+                                                            <a href="wishlist.php" class="action-btn">
+                                                                <i class="fa fa-heart-o"></i>
+                                                                <span class="sr-only">Add to wishlist</span>
+                                                            </a>
+                                                            <a href="wishlist.php" class="action-btn">
+                                                                <i class="fa fa-repeat"></i>
+                                                                <span class="sr-only">Add To Compare</span>
+                                                            </a>
+                                                            <a href="cart.php" class="action-btn">
+                                                                <i class="fa fa-shopping-cart"></i>
+                                                                <span class="sr-only">Add To Cart</span>
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                    <div class="product__info">
+                                                        <div class="product__info--left">
+                                                            <h3 class="product__title">
+                                                                <a href="product-details.php">$Goods_Name</a>
+                                                            </h3>
+                                                            <div class="product__price">
+                                                                <span class="money">$Goods_Price</span>
+                                                                <span class="sign">$</span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="product__info--right">
+                                                            <span class="product__rating">
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                                <i class="fa fa-star"></i>
+                                                            </span>
+                                                        </div>
+                                                    </div>
+                                                </div>
                                             </div>
                                         </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-04-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">MSI GeForce RTX 3080 VENTUS 3X 10G OC</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-05-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">ASUS TUF-RTX3080TI-O12G-GAMING</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-06-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">GIGABYTE GeForce RTX 3080 GAMING OC 12G</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-07-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">ROG-STRIX-RTX3070-8G</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-08-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">ZOTAC RTX3070 Twin Edge OC-8G LHR</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-09-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">ASUS TUF Gaming GeForce RTX™ 3070 OC Edition</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
-                            <div class="payne-product">
-                                <div class="product__inner">
-                                    <div class="product__image">
-                                        <figure class="product__image--holder">
-                                            <img src="assets/img/products/product-10-270x300.jpg" alt="Product">
-                                        </figure>
-                                        <a href="product-details.php" class="product-overlay"></a>
-                                        <div class="product__action">
-                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                <i class="fa fa-eye"></i>
-                                                <span class="sr-only">Quick View</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-heart-o"></i>
-                                                <span class="sr-only">Add to wishlist</span>
-                                            </a>
-                                            <a href="wishlist.php" class="action-btn">
-                                                <i class="fa fa-repeat"></i>
-                                                <span class="sr-only">Add To Compare</span>
-                                            </a>
-                                            <a href="cart.php" class="action-btn">
-                                                <i class="fa fa-shopping-cart"></i>
-                                                <span class="sr-only">Add To Cart</span>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="product__info">
-                                        <div class="product__info--left">
-                                            <h3 class="product__title">
-                                                <a href="product-details.php">ASUS ROG Strix GeForce RTX 3070 Ti OC Edition 8GB</a>
-                                            </h3>
-                                            <div class="product__price">
-                                                <span class="money">132.00</span>
-                                                <span class="sign">$</span>
-                                            </div>
-                                        </div>
-                                        <div class="product__info--right">
-                                            <span class="product__rating">
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                                <i class="fa fa-star"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                                        EOL;
+                                    }
+                                }
+                            }
+                        ?>
                     </div>
                 </div>
             </section>
@@ -979,3 +663,57 @@
 </body>
 
 </html>
+<!-- ******************************** Product List Backup 
+
+                        <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
+                            <div class="payne-product">
+                                <div class="product__inner">
+                                    <div class="product__image">
+                                        <figure class="product__image--holder">
+                                            <img src="assets/img/products/product-20-270x300.jpg" alt="Product">
+                                        </figure>
+                                        <a href="product-details.php" class="product-overlay"></a>
+                                        <div class="product__action">
+                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
+                                                <i class="fa fa-eye"></i>
+                                                <span class="sr-only">Quick View</span>
+                                            </a>
+                                            <a href="wishlist.php" class="action-btn">
+                                                <i class="fa fa-heart-o"></i>
+                                                <span class="sr-only">Add to wishlist</span>
+                                            </a>
+                                            <a href="wishlist.php" class="action-btn">
+                                                <i class="fa fa-repeat"></i>
+                                                <span class="sr-only">Add To Compare</span>
+                                            </a>
+                                            <a href="cart.php" class="action-btn">
+                                                <i class="fa fa-shopping-cart"></i>
+                                                <span class="sr-only">Add To Cart</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                    <div class="product__info">
+                                        <div class="product__info--left">
+                                            <h3 class="product__title">
+                                                <a href="product-details.php">MSI VENTUS 2X GeForce RTX 3060 Ti</a>
+                                            </h3>
+                                            <div class="product__price">
+                                                <span class="money">132.00</span>
+                                                <span class="sign">$</span>
+                                            </div>
+                                        </div>
+                                        <div class="product__info--right">
+                                            <span class="product__rating">
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                                <i class="fa fa-star"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+-->
