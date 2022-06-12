@@ -56,8 +56,27 @@
                                         <li class="mainmenu__item menu-item-has-children position-relative">
                                             <a href="index.php" class="mainmenu__link">主頁</a>                                            
                                         </li>
-                                        <li class="mainmenu__item menu-item-has-children position-static">
-                                            <a href="shop.php" class="mainmenu__link">商店</a>                                            
+                                        <li class="mainmenu__item menu-item-has-children position-relative">
+                                            <a href="shop.php?Goods_Classify=ALL" class="mainmenu__link">商店</a>      
+                                            <div class="inner-menu">
+                                                <ul class="sub-menu">
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=laptop">筆記型電腦</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=GPU">顯示卡</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=keyboard">鍵盤</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=mouse">滑鼠</a>
+                                                    </li>
+                                                    <li>
+                                                        <a href="shop.php?Goods_Classify=earphone">耳機</a>
+                                                    </li>
+                                                </ul>
+                                            </div>                                                                                  
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-relative">
                                             <a href="#" class="mainmenu__link">功能</a>
@@ -233,7 +252,7 @@
                                                         <figure class="product__image--holder">
                                                             <img src="$Goods_URL" alt="Product">
                                                         </figure>
-                                                        <a href="product-details.php" class="product-overlay"></a>
+                                                        <a href="product-details.php?Goods_ID=$Goods_ID" class="product-overlay"></a>
                                                         <div class="product__action">
                                                             <a data-toggle="modal" data-target="#productModal" class="action-btn">
                                                                 <i class="fa fa-eye"></i>
@@ -472,7 +491,7 @@
                                     <img src="assets/img/products/product-11-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php?Goods_ID=$Goods_ID">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49</span>
                                 </div>
                             </li>
@@ -484,7 +503,7 @@
                                     <img src="assets/img/products/product-12-90x90.jpg" alt="products">
                                 </div>
                                 <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.php">Lexbaro Begadi</a>
+                                    <a class="mini-cart__product-title" href="product-details.php?Goods_ID=$Goods_ID">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49</span>
                                 </div>
                             </li>                            
