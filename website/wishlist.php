@@ -401,10 +401,42 @@
                                 <span class="mm-text">新進商品</span>
                             </a>
                         </li>
-                        <li>
-                            <a href="shop.php">
+                        <li class="has-children">
+                            <a href="#">
                                 <span class="mm-text">商店</span>
                             </a>
+                            <ul class="sub-menu">
+                                <li>
+                                    <a href="shop.php?Goods_Classify=ALL">
+                                        <span class="mm-text"><b>所有商品</b></span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.php?Goods_Classify=laptop">
+                                        <span class="mm-text">筆記型電腦</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.php?Goods_Classify=GPU">
+                                        <span class="mm-text">顯示卡</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.php?Goods_Classify=keyboard">
+                                        <span class="mm-text">鍵盤</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.php?Goods_Classify=mouse">
+                                        <span class="mm-text">滑鼠</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="shop.php?Goods_Classify=earphone">
+                                        <span class="mm-text">耳機</span>
+                                    </a>
+                                </li>
+                            </ul>
                         </li>
                         <li class="has-children">
                             <a href="#">
