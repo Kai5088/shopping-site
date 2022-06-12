@@ -813,7 +813,7 @@ INSERT INTO `goods` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Good
   支援播放高解析音樂
   Windows 11 Home', 'laptop'),
 (35, 'AKG K701 頂級 專業級 開放式監聽耳罩耳機', 7200,
-  5, 'https://img.alicdn.com/imgextra/i3/3234796979/TB230a9H7OWBuNjSsppXXXPgpXa_!!3234796979.png',
+  5, 'https://img.ruten.com.tw/s2/e/51/50/22140467554640_336.jpg',
   '動態開放式\r\n
   最大輸入: 200mW \r\n
   輸入阻抗: 62 ohms\r\n
