@@ -1,5 +1,3 @@
-<?php session_start() ?>
-
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -209,8 +207,18 @@
                     </div>
                     <div class="row">
                         <?php 
-                            include ("connect-sql.php");
-                            
+                            $servername = "127.0.0.1";
+                            $db_userName = 'root';
+                            $db_password = '';
+                            $db_name = 'shopping_mall';
+
+                            $db_link = @mysqli_connect($servername, $db_userName, $db_password, $db_name);
+                            $db_link -> set_charset("UTF8");
+                            if (!$db_link) {
+                                die('資料庫連結失敗!');
+                            } else {
+                            //    echo '資料庫連結成功';
+                            }
                             $sql = "SELECT Goods_ID, Goods_Name, Goods_Price, Goods_Num, Goods_URL, Goods_Statement, Goods_Classify FROM `goods`";
                             $result = mysqli_query($db_link, $sql);
                             if ($result->num_rows > 0) 
