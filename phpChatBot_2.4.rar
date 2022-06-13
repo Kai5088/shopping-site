@@ -30,14 +30,14 @@ function ask_product_speak($con,$txt,$ortxt)
 		$txt="error";
 	}
 	$sql="select * from goods where upper(Goods_Name) like '%$txt%'";
-
+	$html ='';
 $res=mysqli_query($con,$sql);
 // if(mysqli_num_rows($res)>0){echo "fuck";}
-if(mysqli_num_rows($res)>0){
-	$row=mysqli_fetch_assoc($res);
-	$url = $row['Goods_URL'];
+if($total_fields = mysqli_num_fields($res))
+while ($row=mysqli_fetch_assoc($res)) {
+			$url = $row['Goods_URL'];
+		$html.="產品名稱: ".$row['Goods_Name']."<br>"."產品價格: ".$row['Goods_Price']."<br>"."產品規格: ".$row['Goods_Specs']."<br>"."產品描述: ".$row['Goods_Statement']."<br>"."產品分類: ".$row['Goods_Classify']."<br>"."產品url:"."<a href=$url>連結按我</a>"."<br>"."******************"."<br>";
 
-	$html="產品名稱: ".$row['Goods_Name']."<br>"."產品價格: ".$row['Goods_Price']."<br>"."產品規格: ".$row['Goods_Statement']."<br>"."產品分類: ".$row['Goods_Classify']."<br>"."產品url:"."<a href=$url>連結按我</a>"."<br>"."******************"."<br>";
 }
 else{
 	$html="Sorry 我們沒賣這個商品";
@@ -52,7 +52,9 @@ else{
 
 function ask_price_speak($con,$txt,$ortxt)
 {
-	$sql="SELECT * FROM `goods` WHERE Goods_Price<=($txt+1000) ORDER BY Goods_Price DESC LIMIT 0, 1";
+	
+	
+	$sql="SELECT * FROM `goods` WHERE Goods_Price<=$txt+1000 ORDER BY Goods_Price DESC LIMIT 0, 1";
 $res=mysqli_query($con,$sql);
 // if(mysqli_num_rows($res)>0){echo "fuck";}
 if(mysqli_num_rows($res)>0){
@@ -60,6 +62,7 @@ if(mysqli_num_rows($res)>0){
 	$url = $row['Goods_URL'];
 
 	$html="產品名稱: ".$row['Goods_Name']."<br>"."產品價格: ".$row['Goods_Price']."<br>"."產品規格: ".$row['Goods_Statement']."<br>"."產品分類: ".$row['Goods_Classify']."<br>"."產品url:"."<a href=$url>連結按我</a>"."<br>"."******************"."<br>";
+
 }
 else{
 	$html="Sorry 我們沒賣這個商品";
