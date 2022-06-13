@@ -33,7 +33,8 @@ CREATE TABLE `cus_temp_list` (
   `Goods_Name` text NOT NULL,
   `Goods_Num` int(11) NOT NULL,
   `Goods_Price` bigint(20) NOT NULL,
-  `Goods_URL` longtext NOT NULL
+  `Goods_URL` longtext NOT NULL,
+  `Cus_ID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -926,6 +927,12 @@ ALTER TABLE `cus_temp_list`
 --
 -- 已傾印資料表的限制式
 --
+
+--
+-- 資料表的限制式 `buyer_record`
+--
+ALTER TABLE `cus_temp_list`
+  ADD CONSTRAINT `cus_temp_list_ibfk_1` FOREIGN KEY (`Cus_ID`) REFERENCES `login_customer` (`Cus_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `buyer_record`
