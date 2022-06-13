@@ -1,3 +1,8 @@
+<?php
+session_start();
+include('connect-sql.php');
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -54,10 +59,10 @@
                                 <nav class="main-navigation d-none d-lg-block">
                                     <ul class="mainmenu">
                                         <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="index.php" class="mainmenu__link">主頁</a>                                            
+                                            <a href="index.php" class="mainmenu__link">主頁</a>
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="shop.php?Goods_Classify=ALL" class="mainmenu__link">商店</a>      
+                                            <a href="shop.php?Goods_Classify=ALL" class="mainmenu__link">商店</a>
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
                                                     <li>
@@ -76,7 +81,7 @@
                                                         <a href="shop.php?Goods_Classify=earphone">耳機</a>
                                                     </li>
                                                 </ul>
-                                            </div>                                                                                  
+                                            </div>
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-relative">
                                             <a href="#" class="mainmenu__link">功能</a>
@@ -96,7 +101,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </li> 
+                                        </li>
                                         <li class="mainmenu__item">
                                             <a href="contact-us.php" class="mainmenu__link">聯絡我們</a>
                                         </li>
@@ -105,9 +110,23 @@
                             </div>
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="login-register.php" class="toolbar-btn">
-                                        <span>登入</span>
-                                    </a>
+                                    <?php
+                                    if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+                                        echo <<< EOL
+                                            <a href="logout.php" class="toolbar-btn ">
+                                                <span>登出</span>
+                                            </a>
+                                            EOL;
+                                    } else {
+
+                                        echo <<< EOL
+                                            <a href='login-register.php' class='toolbar-btn'>
+                                                <span>登入</span>
+                                            </a>
+                                            EOL;
+                                    }
+                                    ?>
+
                                 </div>
                                 <div class="toolbar-item d-block d-lg-none">
                                     <a href="#offcanvasnav" class="hamburger-icon js-toolbar menu-btn">
@@ -152,23 +171,18 @@
                     "dots": true
                 }'>
                     <div class="item">
-                        <div class="single-slide height-2 d-flex align-items-center bg-image"
-                            data-bg-image="assets/img/slider/slider-bg-02.jpg">
+                        <div class="single-slide height-2 d-flex align-items-center bg-image" data-bg-image="assets/img/slider/slider-bg-02.jpg">
                             <div class="container">
                                 <div class="row align-items-center no-gutters w-100">
                                     <div class="col-lg-6 col-md-8">
                                         <div class="slider-content py-0">
                                             <div class="slider-content__text mb--95 md-lg--80 mb-md--40 mb-sm--15">
-                                                <h3 class="text-uppercase font-weight-light" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".3s">特選產品</h3>
-                                                <h1 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".3s">AKG K701</h1>
-                                                <p class="font-weight-light" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".3s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AKG K701 開放式耳機延續了以往的古典風格，單元採用白色的鋼琴烤漆搭配白色的鋼絲網罩，亮麗的光澤突顯出K701優雅的氣質，鋼絲網罩和銀色鑲邊的融合，精緻時尚又大氣。　<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AKG，音訊領域最知名的品牌之一，全球四大耳機生產商之一，AKG這三個字母就是專業精神與聲音品質的代表。AKG依靠話筒、耳機和通訊設備生存，良好的銷售業績向世人證明了這一決策的正確性。</p>
+                                                <h3 class="text-uppercase font-weight-light" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">特選產品</h3>
+                                                <h1 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">AKG K701</h1>
+                                                <p class="font-weight-light" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AKG K701 開放式耳機延續了以往的古典風格，單元採用白色的鋼琴烤漆搭配白色的鋼絲網罩，亮麗的光澤突顯出K701優雅的氣質，鋼絲網罩和銀色鑲邊的融合，精緻時尚又大氣。　<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;AKG，音訊領域最知名的品牌之一，全球四大耳機生產商之一，AKG這三個字母就是專業精神與聲音品質的代表。AKG依靠話筒、耳機和通訊設備生存，良好的銷售業績向世人證明了這一決策的正確性。</p>
                                             </div>
                                             <div class="slider-content__btn">
-                                                <a href="product-details.php?Goods_ID=35" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
+                                                <a href="product-details.php?Goods_ID=35" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
                                             </div>
                                         </div>
                                     </div>
@@ -182,23 +196,18 @@
                         </div>
                     </div>
                     <div class="item">
-                        <div class="single-slide height-2 d-flex align-items-center bg-image"
-                            data-bg-image="assets/img/slider/slider-bg-02.jpg">
+                        <div class="single-slide height-2 d-flex align-items-center bg-image" data-bg-image="assets/img/slider/slider-bg-02.jpg">
                             <div class="container">
                                 <div class="row align-items-center no-gutters w-100">
                                     <div class="col-lg-6 col-md-8">
                                         <div class="slider-content py-0">
                                             <div class="slider-content__text mb--95 md-lg--80 mb-md--40 mb-sm--15">
-                                                <h3 class="text-uppercase font-weight-light" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".3s">特選產品</h3>
-                                                <h1 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".3s">GEFORCE RTX 30 系列筆電</h1>
-                                                <p class="font-weight-light" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".3s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NVIDIA® GeForce RTX™ 30 系列筆記型電腦 GPU 為玩家和創作者打造出世界上最快的筆記型電腦。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;採用 NVIDIA 第二代 RTX 架構 Ampere，可提供最逼真的光線追蹤繪圖技術和 NVIDIA DLSS 等尖端人工智慧功能。</p>
+                                                <h3 class="text-uppercase font-weight-light" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">特選產品</h3>
+                                                <h1 class="heading__primary mb--40 mb-md--20" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">GEFORCE RTX 30 系列筆電</h1>
+                                                <p class="font-weight-light" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NVIDIA® GeForce RTX™ 30 系列筆記型電腦 GPU 為玩家和創作者打造出世界上最快的筆記型電腦。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;採用 NVIDIA 第二代 RTX 架構 Ampere，可提供最逼真的光線追蹤繪圖技術和 NVIDIA DLSS 等尖端人工智慧功能。</p>
                                             </div>
                                             <div class="slider-content__btn">
-                                                <a href="shop.php?Goods_Classify=GPU" data-animation="fadeInUp"
-                                                    data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
+                                                <a href="shop.php?Goods_Classify=GPU" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
                                             </div>
                                         </div>
                                     </div>
@@ -225,26 +234,23 @@
                         </div>
                     </div>
                     <div class="row">
-                        <?php 
-                            include ('connect-sql.php');
-                            
-                            $sql = "SELECT * FROM `goods`";
-                            $result = mysqli_query($db_link, $sql);
-                            if ($result->num_rows > 0) 
-                            {
-                                while($row = $result->fetch_assoc()) 
-                                {
-                                    if($row['Goods_Classify'] == "GPU")
-                                    {
-                                        $Goods_ID = $row['Goods_ID'];
-                                        $Goods_Name = $row['Goods_Name'];
-                                        $Goods_Price = $row['Goods_Price'];
-                                        $Goods_Num = $row['Goods_Num'];
-                                        $Goods_URL = $row['Goods_URL'];
-                                        $Goods_Statement = $row['Goods_Statement'];
-                                        $Goods_Classify = $row['Goods_Classify'];
-                                        $Goods_Specs = $row['Goods_Specs'];
-                                        echo <<<EOL
+                        <?php
+                        include('connect-sql.php');
+
+                        $sql = "SELECT * FROM `goods`";
+                        $result = mysqli_query($db_link, $sql);
+                        if ($result->num_rows > 0) {
+                            while ($row = $result->fetch_assoc()) {
+                                if ($row['Goods_Classify'] == "GPU") {
+                                    $Goods_ID = $row['Goods_ID'];
+                                    $Goods_Name = $row['Goods_Name'];
+                                    $Goods_Price = $row['Goods_Price'];
+                                    $Goods_Num = $row['Goods_Num'];
+                                    $Goods_URL = $row['Goods_URL'];
+                                    $Goods_Statement = $row['Goods_Statement'];
+                                    $Goods_Classify = $row['Goods_Classify'];
+                                    $Goods_Specs = $row['Goods_Specs'];
+                                    echo <<<EOL
                                         <div class="col-lg-3 col-md-4 col-sm-6 mb--65 mb-md--50">
                                             <div class="payne-product">
                                                 <div class="product__inner">
@@ -296,9 +302,9 @@
                                             </div>
                                         </div>
                                         EOL;
-                                    }
                                 }
                             }
+                        }
                         ?>
                     </div>
                 </div>
@@ -311,79 +317,79 @@
                         <div class="col-12">
                             <h2 class="sr-only">Methods</h2>
                         </div>
-                    </div>                    
+                    </div>
                 </div>
             </section>
         </main>
         <!-- Main Content Wrapper End -->
 
-            <!-- Footer Start-->
-            <footer class="footer bg-color pt--70 pt-xs--60" data-bg-color="#f4f8fa">
-                <div class="container">
-                    <div class="row border-bottom pb--60 pb-sm--28 pb-xs--49">
-                        <div class="col footer-column-1 mb-sm--42">
-                            <div class="footer-widget">
-                                <div class="textwidget">
-                                    <figure class="footer-logo mb--10">
-                                        <img src="assets/img/logo/logo.png" alt="Logo">
-                                    </figure>
-                                </div>
-                                <div class="address-widget">
-                                    <address>403台灣台中市西區民生路140號</address>
-                                    <a href="tel:+84112345678">04-2218-3199</a>
-                                    <a href="mailto:info@company.com">info@expensivehouse.com</a>
-                                </div>
+        <!-- Footer Start-->
+        <footer class="footer bg-color pt--70 pt-xs--60" data-bg-color="#f4f8fa">
+            <div class="container">
+                <div class="row border-bottom pb--60 pb-sm--28 pb-xs--49">
+                    <div class="col footer-column-1 mb-sm--42">
+                        <div class="footer-widget">
+                            <div class="textwidget">
+                                <figure class="footer-logo mb--10">
+                                    <img src="assets/img/logo/logo.png" alt="Logo">
+                                </figure>
                             </div>
-                        </div>
-                        <div class="col footer-column-5 mb-sm--33">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--15">資訊</h3>
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>關於我們</span>
-                                        </a>
-                                    </li>                        
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>隱私協議</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>取得協助</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col footer-column-5">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--15">帳號</h3>
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="my-account.php">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>我的帳號</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="wishlist.php">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>暫存清單</span>
-                                        </a>
-                                    </li>                                
-                                </ul>
+                            <div class="address-widget">
+                                <address>403台灣台中市西區民生路140號</address>
+                                <a href="tel:+84112345678">04-2218-3199</a>
+                                <a href="mailto:info@company.com">info@expensivehouse.com</a>
                             </div>
                         </div>
                     </div>
-                    <div class="row ptb--20">
-                        <div class="col-12 text-center">
-                            <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第五組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
-                            <!--<div class="social space-10">
+                    <div class="col footer-column-5 mb-sm--33">
+                        <div class="footer-widget">
+                            <h3 class="widget-title mb--35 mb-sm--15">資訊</h3>
+                            <ul class="footer-menu">
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>關於我們</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>隱私協議</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="#">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>取得協助</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col footer-column-5">
+                        <div class="footer-widget">
+                            <h3 class="widget-title mb--35 mb-sm--15">帳號</h3>
+                            <ul class="footer-menu">
+                                <li>
+                                    <a href="my-account.php">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>我的帳號</span>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="wishlist.php">
+                                        <i class="fa fa-angle-right"></i>
+                                        <span>暫存清單</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="row ptb--20">
+                    <div class="col-12 text-center">
+                        <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第五組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
+                        <!--<div class="social space-10">
                                 <a href="#" target="_blank" rel="noopener noreferrer"
                                     class="social__link">
                                     <i class="fa fa-facebook"></i>
@@ -405,11 +411,11 @@
                                     <span class="sr-only">Instagram</span>
                                 </a>
                             </div>-->
-                        </div>
                     </div>
                 </div>
-            </footer>
-            <!-- Footer End-->
+            </div>
+        </footer>
+        <!-- Footer End-->
 
         <!-- OffCanvas Menu Start -->
         <aside class="offcanvas-navigation" id="offcanvasnav">
@@ -429,7 +435,7 @@
                             <a href="shop.php?Goods_Classify=GPU">
                                 <span class="mm-text">新進商品</span>
                             </a>
-                        </li>   
+                        </li>
                         <li class="has-children">
                             <a href="#">
                                 <span class="mm-text">商店</span>
@@ -538,7 +544,7 @@
                                     <a class="mini-cart__product-title" href="product-details.php?Goods_ID=$Goods_ID">Lexbaro Begadi</a>
                                     <span class="mini-cart__product-quantity">1 x $49</span>
                                 </div>
-                            </li>                            
+                            </li>
                         </ul>
                         <div class="mini-cart__total">
                             <span>合計</span>
@@ -625,26 +631,22 @@
                                             <p class="variation-label">Size:</p>
                                             <div class="product-size-variation variation-wrapper">
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip"
-                                                        data-placement="top" title="S">
+                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
                                                         <span class="product-size-variation-label">S</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="M">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
                                                         <span class="product-size-variation-label">M</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="L">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
                                                         <span class="product-size-variation-label">L</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="XL">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
                                                         <span class="product-size-variation-label">XL</span>
                                                     </a>
                                                 </div>
@@ -652,18 +654,14 @@
                                         </div>
                                         <a href="" class="reset_variations">Clear</a>
                                     </form>
-                                    <div
-                                        class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
-                                        <div
-                                            class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
+                                    <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
+                                        <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                             <label class="quantity-label" for="qty">Quantity:</label>
                                             <div class="quantity">
-                                                <input type="number" class="quantity-input" name="qty" id="qty"
-                                                    value="1" min="1">
+                                                <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="window.location.href='cart.php'">
+                                        <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='cart.php'">
                                             Add To Cart
                                         </button>
                                     </div>

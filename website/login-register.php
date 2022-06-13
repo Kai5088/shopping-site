@@ -1,63 +1,65 @@
 <?php
-    include('connect-sql.php');
-    // 註冊
-    if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['verify_pw'])) {                   
-        $account = $_POST['account'];
-        $password = $_POST['password'];
-        $verify_pw =$_POST['verify_pw'];
-        
-        // 檢查該帳號是否已註冊
-        $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['account'] . "'";
-        $data = mysqli_query($db_link, $sql_find_user);     
+// 不顯示錯誤訊息
+error_reporting(E_ERROR | E_PARSE);
+
+include('connect-sql.php');
+// 註冊
+if (isset($_POST['account']) && isset($_POST['password']) && isset($_POST['verify_pw'])) {
+    $account = $_POST['account'];
+    $password = $_POST['password'];
+    $verify_pw = $_POST['verify_pw'];
+
+    // 檢查該帳號是否已註冊
+    $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['account'] . "'";
+    $data = mysqli_query($db_link, $sql_find_user);
+    $user = mysqli_fetch_assoc($data);
+
+    // 並一同確認兩次密碼是否一致
+    if (($password == $verify_pw) && empty($user)) {
+        // 將帳密加入資料庫
+        $random_id = "A" . (string)(random_int(1, 9999));
+        $sql_query = "INSERT INTO login_customer (Cus_ID, Cus_Account, Cus_Password, Cus_Money) VALUES ('$random_id' , '$account', '$password', 50000)";
+
+        mysqli_query($db_link, $sql_query);
+
+        $data = mysqli_query($db_link, $sql_find_user);
         $user = mysqli_fetch_assoc($data);
 
-        // 並一同確認兩次密碼是否一致
-        if(($password == $verify_pw) && empty($user)) {     
-            // 將帳密加入資料庫
-            $random_id = "A" . (string)(random_int(1, 9999)) ;
-            $sql_query = "INSERT INTO login_customer (Cus_ID, Cus_Account, Cus_Password, Cus_Money) VALUES ('$random_id' , '$account', '$password', 50000)";
-                                    
-            mysqli_query($db_link, $sql_query);
-                                                 
-            $data = mysqli_query($db_link, $sql_find_user);      
-            $user = mysqli_fetch_assoc($data);
-
-            // 使用 session 保存登入狀態
-            session_start();
-            $_SESSION['id'] = $user['Cus_ID'];
-            $_SESSION['account'] = $user['Cus_Account'];
-            $_SESSION['password'] = $user['Cus_Password'];
-
-        }
-        else {
-            echo "<p>Duplicated Account!!!!!!!!</p>";
-        }
+        // 使用 session 保存登入狀態
+        session_start();
+        $_SESSION['id'] = $user['Cus_ID'];
+        $_SESSION['account'] = $user['Cus_Account'];
+        $_SESSION['password'] = $user['Cus_Password'];
+    } else {
+        echo "<p>Duplicated Account!!!!!!!!</p>";
     }
+}
 
-    // 登入
-    if(isset($_POST['login_account']) && isset($_POST['login_pw'])) {                  
-        $l_account = $_POST['login_account'];
-        $l_password = $_POST['login_pw'];
+// 登入
+if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
+    $l_account = $_POST['login_account'];
+    $l_password = $_POST['login_pw'];
 
-        // 檢查該帳號是否已註冊
-        $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['login_account'] . "'";
-        $data = mysqli_query($db_link, $sql_find_user);     
-        $user = mysqli_fetch_assoc($data);
+    // 檢查該帳號是否已註冊
+    $sql_find_user = "SELECT * FROM login_customer WHERE Cus_Account = '" . $_POST['login_account'] . "'";
+    $data = mysqli_query($db_link, $sql_find_user);
+    $user = mysqli_fetch_assoc($data);
 
-        // 檢查輸入密碼與資料庫是否一致
-        if($l_password == $user['Cus_Password']) {
-            // 使用 session 保存登入狀態
-            session_start();
-            $_SESSION['id'] = $user['Cus_ID'];
-            $_SESSION['account'] = $user['Cus_Account'];
-            $_SESSION['password'] = $user['Cus_Password'];
-            // 登入後導向主頁
-            header("Location: index.php");
-        }
-        else {
-            echo "lololol";
-        }
+    // 檢查輸入密碼與資料庫是否一致
+    if ($l_password == $user['Cus_Password']) {
+        // 使用 session 保存登入狀態
+        session_start();
+        $_SESSION['id'] = $user['Cus_ID'];
+        $_SESSION['account'] = $user['Cus_Account'];
+        $_SESSION['password'] = $user['Cus_Password'];
+        // 登入後導向主頁
+        header("Location: index.php");
+    } else {
+        echo <<<EOL
+        <script language="javascript">alert('帳號或密碼錯誤，請重新輸入！')</script>
+        EOL;
     }
+}
 ?>
 
 
@@ -84,7 +86,7 @@
     <link rel="stylesheet" href="assets/css/login-register.css">
 </head>
 
-<body> 
+<body>
 
     <!-- Preloader Start -->
     <div class="ft-preloader active">
@@ -118,10 +120,10 @@
                                 <nav class="main-navigation d-none d-lg-block">
                                     <ul class="mainmenu">
                                         <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="index.php" class="mainmenu__link">主頁</a>                                            
+                                            <a href="index.php" class="mainmenu__link">主頁</a>
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-relative">
-                                            <a href="shop.php?Goods_Classify=ALL" class="mainmenu__link">商店</a>      
+                                            <a href="shop.php?Goods_Classify=ALL" class="mainmenu__link">商店</a>
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
                                                     <li>
@@ -140,7 +142,7 @@
                                                         <a href="shop.php?Goods_Classify=earphone">耳機</a>
                                                     </li>
                                                 </ul>
-                                            </div>                                                                                  
+                                            </div>
                                         </li>
                                         <li class="mainmenu__item menu-item-has-children position-relative">
                                             <a href="#" class="mainmenu__link">功能</a>
@@ -160,7 +162,7 @@
                                                     </li>
                                                 </ul>
                                             </div>
-                                        </li> 
+                                        </li>
                                         <li class="mainmenu__item">
                                             <a href="contact-us.php" class="mainmenu__link">聯絡我們</a>
                                         </li>
@@ -239,19 +241,12 @@
                                     <label for="login_pw" class="form__label">密碼</label>
                                     <input type="text" name="login_pw" id="login_pw" class="form__input">
                                 </div>
-                                <div
-                                    class="g-recaptcha"
-                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
-                                    data-theme="light" data-size="normal"
-                                    data-callback="loginVerifyCallback"
-                                    data-expired-callback="expired"
-                                    data-error-callback="error"
-                                >
+                                <div class="g-recaptcha" data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1" data-theme="light" data-size="normal" data-callback="loginVerifyCallback" data-expired-callback="expired" data-error-callback="error">
                                 </div>
                                 <div class="form__group text-center">
                                     <input type="submit" value="登入" class="btn btn-size-sm" id="login" disabled>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -272,19 +267,12 @@
                                     <input type="text" name="password" id="password" class="form__input" placeholder="密碼">
                                     <input type="text" name="verify_pw" id="verify_pw" class="form__input" placeholder="再次輸入密碼">
                                 </div>
-                                <div
-                                    class="g-recaptcha"
-                                    data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1"
-                                    data-theme="light" data-size="normal"
-                                    data-callback="registerVerifyCallback"
-                                    data-expired-callback="expired"
-                                    data-error-callback="error"
-                                >
+                                <div class="g-recaptcha" data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1" data-theme="light" data-size="normal" data-callback="registerVerifyCallback" data-expired-callback="expired" data-error-callback="error">
                                 </div>
                                 <div class="form__group text-center">
                                     <input type="submit" value="註冊" class="btn btn-size-sm" id="register" disabled>
                                 </div>
-                                
+
                             </form>
                         </div>
                     </div>
@@ -320,7 +308,7 @@
                                         <i class="fa fa-angle-right"></i>
                                         <span>關於我們</span>
                                     </a>
-                                </li>                        
+                                </li>
                                 <li>
                                     <a href="#">
                                         <i class="fa fa-angle-right"></i>
@@ -351,7 +339,7 @@
                                         <i class="fa fa-angle-right"></i>
                                         <span>暫存清單</span>
                                     </a>
-                                </li>                                
+                                </li>
                             </ul>
                         </div>
                     </div>
@@ -405,7 +393,7 @@
                             <a href="shop.php?Goods_Classify=GPU">
                                 <span class="mm-text">新進商品</span>
                             </a>
-                        </li> 
+                        </li>
                         <li class="has-children">
                             <a href="#">
                                 <span class="mm-text">商店</span>
@@ -559,30 +547,30 @@
                                     "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-double-left" },
                                     "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-double-right" }
                                 }'>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-03-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-04-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-05-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
-                                <div class="item">
-                                    <figure class="product-gallery__image">
-                                        <img src="assets/img/products/product-06-270x300.jpg" alt="Product">
-                                        <span class="product-badge sale">Sale</span>
-                                    </figure>
-                                </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-03-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-04-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-05-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
+                                    <div class="item">
+                                        <figure class="product-gallery__image">
+                                            <img src="assets/img/products/product-06-270x300.jpg" alt="Product">
+                                            <span class="product-badge sale">Sale</span>
+                                        </figure>
+                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
@@ -611,26 +599,22 @@
                                             <p class="variation-label">Size:</p>
                                             <div class="product-size-variation variation-wrapper">
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip"
-                                                        data-placement="top" title="S">
+                                                    <a class="product-size-variation-btn selected" data-toggle="tooltip" data-placement="top" title="S">
                                                         <span class="product-size-variation-label">S</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="M">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="M">
                                                         <span class="product-size-variation-label">M</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="L">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="L">
                                                         <span class="product-size-variation-label">L</span>
                                                     </a>
                                                 </div>
                                                 <div class="variation">
-                                                    <a class="product-size-variation-btn" data-toggle="tooltip"
-                                                        data-placement="top" title="XL">
+                                                    <a class="product-size-variation-btn" data-toggle="tooltip" data-placement="top" title="XL">
                                                         <span class="product-size-variation-label">XL</span>
                                                     </a>
                                                 </div>
@@ -642,12 +626,10 @@
                                         <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                             <label class="quantity-label" for="qty">Quantity:</label>
                                             <div class="quantity">
-                                                <input type="number" class="quantity-input" name="qty" id="qty" value="1"
-                                                    min="1">
+                                                <input type="number" class="quantity-input" name="qty" id="qty" value="1" min="1">
                                             </div>
                                         </div>
-                                        <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="window.location.href='cart.php'">
+                                        <button type="button" class="btn btn-shape-square btn-size-sm" onclick="window.location.href='cart.php'">
                                             Add To Cart
                                         </button>
                                     </div>
