@@ -181,13 +181,8 @@
                                 <div class="row">
                                     <!-- Product List Start -->
                                     <?php 
-                                        $servername = "127.0.0.1";
-                                        $db_userName = 'root';
-                                        $db_password = '';
-                                        $db_name = 'shopping_mall';
-
-                                        $db_link = @mysqli_connect($servername, $db_userName, $db_password, $db_name);
-                                        $db_link -> set_charset("UTF8");
+                                        include ('connect-sql.php');
+                                        
                                         if (!$db_link) {
                                             die('資料庫連結失敗!');
                                         } else {
