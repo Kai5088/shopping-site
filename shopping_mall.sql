@@ -23,6 +23,20 @@ SET time_zone = "+00:00";
 
 -- --------------------------------------------------------
 
+
+--
+-- 資料表結構 `cus_temp_list`
+--
+
+CREATE TABLE `cus_temp_list` (
+  `Goods_ID` varchar(20) NOT NULL,
+  `Goods_Name` text NOT NULL,
+  `Goods_Num` int(11) NOT NULL,
+  `Goods_Price` bigint(20) NOT NULL,
+  `Goods_URL` longtext NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+-- --------------------------------------------------------
 --
 -- 資料表結構 `buyer_record`
 --
@@ -902,6 +916,13 @@ ALTER TABLE `login_customer`
 ALTER TABLE `login_manager`
   ADD PRIMARY KEY (`Manager_ID`);
 
+--
+-- 資料表索引 `cus_temp_list`
+--
+ALTER TABLE `cus_temp_list`
+  ADD PRIMARY KEY (`Goods_ID`);
+
+  
 --
 -- 已傾印資料表的限制式
 --
