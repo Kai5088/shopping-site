@@ -228,15 +228,6 @@
                                                                         <span class="sign">$</span>
                                                                     </div>
                                                                 </div>
-                                                                <div class="product__info--right">
-                                                                    <span class="product__rating">
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                        <i class="fa fa-star"></i>
-                                                                    </span>
-                                                                </div>
                                                             </div>
                                                         </div>
                                                     </div>

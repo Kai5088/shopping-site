@@ -235,11 +235,6 @@
                                         <a href="$prev_href" class="prev"><i class="fa fa-angle-double-left"></i></a>
                                         <a href="$next_href" class="next"><i class="fa fa-angle-double-right"></i></a> 
                                     </div>
-                                    <div class="product-rating d-flex mb--20">
-                                        <div class="star-rating star-five">
-                                            <span>Rated <strong class="rating">5.00</strong> out of 5</span>
-                                        </div>
-                                    </div>
                                     <h3 class="product-title mb--20">$Goods_Name</h3>
                                     <div class="product-price-wrapper mb--25">
                                         <span class="money">$$Goods_Price</span>
@@ -378,15 +373,6 @@
                                                                 <span class="money">$Goods_Price</span>
                                                                 <span class="sign">$</span>
                                                             </div>
-                                                        </div>
-                                                        <div class="product__info--right">
-                                                            <span class="product__rating">
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                                <i class="fa fa-star"></i>
-                                                            </span>
                                                         </div>
                                                     </div>
                                                 </div>
