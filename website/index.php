@@ -208,7 +208,7 @@ include('account-operation.php');
                                                 <p class="font-weight-light" data-animation="fadeInUp" data-duration=".3s" data-delay=".3s">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;NVIDIA® GeForce RTX™ 30 系列筆記型電腦 GPU 為玩家和創作者打造出世界上最快的筆記型電腦。<br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;採用 NVIDIA 第二代 RTX 架構 Ampere，可提供最逼真的光線追蹤繪圖技術和 NVIDIA DLSS 等尖端人工智慧功能。</p>
                                             </div>
                                             <div class="slider-content__btn">
-                                                <a href="shop.php?Goods_Classify=GPU" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
+                                                <a href="shop.php?Goods_Classify=laptop" data-animation="fadeInUp" data-duration=".3s" data-delay=".6s" style="font-size:24px; font-weight:bold; text-decoration: underline;">馬上購買</a>
                                             </div>
                                         </div>
                                     </div>
