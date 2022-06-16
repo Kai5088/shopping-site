@@ -154,6 +154,33 @@
                         <ul class="breadcrumb">
                             <li><a href="index.php">主頁</a></li>
                             <li class="current"><span>商店</span></li>
+                            <?php
+                                $Goods_Classify = "";
+                                switch($_GET['Goods_Classify'])
+                                {
+                                    case 'laptop':
+                                        $Goods_Classify = "筆記型電腦";
+                                        break;
+                                    case 'GPU':
+                                        $Goods_Classify = "顯示卡";
+                                        break;
+                                    case 'keyboard':
+                                        $Goods_Classify = "鍵盤";
+                                        break;   
+                                    case 'mouse':
+                                        $Goods_Classify = "滑鼠";
+                                        break;
+                                    case 'earphone':
+                                        $Goods_Classify = "耳機";
+                                        break;    
+                                    default:
+                                        $Goods_Classify = "所有商品";
+                                        break;                                                                                                                                                                     
+                                }
+                                echo <<< EOL
+                                    <li class="current"><span>$Goods_Classify</span></li>
+                                EOL;
+                            ?>
                         </ul>
                     </div>
                 </div>
@@ -185,7 +212,7 @@
                                         
                                         if($_GET['Goods_Classify'] == 'ALL') 
                                         {
-                                            $sql = "SELECT * FROM `goods`";
+                                            $sql = "SELECT * FROM `goods` ORDER BY `Goods_Classify` ASC";
                                         }
                                         else 
                                         {
