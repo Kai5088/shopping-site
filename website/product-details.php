@@ -222,11 +222,18 @@
                                     </div>
                                 </div>
                             </div>
+                        EOL;
+                        $sql = 'SELECT Goods_ID FROM `goods`';
+                        $result = mysqli_query($db_link, $sql);
+                        $num_rows = mysqli_num_rows($result);
+                        $prev_href = ($_GET['Goods_ID'] == 1) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']-1;
+                        $next_href = ($_GET['Goods_ID'] == $num_rows) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']+1;
+                        echo <<<EOL
                             <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
                                 <div class="product-summary pl-lg--30 pl-md--0">
                                     <div class="product-navigation text-right mb--20">
-                                        <a href="#" class="prev"><i class="fa fa-angle-double-left"></i></a>
-                                        <a href="#" class="next"><i class="fa fa-angle-double-right"></i></a>
+                                        <a href="$prev_href" class="prev"><i class="fa fa-angle-double-left"></i></a>
+                                        <a href="$next_href" class="next"><i class="fa fa-angle-double-right"></i></a> 
                                     </div>
                                     <div class="product-rating d-flex mb--20">
                                         <div class="star-rating star-five">
@@ -293,6 +300,7 @@
                         mysqli_close($db_link);
                     ?>
                         <div class="row mb--77 mb-md--57">
+                            <p class="heading__secondary">其他類似商品</p>
                             <div class="col-12">
                                 <div class="element-carousel slick-vertical-center" data-slick-options='{
                                     "spaceBetween": 30,
@@ -335,8 +343,10 @@
 
                                     shuffle($IDs);
 
-                                    for($i = 0; $i < 4; $i++)
+                                    for($i = 0; $i < 5; $i++)
                                     {
+                                        if($IDs[$i] == $_GET['Goods_ID'])
+                                            continue;
                                         $sql = "SELECT * FROM `goods` WHERE `Goods_ID` = " . $IDs[$i] . ";";
                                         $result = mysqli_query($db_link, $sql);
                                         $row = $result->fetch_assoc(); 
@@ -659,30 +669,6 @@
                                     "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "fa fa-angle-double-left" },
                                     "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "fa fa-angle-double-right" }
                                 }'>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="assets/img/products/product-03-270x300.jpg" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="assets/img/products/product-04-270x300.jpg" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="assets/img/products/product-05-270x300.jpg" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
-                                    <div class="item">
-                                        <figure class="product-gallery__image">
-                                            <img src="assets/img/products/product-06-270x300.jpg" alt="Product">
-                                            <span class="product-badge sale">Sale</span>
-                                        </figure>
-                                    </div>
                                 </div>
                             </div>
                             <div class="col-lg-6">
