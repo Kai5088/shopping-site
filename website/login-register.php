@@ -264,8 +264,9 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
                                 </div>
                                 <div class="form__group mb--30">
                                     <label class="form__label">請輸入密碼</label>
-                                    <input type="password" name="password" id="password" class="form__input" placeholder="密碼">
-                                    <input type="password" name="verify_pw" id="verify_pw" class="form__input" placeholder="再次輸入密碼">
+                                    <input type="password" name="password" id="password" class="form__input" placeholder="密碼" onkeyup="check_password();">
+                                    <input type="password" name="verify_pw" id="verify_pw" class="form__input" placeholder="再次輸入密碼" onkeyup="check_password();">
+                                    <label id="check_message"></label>
                                 </div>
                                 <div class="g-recaptcha" data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1" data-theme="light" data-size="normal" data-callback="registerVerifyCallback" data-expired-callback="expired" data-error-callback="error">
                                 </div>
@@ -667,10 +668,25 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
-    <script src="assets/js/login-register.js"></script>
+    <script src="assets/js/login-register.js" async defer></script>
 
     <!-- reCAPTCHA JS -->
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <script>
+        function check_password() 
+        {
+            if(document.getElementById('password').value == document.getElementById('verify_pw').value) 
+            {
+                document.getElementById('check_message').style.color = 'green';
+                document.getElementById('check_message').innerHTML = '密碼相同';
+            } 
+            else 
+            {
+                document.getElementById('check_message').style.color = 'red';
+                document.getElementById('check_message').innerHTML = '密碼不同';
+            }
+        }
+    </script>
 </body>
 
 </html>
