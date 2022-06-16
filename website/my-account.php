@@ -1,4 +1,8 @@
-<?php session_start() ?>
+<?php
+session_start();
+include('account-operation.php');
+include('connect-sql.php');
+?>
 
 <!doctype html>
 <html class="no-js" lang="zxx">
@@ -177,8 +181,14 @@
                                 </div>
                                 <div class="user-dashboard-tab__content tab-content">
                                     <div class="tab-pane fade show active" id="dashboard">
-                                        <p>你好，<strong>John</strong>。（不是<strong>John</strong>？點擊<a href="login-register.php"><b>這裡</b></a>登出）</p>
-                                        <p>您在帳號資訊可以查看最近訂單、管理運送和帳單地址及修改您的密碼和個人資訊。</p>
+                                        <?php
+                                        echo "<p>你好，<strong>" . $_SESSION['account'] . "</strong>。（不是<strong>" .
+                                             $_SESSION['account'] . "</strong>？點擊";
+                                        echo <<< EOL
+                                            <a href="logout.php"><b>這裡</b></a>登出）</p>
+                                            <p>您在帳號資訊可以查看最近訂單、管理運送和帳單地址及修改您的密碼和個人資訊。</p>
+                                        EOL;
+                                         ?>
                                     </div>
                                     <div class="tab-pane fade" id="orders">
                                         <div class="message-box mb--30 d-none">
@@ -193,7 +203,6 @@
                                                         <th>日期</th>
                                                         <th>狀態</th>
                                                         <th>總計</th>
-                                                        <th>動作</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -202,14 +211,12 @@
                                                         <td class="wide-column">2022/6/8</td>
                                                         <td>處理中</td>
                                                         <td class="wide-column">$49，共 1 件</td>
-                                                        <td><a href="product-details.php" class="btn">檢視</a></td>
                                                     </tr>
                                                     <tr>
                                                         <td>2</td>
                                                         <td class="wide-column">2022/6/8</td>
                                                         <td>處理中</td>
                                                         <td class="wide-column">$49，共 1 件</td>
-                                                        <td><a href="product-details.php" class="btn">檢視</a></td>
                                                     </tr>
                                                 </tbody>
                                             </table>
@@ -268,24 +275,6 @@
                                     </div>
                                     <div class="tab-pane fade" id="accountdetails">
                                         <form action="#" class="form form--account">
-                                            <div class="row mb--20">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="d_name">真實姓名<span class="required">*</span></label>
-                                                        <input type="text" name="d_name" id="d_name" class="form__input">
-                                                        <span class="form__notes"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="row mb--20">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="d_name">暱稱<span class="required">*</span></label>
-                                                        <input type="text" name="d_name" id="d_name" class="form__input">
-                                                        <span class="form__notes"></span>
-                                                    </div>
-                                                </div>
-                                            </div>
                                             <div class="row mb--20">
                                                 <div class="col-12">
                                                     <div class="form__group">
