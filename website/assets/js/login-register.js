@@ -1,6 +1,6 @@
 function error(err) 
 {
-    window.alert('reCAPTCHA 驗證失敗')
+    window.alert('reCAPTCHA 驗證失敗');
 }
 
 function registerVerifyCallback()
@@ -12,3 +12,4 @@ function loginVerifyCallback()
 {
     document.getElementById("login").disabled = false;
 }
+
