@@ -405,96 +405,30 @@
 
             <!-- Footer Start-->
             <footer class="footer bg-color pt--70 pt-xs--60" data-bg-color="#f4f8fa">
-                <div class="container">
-                    <div class="row border-bottom pb--60 pb-sm--28 pb-xs--49">
-                        <div class="col footer-column-1 mb-sm--42">
-                            <div class="footer-widget">
-                                <div class="textwidget">
-                                    <figure class="footer-logo mb--10">
-                                        <img src="assets/img/logo/logo.png" alt="Logo">
-                                    </figure>
-                                </div>
-                                <div class="address-widget">
-                                    <address>403台灣台中市西區民生路140號</address>
-                                    <a href="tel:+84112345678">04-2218-3199</a>
-                                    <a href="mailto:info@company.com">info@expensivehouse.com</a>
-                                </div>
+            <div class="container">
+                <div class="row border-bottom pb--60 pb-sm--28 pb-xs--49">
+                    <div class="col footer-column-1 mb-sm--42">
+                        <div class="footer-widget">
+                            <div class="textwidget">
+                                <figure class="footer-logo mb--10">
+                                    <img src="assets/img/logo/logo.png" alt="Logo">
+                                </figure>
                             </div>
-                        </div>
-                        <div class="col footer-column-5 mb-sm--33">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--15">資訊</h3>
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>關於我們</span>
-                                        </a>
-                                    </li>                        
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>隱私協議</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>取得協助</span>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col footer-column-5">
-                            <div class="footer-widget">
-                                <h3 class="widget-title mb--35 mb-sm--15">帳號</h3>
-                                <ul class="footer-menu">
-                                    <li>
-                                        <a href="my-account.php">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>我的帳號</span>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="wishlist.php">
-                                            <i class="fa fa-angle-right"></i>
-                                            <span>暫存清單</span>
-                                        </a>
-                                    </li>                                
-                                </ul>
+                            <div class="address-widget">
+                                <address>403台灣台中市西區民生路140號</address>
+                                <a href="tel:+84112345678">04-2218-3199</a>
+                                <a href="mailto:info@company.com">info@expensivehouse.com</a>
                             </div>
                         </div>
                     </div>
-                    <div class="row ptb--20">
+                    <div class="row-3 ptb--20">
                         <div class="col-12 text-center">
-                            <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第五組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
-                            <!--<div class="social space-10">
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-facebook"></i>
-                                    <span class="sr-only">Facebook</span>
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-twitter"></i>
-                                    <span class="sr-only">Twitter</span>
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-linkedin"></i>
-                                    <span class="sr-only">Linkedin</span>
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-instagram"></i>
-                                    <span class="sr-only">Instagram</span>
-                                </a>
-                            </div>-->
+                            <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第11組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
                         </div>
                     </div>
                 </div>
-            </footer>
+            </div>
+        </footer>
             <!-- Footer End-->
 
         <!-- OffCanvas Menu Start -->

@@ -324,76 +324,10 @@ include('account-operation.php');
                             </div>
                         </div>
                     </div>
-                    <div class="col footer-column-5 mb-sm--33">
-                        <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">資訊</h3>
-                            <ul class="footer-menu">
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>關於我們</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>隱私協議</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="#">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>取得協助</span>
-                                    </a>
-                                </li>
-                            </ul>
+                    <div class="row-3 ptb--20">
+                        <div class="col-12 text-center">
+                            <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第11組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
                         </div>
-                    </div>
-                    <div class="col footer-column-5">
-                        <div class="footer-widget">
-                            <h3 class="widget-title mb--35 mb-sm--15">帳號</h3>
-                            <ul class="footer-menu">
-                                <li>
-                                    <a href="my-account.php">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>我的帳號</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="wishlist.php">
-                                        <i class="fa fa-angle-right"></i>
-                                        <span>暫存清單</span>
-                                    </a>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-                <div class="row ptb--20">
-                    <div class="col-12 text-center">
-                        <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第五組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
-                        <!--<div class="social space-10">
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-facebook"></i>
-                                    <span class="sr-only">Facebook</span>
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-twitter"></i>
-                                    <span class="sr-only">Twitter</span>
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-linkedin"></i>
-                                    <span class="sr-only">Linkedin</span>
-                                </a>
-                                <a href="#" target="_blank" rel="noopener noreferrer"
-                                    class="social__link">
-                                    <i class="fa fa-instagram"></i>
-                                    <span class="sr-only">Instagram</span>
-                                </a>
-                            </div>-->
                     </div>
                 </div>
             </div>
@@ -462,9 +396,22 @@ include('account-operation.php');
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="my-account.php">
-                                        <span class="mm-text">我的帳號</span>
-                                    </a>
+                                <?php
+                                    if ( is_login() ) {
+                                        echo <<< EOL
+                                            <a href="my-account.php">
+                                                <span class="mm-text">我的帳號</span>
+                                            </a>
+                                            EOL;
+                                    } else {
+                                        echo <<< EOL
+                                            <a href="login-register.php">
+                                                <span class="mm-text">我的帳號</span>
+                                            </a>
+                                            EOL;
+                                    }
+                                    ?>  
+                                </li>
                                 </li>
                                 <li>
                                     <a href="checkout.php">
@@ -487,6 +434,23 @@ include('account-operation.php');
                             <a href="contact-us.php">
                                 <span class="mm-text">聯絡我們</span>
                             </a>
+                        </li>
+                        <li>
+                        <?php
+                            if ( is_login() ) {
+                                echo <<< EOL
+                                    <a href="logout.php"">
+                                        <span class="mm-text">登出</span>
+                                    </a>
+                                EOL;
+                            } else {
+                                echo <<< EOL
+                                    <a href='login-register.php'>
+                                        <span class="mm-text">登入</span>
+                                    </a>
+                                EOL;
+                            }
+                            ?>
                         </li>
                     </ul>
                 </div>
