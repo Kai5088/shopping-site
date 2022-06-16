@@ -416,7 +416,7 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
                         <?php
                             if ( is_login() ) {
                                 echo <<< EOL
-                                    <a href="logout.php"">
+                                    <a href="logout.php">
                                         <span class="mm-text">登出</span>
                                     </a>
                                 EOL;
