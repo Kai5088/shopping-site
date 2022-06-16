@@ -183,12 +183,6 @@
                                     <?php 
                                         include ('connect-sql.php');
                                         
-                                        if (!$db_link) {
-                                            die('資料庫連結失敗!');
-                                        } else {
-                                        //    echo '資料庫連結成功';
-                                        }
-                                        
                                         if($_GET['Goods_Classify'] == 'ALL') 
                                         {
                                             $sql = "SELECT * FROM `goods`";
@@ -218,7 +212,9 @@
                                                         <div class="product__inner">
                                                             <div class="product__image">
                                                                 <figure class="product__image--holder">
-                                                                    <img src="$Goods_URL" alt="Product">
+                                                                    <a href="product-details.php?Goods_ID=$Goods_ID">
+                                                                        <img src="$Goods_URL" alt="Product">
+                                                                    </a>
                                                                 </figure>
                                                                 <a href="product-details.php?Goods_ID=$Goods_ID" class="product-overlay"></a>
                                                             </div>
@@ -596,7 +592,7 @@
                                 <div class="modal-box product-summary">
                                     <div class="product-navigation text-right mb--20">
                                         <a href="#" class="prev"><i class="fa fa-angle-double-left"></i></a>
-                                        <a href="#" class="next"><i class="fa fa-angle-double-right"></i></a>
+                                        <a href="#" class="next"><i class="fa fa-angle-double-right"></i></a> 
                                     </div>
                                     <div class="product-rating d-flex mb--20">
                                         <div class="star-rating star-four">
