@@ -1,6 +1,7 @@
 <?php
-// 使用方法:
-//   include ('connect-sql.php');
+/* 使用方法:
+ *   include ('connect-sql.php');
+ */
 $servername = "127.0.0.1";
 $db_userName = 'root';
 $db_password = '';

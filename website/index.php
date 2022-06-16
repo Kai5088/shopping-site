@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('connect-sql.php');
+include('account-operation.php');
 ?>
 
 <!doctype html>
@@ -111,7 +112,7 @@ include('connect-sql.php');
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
                                     <?php
-                                    if (isset($_SESSION['id']) && !empty($_SESSION['id'])) {
+                                    if ( is_login() ) {
                                         echo <<< EOL
                                             <a href="logout.php" class="toolbar-btn ">
                                                 <span>登出</span>
