@@ -231,6 +231,8 @@
                         echo <<<EOL
                             <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
                                 <div class="product-summary pl-lg--30 pl-md--0">
+                        EOL;
+                                echo <<<EOL
                                     <div class="product-navigation text-right mb--20">
                                         <a href="$prev_href" class="prev"><i class="fa fa-angle-double-left"></i></a>
                                         <a href="$next_href" class="next"><i class="fa fa-angle-double-right"></i></a> 
@@ -242,20 +244,40 @@
                                     <form action="#" class="variation-form mb--20">
                                         <a href="" class="reset_variations">清除</a>
                                     </form>
+                                    <label class="quantity-label" for="pro-qty">剩餘數量： $Goods_Num</label>
+                                    <div>
+                                    <label class="quantity-label" for="pro-qty"></label>
+                                    </div>
                                     <div
                                         class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                         <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
-                                            <label class="quantity-label" for="pro-qty">數量：</label>
+                                            <label class="quantity-label" for="pro-qty">購買數量：</label>
                                             <div class="quantity">
                                                 <input type="number" class="quantity-input" name="pro-qty" id="pro-qty"
-                                                    value="1" min="1">
+                                                    value="1" min="1" max="$Goods_Num">
                                             </div>
                                         </div>
+                                    </div>
+                                    <button type="button" class="btn btn-shape-square btn-size-sm"
+                                        onclick="window.location.href='cart.php'" style="background-color:gray;">
+                                        加入暫存清單
+                                    </button>
+                                    <label></label>
+                                EOL;
+                                if($Goods_Num > 0)
+                                {
+                                    echo <<<EOL
                                         <button type="button" class="btn btn-shape-square btn-size-sm"
                                             onclick="window.location.href='cart.php'">
                                             加入購物車
                                         </button>
-                                    </div>
+                                    EOL;
+                                }
+                                else 
+                                {
+                                    echo '<button type="button" class="btn btn-shape-square btn-size-sm" disabled >商品已售罄</button>';                                
+                                }
+                                echo <<<EOL
                                 </div>
                             </div>
                         </div>
@@ -317,12 +339,6 @@
                                 ]'>
                                 <?php
                                     include ('connect-sql.php');
-
-                                    if (!$db_link) {
-                                        die('資料庫連結失敗!');
-                                    } else {
-                                    //    echo '資料庫連結成功';
-                                    }
 
                                     $sql = "SELECT * FROM `goods` WHERE `Goods_Classify` = '" . $Goods_Classify . "';";
                                     $result = mysqli_query($db_link, $sql);
