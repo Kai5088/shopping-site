@@ -259,24 +259,6 @@ include('connect-sql.php');
                                                             <img src="$Goods_URL" alt="Product">
                                                         </figure>
                                                         <a href="product-details.php?Goods_ID=$Goods_ID" class="product-overlay"></a>
-                                                        <div class="product__action">
-                                                            <a data-toggle="modal" data-target="#productModal" class="action-btn">
-                                                                <i class="fa fa-eye"></i>
-                                                                <span class="sr-only">Quick View</span>
-                                                            </a>
-                                                            <a href="wishlist.php" class="action-btn">
-                                                                <i class="fa fa-heart-o"></i>
-                                                                <span class="sr-only">Add to wishlist</span>
-                                                            </a>
-                                                            <a href="wishlist.php" class="action-btn">
-                                                                <i class="fa fa-repeat"></i>
-                                                                <span class="sr-only">Add To Compare</span>
-                                                            </a>
-                                                            <a href="cart.php" class="action-btn">
-                                                                <i class="fa fa-shopping-cart"></i>
-                                                                <span class="sr-only">Add To Cart</span>
-                                                            </a>
-                                                        </div>
                                                     </div>
                                                     <div class="product__info">
                                                         <div class="product__info--left">
