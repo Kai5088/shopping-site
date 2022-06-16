@@ -304,9 +304,9 @@
                             <div class="col-12">
                                 <div class="element-carousel slick-vertical-center" data-slick-options='{
                                     "spaceBetween": 30,
-                                    "slidesToShow": 4,
+                                    "slidesToShow": 5,
                                     "slidesToScroll": 1,
-                                    "arrows": true,
+                                    "arrows": false,
                                     "prevArrow": {"buttonClass": "slick-btn slick-prev", "iconClass": "la la-angle-double-left" },
                                     "nextArrow": {"buttonClass": "slick-btn slick-next", "iconClass": "la la-angle-double-right" }
                                 }' data-slick-responsive='[
@@ -343,7 +343,7 @@
 
                                     shuffle($IDs);
 
-                                    for($i = 0; $i < 5; $i++)
+                                    for($i = 0; $i < 6; $i++)
                                     {
                                         if($IDs[$i] == $_GET['Goods_ID'])
                                             continue;
