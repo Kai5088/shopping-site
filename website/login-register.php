@@ -239,7 +239,7 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
                                 </div>
                                 <div class="form__group mb--30">
                                     <label for="login_pw" class="form__label">密碼</label>
-                                    <input type="text" name="login_pw" id="login_pw" class="form__input">
+                                    <input type="password" name="login_pw" id="login_pw" class="form__input">
                                 </div>
                                 <div class="g-recaptcha" data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1" data-theme="light" data-size="normal" data-callback="loginVerifyCallback" data-expired-callback="expired" data-error-callback="error">
                                 </div>
@@ -264,8 +264,8 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
                                 </div>
                                 <div class="form__group mb--30">
                                     <label class="form__label">請輸入密碼</label>
-                                    <input type="text" name="password" id="password" class="form__input" placeholder="密碼">
-                                    <input type="text" name="verify_pw" id="verify_pw" class="form__input" placeholder="再次輸入密碼">
+                                    <input type="password" name="password" id="password" class="form__input" placeholder="密碼">
+                                    <input type="password" name="verify_pw" id="verify_pw" class="form__input" placeholder="再次輸入密碼">
                                 </div>
                                 <div class="g-recaptcha" data-sitekey="6LeKdVcgAAAAAJ_rMAeJxw-aNE5_otbb8XSEBFn1" data-theme="light" data-size="normal" data-callback="registerVerifyCallback" data-expired-callback="expired" data-error-callback="error">
                                 </div>
