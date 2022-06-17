@@ -197,6 +197,9 @@ include('connect-sql.php');
                                     <tbody>
                                         <?php 
                                             include ('connect-sql.php');
+
+                                            $Cus_ID = $_SESSION['id'];
+
                                             $sql = "SELECT * FROM `cus_temp_list` WHERE `Cus_ID` = '" . $_SESSION['id'] . "';";
                                             $result = mysqli_query($db_link, $sql);
                                             if ($result->num_rows > 0) 
@@ -211,7 +214,7 @@ include('connect-sql.php');
                                                     $Stock_Status =  ($Goods_Num > 0) ? "尚有".$Goods_Num."個" : "無庫存";
                                                     echo <<<EOL
                                                     <tr>
-                                                        <td class="product-remove text-left"><a href=""><i
+                                                        <td class="product-remove text-left"><a href="php/delete_data_from_temp_list.php?Cus_ID=$Cus_ID&Goods_ID=$Goods_ID"><i
                                                                     class="flaticon-cross"></i></a></td>
                                                         <td class="product-thumbnail text-left">
                                                             <img src="$Goods_URL"
@@ -227,7 +230,7 @@ include('connect-sql.php');
                                                         </td>
                                                         <td class="product-price">
                                                             <span class="product-price-wrapper">
-                                                                <span class="money">$Goods_Price</span>
+                                                                <span class="money">$$Goods_Price</span>
                                                             </span>
                                                         </td>
                                                         <td class="product-action-btn">
