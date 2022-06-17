@@ -244,11 +244,6 @@ ALTER TABLE `login_manager`
 -- 已傾印資料表的限制式
 --
 
---
--- 資料表的限制式 `buyer_record`
---
-ALTER TABLE `buyer_record`
-  ADD CONSTRAINT `buyer_record_ibfk_1` FOREIGN KEY (`Cus_ID`) REFERENCES `login_customer` (`Cus_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `cus_shopping_cart`
