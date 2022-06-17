@@ -11,13 +11,10 @@ $Goods_Name = $row['Goods_Name'];
 $Goods_Price = $row['Goods_Price'];
 $Goods_Num = $_GET['num'];
 $Goods_URL = $row['Goods_URL'];
-$Goods_Statement = nl2br($row['Goods_Statement']);
-$Goods_Classify = $row['Goods_Classify'];
-$Goods_Specs = nl2br($row['Goods_Specs']);
-$Buyer_ID = $_SESSION['id'];
+$Buyer_Record_ID = $_SESSION['id'];
 
-$sql = 'INSERT INTO `cus_shopping_cart` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Goods_URL`, `Buyer_Record_ID`) VALUES 
-("' . $Goods_ID . '","' . $Goods_Name . '",' . $Goods_Price . ',' . $Goods_Num . ',"' . $Goods_URL . '","' . $Buyer_ID . '")';
+$sql = 'REPLACE INTO `cus_shopping_cart` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Goods_URL`, `Buyer_Record_ID`) VALUES 
+("' . $Goods_ID . '","' . $Goods_Name . '",' . $Goods_Price . ',' . $Goods_Num . ',"' . $Goods_URL . '","' . $Buyer_Record_ID . '")';
 echo $sql;
 if (mysqli_query($db_link, $sql)) 
 {
