@@ -245,19 +245,6 @@ ALTER TABLE `login_manager`
 --
 
 
---
--- 資料表的限制式 `cus_shopping_cart`
---
-ALTER TABLE `cus_shopping_cart`
-  ADD CONSTRAINT `cus_shopping_cart_ibfk_1` FOREIGN KEY (`Buyer_Record_ID`) REFERENCES `buyer_record` (`Buyer_Record_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- 資料表的限制式 `cus_temp_list`
---
-ALTER TABLE `cus_temp_list`
-  ADD CONSTRAINT `cus_temp_list_ibfk_1` FOREIGN KEY (`Cus_ID`) REFERENCES `login_customer` (`Cus_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
