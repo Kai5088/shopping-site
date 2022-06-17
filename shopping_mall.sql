@@ -76,7 +76,7 @@ CREATE TABLE `cus_shopping_cart` (
   `Goods_Price` bigint(20) NOT NULL,
   `Goods_Num` int(11) NOT NULL,
   `Goods_URL` text NOT NULL,
-  `Buyer_ID` varchar(20) NOT NULL
+  `Buyer_Record_ID` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -213,7 +213,7 @@ ALTER TABLE `buyer_record`
 --
 ALTER TABLE `cus_shopping_cart`
   ADD PRIMARY KEY (`Goods_ID`),
-  ADD KEY `Buyer_ID` (`Buyer_ID`);
+  ADD KEY `Buyer_Record_ID` (`Buyer_Record_ID`);
 
 --
 -- 資料表索引 `cus_temp_list`
