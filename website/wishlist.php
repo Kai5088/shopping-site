@@ -217,8 +217,9 @@ include('connect-sql.php');
                                                         <td class="product-remove text-left"><a href="php/delete_data_from_temp_list.php?Cus_ID=$Cus_ID&Goods_ID=$Goods_ID"><i
                                                                     class="flaticon-cross"></i></a></td>
                                                         <td class="product-thumbnail text-left">
-                                                            <img src="$Goods_URL"
-                                                                alt="Product Thumnail">
+                                                            <a href="product-details.php?Goods_ID=$Goods_ID">
+                                                                <img src="$Goods_URL" alt="Product Thumnail">
+                                                            </a>
                                                         </td>
                                                         <td class="product-name text-left wide-column">
                                                             <h3>

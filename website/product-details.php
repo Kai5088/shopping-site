@@ -275,7 +275,7 @@ include('connect-sql.php');
                                 {
                                     echo <<<EOL
                                         <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="jump()" + "document.writeln(num)">
+                                            onclick="jump()" onmouseover="change_num()" + "document.writeln(num)">
                                             加入購物車
                                         </button>
                                     EOL;
@@ -748,6 +748,16 @@ include('connect-sql.php');
         function change_num()
         {
             num = parseInt(document.getElementById('pro-qty').value);
+            if(num > <?php echo $Goods_Num;?>)
+            {
+                num = <?php echo $Goods_Num;?>;
+                document.getElementById('pro-qty').value = num;
+            }
+            else if(num < 1)
+            {
+                num = 1;
+                document.getElementById('pro-qty').value = num;
+            }
             console.log(num);
         }
         function jump()
