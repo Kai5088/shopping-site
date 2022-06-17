@@ -195,104 +195,70 @@ include('connect-sql.php');
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i
-                                                        class="flaticon-cross"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/product-11-70x88.jpg"
-                                                    alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.php">Pinstripe slim-fit suit blazer</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                有
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.php" class="btn">加入購物車</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i
-                                                        class="flaticon-cross"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/product-12-70x88.jpg"
-                                                    alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.php">Warm Shaker Solid Wood End Table</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                有
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.php" class="btn">加入購物車</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i
-                                                        class="flaticon-cross"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/product-13-70x88.jpg"
-                                                    alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.php">Atlin Designs Mid Century Club
-                                                        Chair</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                有
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.php" class="btn">加入購物車</a>
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td class="product-remove text-left"><a href=""><i
-                                                        class="flaticon-cross"></i></a></td>
-                                            <td class="product-thumbnail text-left">
-                                                <img src="assets/img/products/product-11-70x88.jpg"
-                                                    alt="Product Thumnail">
-                                            </td>
-                                            <td class="product-name text-left wide-column">
-                                                <h3>
-                                                    <a href="product-details.php">Contemporary 5-Light Large
-                                                        Chandelier</a>
-                                                </h3>
-                                            </td>
-                                            <td class="product-stock">
-                                                有
-                                            </td>
-                                            <td class="product-price">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$49</span>
-                                                </span>
-                                            </td>
-                                            <td class="product-action-btn">
-                                                <a href="cart.php" class="btn">加入購物車</a>
-                                            </td>
-                                        </tr>
+                                        <?php 
+                                            include ('connect-sql.php');
+                                            $sql = "SELECT * FROM `cus_temp_list` WHERE `Cus_ID` = '" . $_SESSION['id'] . "';";
+                                            $result = mysqli_query($db_link, $sql);
+                                            if ($result->num_rows > 0) 
+                                            {
+                                                while($row = $result->fetch_assoc()) 
+                                                {
+                                                    $Goods_ID = $row['Goods_ID'];
+                                                    $Goods_Name = $row['Goods_Name'];
+                                                    $Goods_Price = $row['Goods_Price'];
+                                                    $Goods_Num = $row['Goods_Num'];
+                                                    $Goods_URL = $row['Goods_URL'];
+                                                    $Stock_Status =  ($Goods_Num > 0) ? "尚有".$Goods_Num."個" : "無庫存";
+                                                    echo <<<EOL
+                                                    <tr>
+                                                        <td class="product-remove text-left"><a href=""><i
+                                                                    class="flaticon-cross"></i></a></td>
+                                                        <td class="product-thumbnail text-left">
+                                                            <img src="$Goods_URL"
+                                                                alt="Product Thumnail">
+                                                        </td>
+                                                        <td class="product-name text-left wide-column">
+                                                            <h3>
+                                                                <a href="product-details.php?Goods_ID=$Goods_ID">&nbsp;&nbsp;&nbsp;&nbsp;$Goods_Name</a>
+                                                            </h3>
+                                                        </td>
+                                                        <td class="product-stock">
+                                                            $Stock_Status
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$Goods_Price</span>
+                                                            </span>
+                                                        </td>
+                                                        <td class="product-action-btn">
+                                                            <a href="cart.php" class="btn">加入購物車</a>
+                                                        </td>
+                                                    </tr>
+                                                    EOL;
+                                                }
+                                            }
+                                            else 
+                                            {
+                                                echo <<<EOL
+                                                <tr>
+                                                    <td class="product-remove text-left"></td>
+                                                    <td class="product-thumbnail text-left">
+                                                    </td>
+                                                    <td class="product-name text-left wide-column">
+                                                        <h3>
+                                                            您的暫存清單中還沒有商品
+                                                        </h3>
+                                                    </td>
+                                                    <td class="product-stock">
+                                                    </td>
+                                                    <td class="product-price">
+                                                    </td>
+                                                    <td class="product-action-btn">
+                                                    </td>
+                                                </tr>
+                                                EOL;
+                                            }
+                                        ?>
                                     </tbody>
                                 </table>
                             </div>
@@ -650,3 +616,32 @@ include('connect-sql.php');
 </body>
 
 </html>
+<!-- *************************** wishlist backup 
+
+                                        <tr>
+                                            <td class="product-remove text-left"><a href=""><i
+                                                        class="flaticon-cross"></i></a></td>
+                                            <td class="product-thumbnail text-left">
+                                                <img src="assets/img/products/product-11-70x88.jpg"
+                                                    alt="Product Thumnail">
+                                            </td>
+                                            <td class="product-name text-left wide-column">
+                                                <h3>
+                                                    <a href="product-details.php">Contemporary 5-Light Large
+                                                        Chandelier</a>
+                                                </h3>
+                                            </td>
+                                            <td class="product-stock">
+                                                有
+                                            </td>
+                                            <td class="product-price">
+                                                <span class="product-price-wrapper">
+                                                    <span class="money">$49</span>
+                                                </span>
+                                            </td>
+                                            <td class="product-action-btn">
+                                                <a href="cart.php" class="btn">加入購物車</a>
+                                            </td>
+                                        </tr>
+
+-->
