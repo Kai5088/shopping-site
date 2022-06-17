@@ -21,7 +21,7 @@ $sql = 'INSERT IGNORE INTO `cus_temp_list` (`Goods_ID`, `Goods_Name`, `Goods_Num
 
 if (mysqli_query($db_link, $sql)) 
 {
-    header("location:../product-details.php?Goods_ID=$Goods_ID");
+    header("location:../wishlist.php");
 } 
 else 
 {
