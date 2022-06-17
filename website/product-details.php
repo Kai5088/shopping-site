@@ -228,6 +228,7 @@
                         $num_rows = mysqli_num_rows($result);
                         $prev_href = ($_GET['Goods_ID'] == 1) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']-1;
                         $next_href = ($_GET['Goods_ID'] == $num_rows) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']+1;
+
                         echo <<<EOL
                             <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
                                 <div class="product-summary pl-lg--30 pl-md--0">
@@ -244,26 +245,30 @@
                                     <form action="#" class="variation-form mb--20">
                                         <a href="" class="reset_variations">清除</a>
                                     </form>
-                                    <label class="quantity-label" for="pro-qty">剩餘數量： $Goods_Num</label>
+                                    <label class="quantity-label">剩餘數量： $Goods_Num</label>
                                     <div>
-                                    <label class="quantity-label" for="pro-qty"></label>
-                                    </div>
-                                    <div
-                                        class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
+                                    <label class="quantity-label"></label>
+                                    </div>                             
+                                    <div class="product-action d-flex flex-sm-row align-items-sm-center flex-column align-items-start mb--30">
                                         <div class="quantity-wrapper d-flex align-items-center mr--30 mr-xs--0 mb-xs--30">
                                             <label class="quantity-label" for="pro-qty">購買數量：</label>
+                                            <form method="post">
                                             <div class="quantity">
-                                                <input type="number" class="quantity-input" name="pro-qty" id="pro-qty"
-                                                    value="1" min="1" max="$Goods_Num">
+                                                <input type="number" class="quantity-input" name="pro-qty" id="pro-qty" value="1" min="1">
                                             </div>
+                                            </form>
                                         </div>
                                     </div>
                                     <button type="button" class="btn btn-shape-square btn-size-sm"
-                                        onclick="window.location.href='cart.php'" style="background-color:gray;">
+                                        onclick="window.location.href='php/insert_data_into_temp_list.php?Goods_ID=$Goods_ID'" style="background-color:gray;">
                                         加入暫存清單
                                     </button>
                                     <label></label>
-                                EOL;
+                                    EOL;
+                                if (isset($_POST['pro-qty']))
+                                {
+                                    echo $_POST['pro-qty'] - 1; 
+                                }
                                 if($Goods_Num > 0)
                                 {
                                     echo <<<EOL
