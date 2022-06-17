@@ -198,84 +198,80 @@ include('connect-sql.php');
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td class="product-remove text-left"><a href=""><i class="flaticon-cross"></i></a></td>
-                                                        <td class="product-thumbnail text-left">
-                                                            <img src="assets/img/products/product-11-70x88.jpg" alt="Product Thumnail">
-                                                        </td>
-                                                        <td class="product-name text-left wide-column">
-                                                            <h3>
-                                                                <a href="product-details.php">Golden Easy Spot Chair.</a>
-                                                            </h3>
-                                                        </td>
-                                                        <td class="product-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                        <td class="product-quantity">
-                                                            <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-1" value="1" min="1">
-                                                            </div>
-                                                        </td>
-                                                        <td class="product-total-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="product-remove text-left"><a href=""><i class="flaticon-cross"></i></a></td>
-                                                        <td class="product-thumbnail text-left">
-                                                            <img src="assets/img/products/product-12-70x88.jpg" alt="Product Thumnail">
-                                                        </td>
-                                                        <td class="product-name text-left wide-column">
-                                                            <h3>
-                                                                <a href="product-details.php">Golden Easy Spot Chair.</a>
-                                                            </h3>
-                                                        </td>
-                                                        <td class="product-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                        <td class="product-quantity">
-                                                            <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-2" value="1" min="1">
-                                                            </div>
-                                                        </td>
-                                                        <td class="product-total-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td class="product-remove text-left"><a href=""><i class="flaticon-cross"></i></a></td>
-                                                        <td class="product-thumbnail text-left">
-                                                            <img src="assets/img/products/product-13-70x88.jpg" alt="Product Thumnail">
-                                                        </td>
-                                                        <td class="product-name text-left wide-column">
-                                                            <h3>
-                                                                <a href="product-details.php">Golden Easy Spot Chair.</a>
-                                                            </h3>
-                                                        </td>
-                                                        <td class="product-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                        <td class="product-quantity">
-                                                            <div class="quantity">
-                                                                <input type="number" class="quantity-input" name="qty" id="qty-3" value="1" min="1">
-                                                            </div>
-                                                        </td>
-                                                        <td class="product-total-price">
-                                                            <span class="product-price-wrapper">
-                                                                <span class="money">$49.00</span>
-                                                            </span>
-                                                        </td>
-                                                    </tr>
+                                                    <?php
+                                                        include ('connect-sql.php');
+
+                                                        $Cus_ID = $_SESSION['id'];
+
+                                                        $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
+                                                        $result = mysqli_query($db_link, $sql);
+
+                                                        $sum = 0;
+                                                        if ($result->num_rows > 0) 
+                                                        {
+                                                            while($row = $result->fetch_assoc()) 
+                                                            {
+                                                                $Goods_ID = $row['Goods_ID'];
+                                                                $Goods_Name = $row['Goods_Name'];
+                                                                $Goods_Price = $row['Goods_Price'];
+                                                                $Goods_Num = $row['Goods_Num'];
+                                                                $Goods_URL = $row['Goods_URL'];
+                                                                $Total_Price = $Goods_Num * $Goods_Price;
+                                                                $sum += $Total_Price;
+                                                                echo <<<EOL
+                                                                    <tr>
+                                                                        <td class="product-remove text-left"><a href="php/delete_data_into_shopping_cart.php?Goods_ID=$Goods_ID"><i class="flaticon-cross"></i></a></td>
+                                                                        <td class="product-thumbnail text-left">
+                                                                            <a href="product-details.php?Goods_ID=$Goods_ID">
+                                                                                <img src="$Goods_URL" alt="Product Thumnail">
+                                                                            </a>
+                                                                        </td>
+                                                                        <td class="product-name text-left wide-column">
+                                                                            <h3>
+                                                                                <a href="product-details.php?Goods_ID=$Goods_ID">&nbsp;&nbsp;&nbsp;&nbsp;$Goods_Name</a>
+                                                                            </h3>
+                                                                        </td>
+                                                                        <td class="product-price">
+                                                                            <span class="product-price-wrapper">
+                                                                                <span class="money">$$Goods_Price</span>
+                                                                            </span>
+                                                                        </td>
+                                                                        <td class="product-quantity">
+                                                                            <div>
+                                                                                $Goods_Num
+                                                                            </div>
+                                                                        </td>
+                                                                        <td class="product-total-price">
+                                                                            <span class="product-price-wrapper">
+                                                                                <span class="money">$$Total_Price</span>
+                                                                            </span>
+                                                                        </td>
+                                                                    </tr>
+                                                                EOL;
+                                                            }
+                                                        }
+                                                        else 
+                                                        {
+                                                            echo <<<EOL
+                                                                <tr>
+                                                                    <td class="product-remove text-left"></td>
+                                                                    <td class="product-thumbnail text-left">
+                                                                    </td>
+                                                                    <td class="product-name text-left wide-column">
+                                                                        <h3>
+                                                                            	您的購物車中還沒有商品
+                                                                        </h3>
+                                                                    </td>
+                                                                    <td class="product-price">
+                                                                    </td>
+                                                                    <td class="product-quantity">
+                                                                    </td>
+                                                                    <td class="product-total-price">
+                                                                    </td>
+                                                                </tr>
+                                                            EOL;
+                                                        }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>  
@@ -288,52 +284,103 @@ include('connect-sql.php');
                                         </div>
                                     </div>
                                     <div class="col-sm-6 text-sm-right">
-                                        <button type="submit" class="cart-form__btn">清除</button>
-                                        <button type="submit" class="cart-form__btn">更新</button>
+                                        <a class="cart-form__btn" href="php/delete_data_into_shopping_cart.php?Goods_ID=ALL">清除</a>
                                     </div>
                                 </div>
                             </form>
                         </div>
                         <div class="col-lg-4">
-                            <div class="cart-collaterals">
-                                <div class="cart-totals">
-                                    <h5 class="font-size-14 font-bold mb--15">總計</h5>
-                                    <div class="cart-calculator">
-                                        <div class="cart-calculator__item">
-                                            <div class="cart-calculator__item--head">
-                                                <span>合計</span>
+                        <?php
+                        $sum_with_delivery_fee = $sum + 20;
+                        if($sum > 0)
+                        {
+                            echo <<< EOL
+                                <div class="cart-collaterals">
+                                    <div class="cart-totals">
+                                        <h5 class="font-size-14 font-bold mb--15">總計</h5>
+                                        <div class="cart-calculator">
+                                            <div class="cart-calculator__item">
+                                                <div class="cart-calculator__item--head">
+                                                    <span>合計</span>
+                                                </div>
+                                                <div class="cart-calculator__item--value">
+                                                    <span>$$sum</span>
+                                                </div>
                                             </div>
-                                            <div class="cart-calculator__item--value">
-                                                <span>$196</span>
+                                            <div class="cart-calculator__item">
+                                                <div class="cart-calculator__item--head">
+                                                    <span>運費</span>
+                                                </div>
+                                                <div class="cart-calculator__item--value">
+                                                    <span>$20</span>
+                                                    <div class="shipping-calculator-wrap">
+                                                        <a href="" class="expand-btn"></a>                                                  
+                                                    </div>
+                                                </div>
                                             </div>
-                                        </div>
-                                        <div class="cart-calculator__item">
-                                            <div class="cart-calculator__item--head">
-                                                <span>運費</span>
-                                            </div>
-                                            <div class="cart-calculator__item--value">
-                                                <span>$20</span>
-                                                <div class="shipping-calculator-wrap">
-                                                    <a href="#shipping_calculator" class="expand-btn"></a>                                                  
+                                            <div class="cart-calculator__item order-total">
+                                                <div class="cart-calculator__item--head">
+                                                    <span>總計</span>
+                                                </div>
+                                                <div class="cart-calculator__item--value">
+                                                    <span class="product-price-wrapper">
+                                                        <span class="money">$$sum_with_delivery_fee</span>
+                                                    </span>
                                                 </div>
                                             </div>
                                         </div>
-                                        <div class="cart-calculator__item order-total">
-                                            <div class="cart-calculator__item--head">
-                                                <span>總計</span>
+                                    </div>
+                                    <a href="checkout.php" class="btn btn-size-md btn-shape-square btn-fullwidth">
+                                        繼續結帳
+                                    </a>
+                                </div>
+                                EOL;
+                        }
+                        else 
+                        {
+                            echo <<< EOL
+                                <div class="cart-collaterals">
+                                    <div class="cart-totals">
+                                        <h5 class="font-size-14 font-bold mb--15"></h5>
+                                        <div class="cart-calculator">
+                                            <div class="cart-calculator__item">
+                                                <div class="cart-calculator__item--head">
+                                                    <span></span>
+                                                </div>
+                                                <div class="cart-calculator__item--value">
+                                                    <span></span>
+                                                </div>
                                             </div>
-                                            <div class="cart-calculator__item--value">
-                                                <span class="product-price-wrapper">
-                                                    <span class="money">$226</span>
-                                                </span>
+                                            <div class="cart-calculator__item">
+                                                <div class="cart-calculator__item--head">
+                                                    <span></span>
+                                                </div>
+                                                <div class="cart-calculator__item--value">
+                                                    <span></span>
+                                                    <div class="shipping-calculator-wrap">
+                                                        <a href="" class="expand-btn"></a>                                                  
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="cart-calculator__item order-total">
+                                                <div class="cart-calculator__item--head">
+                                                    <span></span>
+                                                </div>
+                                                <div class="cart-calculator__item--value">
+                                                    <span class="product-price-wrapper">
+                                                        <span class="money"></span>
+                                                    </span>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
+                                    <a href="shop.php?Goods_Classify=ALL" class="btn btn-size-md btn-shape-square btn-fullwidth">
+                                        前往商店
+                                    </a>
                                 </div>
-                                <a href="checkout.php" class="btn btn-size-md btn-shape-square btn-fullwidth">
-                                    繼續結帳
-                                </a>
-                            </div>
+                            EOL;
+                        }
+                        ?>
                         </div>
                     </div>
                 </div>
@@ -694,3 +741,33 @@ include('connect-sql.php');
 </body>
 
 </html>
+<!-- *************************** shopping cart backup *************************** 
+
+                                                    <tr>
+                                                        <td class="product-remove text-left"><a href=""><i class="flaticon-cross"></i></a></td>
+                                                        <td class="product-thumbnail text-left">
+                                                            <img src="assets/img/products/product-13-70x88.jpg" alt="Product Thumnail">
+                                                        </td>
+                                                        <td class="product-name text-left wide-column">
+                                                            <h3>
+                                                                <a href="product-details.php">Golden Easy Spot Chair.</a>
+                                                            </h3>
+                                                        </td>
+                                                        <td class="product-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$49.00</span>
+                                                            </span>
+                                                        </td>
+                                                        <td class="product-quantity">
+                                                            <div class="quantity">
+                                                                <input type="number" class="quantity-input" name="qty" id="qty-3" value="1" min="1">
+                                                            </div>
+                                                        </td>
+                                                        <td class="product-total-price">
+                                                            <span class="product-price-wrapper">
+                                                                <span class="money">$49.00</span>
+                                                            </span>
+                                                        </td>
+                                                    </tr>
+
+-->
