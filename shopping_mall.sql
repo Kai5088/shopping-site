@@ -178,6 +178,12 @@ CREATE TABLE `login_manager` (
   `Manager_Password` varchar(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+
+--
+-- 傾印資料表的資料 `goods`
+--
+INSERT INTO `login_manager` (`Manager_ID`, `Manager_Account`, `Manager_Password`)
+VALUES ('1', 'root', '1234');
 -- --------------------------------------------------------
 
 --
