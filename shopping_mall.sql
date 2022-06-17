@@ -166,6 +166,8 @@ CREATE TABLE `login_customer` (
   `Cus_Money` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+INSERT INTO `login_customer` (`Cus_ID`, `Cus_Account`, `Cus_Password`, `Cus_Email`, `Cus_Money`)
+VALUES ('1', 'ACS109153', '109153');
 -- --------------------------------------------------------
 
 --
