@@ -254,7 +254,9 @@ include('account-operation.php');
                                                 <div class="product__inner">
                                                     <div class="product__image">
                                                         <figure class="product__image--holder">
-                                                            <img src="$Goods_URL" alt="Product">
+                                                            <a href="product-details.php?Goods_ID=$Goods_ID" class="product-overlay">
+                                                                <img src="$Goods_URL" alt="Product">
+                                                            </a>
                                                         </figure>
                                                         <a href="product-details.php?Goods_ID=$Goods_ID" class="product-overlay"></a>
                                                     </div>
