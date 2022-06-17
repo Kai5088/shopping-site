@@ -200,7 +200,7 @@ include('connect-sql.php');
 
                                             $Cus_ID = $_SESSION['id'];
 
-                                            $sql = "SELECT * FROM `cus_temp_list` WHERE `Cus_ID` = '" . $_SESSION['id'] . "';";
+                                            $sql = "SELECT * FROM `cus_temp_list` WHERE `Cus_ID` = '" . $Cus_ID . "';";
                                             $result = mysqli_query($db_link, $sql);
                                             if ($result->num_rows > 0) 
                                             {
