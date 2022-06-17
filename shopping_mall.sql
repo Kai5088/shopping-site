@@ -243,7 +243,8 @@ ALTER TABLE `login_manager`
 --
 ALTER TABLE `buyer_record`
   ADD CONSTRAINT `buyer_record_ibfk_1` FOREIGN KEY (`Cus_ID`) REFERENCES `login_customer` (`Cus_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
-
+ALTER TABLE `buyer_record`
+  ADD CONSTRAINT `buyer_record_ibfk_1` FOREIGN KEY (`Goods_ID`) REFERENCES `goods` (`Goods_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 --
 -- 資料表的限制式 `cus_shopping_cart`
 --
