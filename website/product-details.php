@@ -259,7 +259,7 @@ include('connect-sql.php');
                                             <label class="quantity-label" for="pro-qty">購買數量：</label>
                                             <form method="post">
                                             <div class="quantity">
-                                                <input type="number" class="quantity-input" name="pro-qty" id="pro-qty" value="1" min="1" onmouseover="change_num()">
+                                                <input type="number" class="quantity-input" name="pro-qty" id="pro-qty" value="1" min="1" onclick="change_num()" onmouseover="change_num()">
                                             </div>
                                             </form>
                                         </div>
@@ -275,7 +275,7 @@ include('connect-sql.php');
                                 {
                                     echo <<<EOL
                                         <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="jump()" onmouseover="change_num()" + "document.writeln(num)">
+                                            onclick="jump();change_num();" onmouseover="change_num()" + "document.writeln(num)">
                                             加入購物車
                                         </button>
                                     EOL;
@@ -758,7 +758,6 @@ include('connect-sql.php');
                 num = 1;
                 document.getElementById('pro-qty').value = num;
             }
-            console.log(num);
         }
         function jump()
         {
