@@ -254,7 +254,7 @@ ALTER TABLE `buyer_record`
 -- 資料表的限制式 `cus_shopping_cart`
 --
 ALTER TABLE `cus_shopping_cart`
-  ADD CONSTRAINT `cus_shopping_cart_ibfk_1` FOREIGN KEY (`Buyer_ID`) REFERENCES `buyer_record` (`Buyer_Record_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
+  ADD CONSTRAINT `cus_shopping_cart_ibfk_1` FOREIGN KEY (`Buyer_Record_ID`) REFERENCES `buyer_record` (`Buyer_Record_ID`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- 資料表的限制式 `cus_temp_list`
