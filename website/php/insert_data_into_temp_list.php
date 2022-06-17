@@ -1,5 +1,5 @@
 <?php
-//加入暫存清單 要輸入1個參數：$_GET['Goods_ID']
+//將資料加入暫存清單 要傳入1個參數：$_GET['Goods_ID']
 session_start();
 include('../connect-sql.php');
 $sql = "SELECT * FROM `goods` WHERE `Goods_ID` = " . $_GET['Goods_ID'] . ";";

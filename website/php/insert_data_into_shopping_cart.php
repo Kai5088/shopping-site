@@ -1,5 +1,5 @@
 <?php
-//加入購物車 要輸入2個參數：$_GET['Goods_ID'], $_GET[num]
+//將資料加入購物車 要傳入2個參數：$_GET['Goods_ID'], $_GET[num]
 session_start();
 include('../connect-sql.php');
 $sql = "SELECT * FROM `goods` WHERE `Goods_ID` = " . $_GET['Goods_ID'] . ";";
