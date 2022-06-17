@@ -235,7 +235,7 @@ include('connect-sql.php');
                                                             </span>
                                                         </td>
                                                         <td class="product-action-btn">
-                                                            <a href="cart.php" class="btn">加入購物車</a>
+                                                            <a href="php/insert_data_into_shopping_cart.php?Goods_ID=$Goods_ID&num=1" class="btn">加入購物車</a>
                                                         </td>
                                                     </tr>
                                                     EOL;
