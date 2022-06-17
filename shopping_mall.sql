@@ -170,7 +170,7 @@ CREATE TABLE `login_customer` (
 --
 
 INSERT INTO `login_customer` (`Cus_ID`, `Cus_Account`, `Cus_Password`, `Cus_Money`)
-VALUES ('1', 'ACS109153', '109153', '100000000');
+VALUES ('A1093', 'ACS109153', '109153', '100000000');
 -- --------------------------------------------------------
 
 --
