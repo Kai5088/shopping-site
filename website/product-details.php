@@ -259,7 +259,7 @@ include('connect-sql.php');
                                             <label class="quantity-label" for="pro-qty">購買數量：</label>
                                             <form method="post">
                                             <div class="quantity">
-                                                <input type="number" class="quantity-input" name="pro-qty" id="pro-qty" value="1" min="1">
+                                                <input type="number" class="quantity-input" name="pro-qty" id="pro-qty" value="1" min="1" onmouseover="change_num()">
                                             </div>
                                             </form>
                                         </div>
@@ -270,15 +270,12 @@ include('connect-sql.php');
                                     </button>
                                     <label></label>
                                     EOL;
-                                if (isset($_POST['pro-qty']))
-                                {
-                                    echo $_POST['pro-qty'] - 1; 
-                                }
+
                                 if($Goods_Num > 0)
                                 {
                                     echo <<<EOL
                                         <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="window.location.href='cart.php'">
+                                            onclick="jump()" + "document.writeln(num)">
                                             加入購物車
                                         </button>
                                     EOL;
@@ -745,6 +742,19 @@ include('connect-sql.php');
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+    <!-- Shipping list -->
+    <script>
+        var num = 1;
+        function change_num()
+        {
+            num = parseInt(document.getElementById('pro-qty').value);
+            console.log(num);
+        }
+        function jump()
+        {
+            window.location.href="php/insert_data_into_shopping_cart.php?num=" + num + "&" + "Goods_ID=<?php echo $_GET['Goods_ID'];?>";
+        }
+    </script>
 </body>
 
 </html>
