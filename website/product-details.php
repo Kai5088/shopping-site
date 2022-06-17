@@ -250,9 +250,6 @@ include('connect-sql.php');
                                     <div class="product-price-wrapper mb--25">
                                         <span class="money">$$Goods_Price</span>
                                     </div>
-                                    <form action="#" class="variation-form mb--20">
-                                        <a href="" class="reset_variations">清除</a>
-                                    </form>
                                     <label class="quantity-label">剩餘數量： $Goods_Num</label>
                                     <div>
                                     <label class="quantity-label"></label>
