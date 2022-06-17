@@ -1,3 +1,9 @@
+<?php
+session_start();
+include('account-operation.php');
+include('connect-sql.php');
+?>
+
 <!doctype html>
 <html class="no-js" lang="zxx">
 
@@ -105,9 +111,20 @@
                             </div>
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="login-register.php" class="toolbar-btn">
-                                        <span>登入</span>
-                                    </a>
+                                <?php
+                                    if ( is_login() ) {
+                                        echo '<a href="my-account.php" class="toolbar-btn">' .
+                                             "<span>" . $_SESSION['account'] . "</span></a>，" .
+                                             '<a href="logout.php" class="toolbar-btn"><span>登出</span></a>'
+                                            ;
+                                    } else {
+                                        echo <<< EOL
+                                            <a href='login-register.php' class='toolbar-btn'>
+                                                <span>登入</span>
+                                            </a>
+                                            EOL;
+                                    }
+                                ?>
                                 </div>
                                 <div class="toolbar-item d-block d-lg-none">
                                     <a href="#offcanvasnav" class="hamburger-icon js-toolbar menu-btn">
@@ -318,9 +335,19 @@
                             </a>
                             <ul class="sub-menu">
                                 <li>
-                                    <a href="my-account.php">
-                                        <span class="mm-text">我的帳號</span>
-                                    </a>
+                                <?php
+                                    if ( is_login() ) {
+                                        echo '<a href="my-account.php">' .
+                                             '<span class="mm-text">我的帳號</span>' .
+                                             '</a>'
+                                            ;
+                                    } else {
+                                        echo '<a href="login-register.php">' .
+                                             '<span class="mm-text">我的帳號</span>' .
+                                             '</a>'
+                                            ;
+                                    }
+                                ?>
                                 </li>
                                 <li>
                                     <a href="checkout.php">
@@ -343,6 +370,20 @@
                             <a href="contact-us.php">
                                 <span class="mm-text">聯絡我們</span>
                             </a>
+                        </li>
+                        <li>
+                        <?php
+                            if ( is_login() ) {
+                                echo '<a href="logout.php"><span class="mm-text">' . $_SESSION['account'] . '，登出</span></a>'
+                                    ;
+                            } else {
+                                echo <<< EOL
+                                    <a href='login-register.php'>
+                                        <span class="mm-text">登入</span>
+                                    </a>
+                                EOL;
+                            }
+                        ?>
                         </li>
                     </ul>
                 </div>

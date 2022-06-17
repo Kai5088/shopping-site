@@ -151,7 +151,7 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
                                                     <li>
-                                                        <a href="my-account.php">我的帳號</a>
+                                                        <a href="login-register.php">我的帳號</a>
                                                     </li>
                                                     <li>
                                                         <a href="checkout.php">結帳</a>
