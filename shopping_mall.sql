@@ -162,12 +162,15 @@ CREATE TABLE `login_customer` (
   `Cus_ID` varchar(20) NOT NULL,
   `Cus_Account` varchar(20) NOT NULL,
   `Cus_Password` varchar(20) NOT NULL,
-  `Cus_Email` varchar(50) NOT NULL,
   `Cus_Money` bigint(20) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
-INSERT INTO `login_customer` (`Cus_ID`, `Cus_Account`, `Cus_Password`, `Cus_Email`, `Cus_Money`)
-VALUES ('1', 'ACS109153', '109153');
+--
+-- 傾印資料表的資料 `login_customer`
+--
+
+INSERT INTO `login_customer` (`Cus_ID`, `Cus_Account`, `Cus_Password`, `Cus_Money`)
+VALUES ('1', 'ACS109153', '109153', '100000000');
 -- --------------------------------------------------------
 
 --
@@ -182,7 +185,7 @@ CREATE TABLE `login_manager` (
 
 
 --
--- 傾印資料表的資料 `goods`
+-- 傾印資料表的資料 `login_manager`
 --
 INSERT INTO `login_manager` (`Manager_ID`, `Manager_Account`, `Manager_Password`)
 VALUES ('1', 'root', '1234');
