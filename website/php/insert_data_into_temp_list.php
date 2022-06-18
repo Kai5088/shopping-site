@@ -16,8 +16,11 @@ $Goods_Classify = $row['Goods_Classify'];
 $Goods_Specs = nl2br($row['Goods_Specs']);
 $Cus_ID = $_SESSION['id'];
 
-$sql = 'INSERT IGNORE INTO `cus_temp_list` (`Goods_ID`, `Goods_Name`, `Goods_Num`, `Goods_Price`, `Goods_URL`, `Cus_ID`) VALUES 
+$sql = 'INSERT INTO `cus_temp_list` (`Goods_ID`, `Goods_Name`, `Goods_Num`, `Goods_Price`, `Goods_URL`, `Cus_ID`) VALUES 
 ("' . $Goods_ID . '","' . $Goods_Name . '",' . $Goods_Num . ',' . $Goods_Price . ',"' . $Goods_URL . '","' . $Cus_ID . '")';
+
+$sql_remove_old = "DElETE FROM `cus_temp_list` WHERE `Goods_ID` = " . $_GET['Goods_ID'] . " AND `Cus_ID` = '" . $Cus_ID . "';";
+mysqli_query($db_link, $sql_remove_old);
 
 if (mysqli_query($db_link, $sql)) 
 {

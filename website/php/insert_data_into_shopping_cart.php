@@ -13,8 +13,12 @@ $Goods_Num = $_GET['num'];
 $Goods_URL = $row['Goods_URL'];
 $Buyer_Record_ID = $_SESSION['id'];
 
-$sql = 'REPLACE INTO `cus_shopping_cart` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Goods_URL`, `Buyer_Record_ID`) VALUES 
+$sql = 'INSERT INTO `cus_shopping_cart` (`Goods_ID`, `Goods_Name`, `Goods_Price`, `Goods_Num`, `Goods_URL`, `Buyer_Record_ID`) VALUES 
 ("' . $Goods_ID . '","' . $Goods_Name . '",' . $Goods_Price . ',' . $Goods_Num . ',"' . $Goods_URL . '","' . $Buyer_Record_ID . '")';
+
+$sql_remove_old = "DElETE FROM `cus_shopping_cart` WHERE `Goods_ID` = " . $_GET['Goods_ID'] .  " AND `Buyer_Record_ID` = '" . $Buyer_Record_ID . "';";
+mysqli_query($db_link, $sql_remove_old);
+
 if (mysqli_query($db_link, $sql)) 
 {
     header("location:../cart.php");
@@ -23,6 +27,7 @@ else
 {
     echo "Error: " . $sql . "<br>" . mysqli_error($db_link);
 } 
+
 $sql = "DElETE FROM `cus_temp_list` WHERE `Goods_ID` = " . $Goods_ID . " AND `Cus_ID` = '" . $Buyer_Record_ID . "';";
 if (mysqli_query($db_link, $sql)) 
 {
