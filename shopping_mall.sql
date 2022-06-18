@@ -71,6 +71,7 @@ INSERT INTO `chatbot_hints` (`id`, `question`, `reply`) VALUES
 --
 
 CREATE TABLE `cus_shopping_cart` (
+  `Cart_ID` varchar(20) NOT NULL,
   `Goods_ID` varchar(20) NOT NULL,
   `Goods_Name` varchar(20) NOT NULL,
   `Goods_Price` bigint(20) NOT NULL,
@@ -86,6 +87,7 @@ CREATE TABLE `cus_shopping_cart` (
 --
 
 CREATE TABLE `cus_temp_list` (
+  `List_ID` varchar(20) NOT NULL,
   `Goods_ID` varchar(20) NOT NULL,
   `Goods_Name` text NOT NULL,
   `Goods_Num` int(11) NOT NULL,
@@ -217,14 +219,14 @@ ALTER TABLE `buyer_record`
 -- 資料表索引 `cus_shopping_cart`
 --
 ALTER TABLE `cus_shopping_cart`
-  ADD PRIMARY KEY (`Goods_ID`),
+  ADD PRIMARY KEY (`Cart_ID`),
   ADD KEY `Buyer_Record_ID` (`Buyer_Record_ID`);
 
 --
 -- 資料表索引 `cus_temp_list`
 --
 ALTER TABLE `cus_temp_list`
-  ADD PRIMARY KEY (`Goods_ID`),
+  ADD PRIMARY KEY (`List_ID`),
   ADD KEY `cus_temp_list_ibfk_1` (`Cus_ID`);
 
 --
