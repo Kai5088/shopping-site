@@ -141,16 +141,44 @@ include('connect-sql.php');
                                         <i class="flaticon-heart"></i>
                                     </a>
                                 </div>
-                                <div class="toolbar-item mini-cart-btn">
-                                    <a href="#miniCart" class="toolbar-btn js-toolbar">
-                                        <span class="mini-cart-btn__icon">
-                                            <i class="flaticon-bag"></i>
-                                        </span>
-                                        <sup class="mini-cart-btn__count">
-                                            02
-                                        </sup>
-                                    </a>
-                                </div>
+                                <?php   
+                                    if(is_login())
+                                    {
+                                        $Cus_ID = $_SESSION['id'];
+
+                                        $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
+                                        $result = mysqli_query($db_link, $sql);   
+                                        $rows_number = mysqli_num_rows($result);   
+                                        $rows_number = str_pad($rows_number, 2, '0', STR_PAD_LEFT);                          
+                                        echo <<< EOL
+                                            <div class="toolbar-item mini-cart-btn">
+                                                <a href="#miniCart" class="toolbar-btn js-toolbar">
+                                                    <span class="mini-cart-btn__icon">
+                                                        <i class="flaticon-bag"></i>
+                                                    </span>
+                                                    <sup class="mini-cart-btn__count">
+                                                        $rows_number
+                                                    </sup>
+                                                </a>
+                                            </div>                                    
+                                        EOL;                                        
+                                    }
+                                    else
+                                    {
+                                        echo <<< EOL
+                                        <div class="toolbar-item mini-cart-btn">
+                                            <a href="#miniCart" class="toolbar-btn js-toolbar">
+                                                <span class="mini-cart-btn__icon">
+                                                    <i class="flaticon-bag"></i>
+                                                </span>
+                                                <sup class="mini-cart-btn__count">
+                                                    0
+                                                </sup>
+                                            </a>
+                                        </div>                                    
+                                    EOL;
+                                    }
+                                ?>
                             </div>
                         </div>
                     </div>
@@ -565,54 +593,95 @@ include('connect-sql.php');
                     <a href="#" class="btn-close"><i class="flaticon-cross"></i></a>
                 </div>
                 <div class="mini-cart-inner">
-                    <h3 class="mini-cart__heading mb--45">Shopping Cart</h3>
+                    <h3 class="mini-cart__heading mb--45">購物車</h3>
                     <div class="mini-cart__content">
                         <ul class="mini-cart__list">
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="flaticon-cross"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/product-11-90x90.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.php?Goods_ID=$Goods_ID">Lexbaro Begadi</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="flaticon-cross"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/product-12-90x90.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.php?Goods_ID=$Goods_ID">Lexbaro Begadi</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
-                            <li class="mini-cart__product">
-                                <a href="#" class="mini-cart__product-remove">
-                                    <i class="flaticon-cross"></i>
-                                </a>
-                                <div class="mini-cart__product-image">
-                                    <img src="assets/img/products/product-13-90x90.jpg" alt="products">
-                                </div>
-                                <div class="mini-cart__product-content">
-                                    <a class="mini-cart__product-title" href="product-details.php?Goods_ID=$Goods_ID">Lexbaro Begadi</a>
-                                    <span class="mini-cart__product-quantity">1 x $49.00</span>
-                                </div>
-                            </li>
+                            <?php
+                                if(is_login())
+                                {
+                                    $Cus_ID = $_SESSION['id'];
+
+                                    $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
+                                    $result = mysqli_query($db_link, $sql);
+
+                                    $sum = 0;
+                                    if ($result->num_rows > 0) 
+                                    {
+                                        while($row = $result->fetch_assoc()) 
+                                        {          
+                                            $Goods_ID = $row['Goods_ID'];
+                                            $Goods_Name = $row['Goods_Name'];
+                                            $Goods_Price = $row['Goods_Price'];
+                                            $Goods_Num = $row['Goods_Num'];
+                                            $Goods_URL = $row['Goods_URL'];
+                                            $sum += $Goods_Num * $Goods_Price;                                                             
+                                            echo <<<EOL
+                                                <li class="mini-cart__product">
+                                                    <a href="php/delete_data_into_shopping_cart.php?Goods_ID=$Goods_ID" class="mini-cart__product-remove">
+                                                        <i class="flaticon-cross"></i>
+                                                    </a>
+                                                    <div class="mini-cart__product-image">
+                                                        <img src="$Goods_URL" alt="products">
+                                                    </div>
+                                                    <div class="mini-cart__product-content">
+                                                        <a class="mini-cart__product-title" href="product-details.php?Goods_ID=$Goods_ID">$Goods_Name</a>
+                                                        <span class="mini-cart__product-quantity">$Goods_Num x $$Goods_Price</span>
+                                                    </div>
+                                                </li>
+                                            EOL; 
+                                        }
+                                    }
+                                    else 
+                                    {
+                                        echo <<<EOL
+                                            <li class="mini-cart__product">
+                                                <div class="mini-cart__product-image">
+                                                </div>
+                                                <div class="mini-cart__product-content">
+                                                    您的購物車中還沒有商品
+                                                    <span class="mini-cart__product-quantity"></span>
+                                                </div>
+                                            </li>
+                                        EOL; 
+                                    }
+                                }
+                                else
+                                {
+                                    echo <<<EOL
+                                        <li class="mini-cart__product">
+                                            <div class="mini-cart__product-image">
+                                            </div>
+                                            <a href="login-register.php"
+                                                <div class="mini-cart__product-content">
+                                                    請先登入
+                                                    <span class="mini-cart__product-quantity"></span>
+                                                </div>
+                                            </a>
+                                        </li>
+                                    EOL;                                    
+                                }
+                            ?>
                         </ul>
-                        <div class="mini-cart__total">
-                            <span>Subtotal</span>
-                            <span class="ammount">$98.00</span>
-                        </div>
-                        <div class="mini-cart__buttons">
-                            <a href="cart.php" class="btn btn-fullwidth btn-bg-primary mb--20">View Cart</a>
-                            <a href="checkout.php" class="btn btn-fullwidth btn-bg-primary">Checkout</a>
-                        </div>
+                        <?php
+                            if(is_login())
+                            {
+                                $checkout = "";
+                                if($sum != 0) 
+                                {
+                                    $checkout = '<a href="checkout.php" class="btn btn-fullwidth btn-bg-primary">結帳</a>';
+                                }
+                                echo <<< EOL
+                                    <div class="mini-cart__total">
+                                        <span>合計</span>
+                                        <span class="ammount">$$sum</span>
+                                    </div>
+                                    <div class="mini-cart__buttons">
+                                        <a href="cart.php" class="btn btn-fullwidth btn-bg-primary mb--20">前往購物車</a>
+                                        $checkout
+                                    </div>                            
+                                EOL;                                
+                            }
+                        ?>
                     </div>
                 </div>
             </div>
