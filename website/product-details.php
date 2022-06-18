@@ -149,7 +149,7 @@ include('connect-sql.php');
                                         $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
                                         $result = mysqli_query($db_link, $sql);   
                                         $rows_number = mysqli_num_rows($result);   
-                                        $rows_number = str_pad($rows_number, 2, '0', STR_PAD_LEFT);                          
+                          
                                         echo <<< EOL
                                             <div class="toolbar-item mini-cart-btn">
                                                 <a href="#miniCart" class="toolbar-btn js-toolbar">
@@ -217,7 +217,7 @@ include('connect-sql.php');
                         $Goods_ID = $row['Goods_ID'];
                         $Goods_Name = $row['Goods_Name'];
                         $Goods_Price = $row['Goods_Price'];
-                        $Goods_Num = $row['Goods_Num'];
+                        $Goods_Left = $row['Goods_Num'];
                         $Goods_URL = $row['Goods_URL'];
                         $Goods_Statement = nl2br($row['Goods_Statement']);
                         $Goods_Classify = $row['Goods_Classify'];
@@ -264,7 +264,36 @@ include('connect-sql.php');
                         $num_rows = mysqli_num_rows($result);
                         $prev_href = ($_GET['Goods_ID'] == 1) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']-1;
                         $next_href = ($_GET['Goods_ID'] == $num_rows) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']+1;
-
+                        if(is_login())
+                        {
+                            $temp_button = <<<EOL
+                                <button type="button" class="btn btn-shape-square btn-size-sm"
+                                    onclick="window.location.href='php/insert_data_into_temp_list.php?Goods_ID=$Goods_ID'" style="background-color:gray;">
+                                    加入暫存清單
+                                </button>
+                            EOL;
+                            $shopping_button = <<<EOL
+                                <button type="button" class="btn btn-shape-square btn-size-sm"
+                                    onclick="jump();change_num();" onmouseover="change_num()" + "document.writeln(num)">
+                                    加入購物車
+                                </button>                            
+                            EOL;
+                        }
+                        else 
+                        {
+                            $temp_button = <<<EOL
+                                <button type="button" class="btn btn-shape-square btn-size-sm"
+                                    onclick="window.location.href='login-register.php'" style="background-color:gray;">
+                                    請先登入
+                                </button>
+                            EOL;
+                            $shopping_button = <<<EOL
+                                <button type="button" class="btn btn-shape-square btn-size-sm"
+                                    onclick="window.location.href='login-register.php'" onmouseover="change_num()" + "document.writeln(num)">
+                                    請先登入
+                                </button>                            
+                            EOL;                            
+                        }
                         echo <<<EOL
                             <div class="col-xl-4 offset-xl-1 col-lg-5 product-main-details mt-md--50">
                                 <div class="product-summary pl-lg--30 pl-md--0">
@@ -278,7 +307,7 @@ include('connect-sql.php');
                                     <div class="product-price-wrapper mb--25">
                                         <span class="money">$$Goods_Price</span>
                                     </div>
-                                    <label class="quantity-label">剩餘數量： $Goods_Num</label>
+                                    <label class="quantity-label">剩餘數量： $Goods_Left</label>
                                     <div>
                                     <label class="quantity-label"></label>
                                     </div>                             
@@ -292,20 +321,14 @@ include('connect-sql.php');
                                             </form>
                                         </div>
                                     </div>
-                                    <button type="button" class="btn btn-shape-square btn-size-sm"
-                                        onclick="window.location.href='php/insert_data_into_temp_list.php?Goods_ID=$Goods_ID'" style="background-color:gray;">
-                                        加入暫存清單
-                                    </button>
+                                    $temp_button
                                     <label></label>
                                     EOL;
 
-                                if($Goods_Num > 0)
+                                if($Goods_Left > 0)
                                 {
                                     echo <<<EOL
-                                        <button type="button" class="btn btn-shape-square btn-size-sm"
-                                            onclick="jump();change_num();" onmouseover="change_num()" + "document.writeln(num)">
-                                            加入購物車
-                                        </button>
+                                        $shopping_button
                                     EOL;
                                 }
                                 else 
@@ -817,9 +840,9 @@ include('connect-sql.php');
         function change_num()
         {
             num = parseInt(document.getElementById('pro-qty').value);
-            if(num > <?php echo $Goods_Num;?>)
+            if(num > <?php echo $Goods_Left;?>)
             {
-                num = <?php echo $Goods_Num;?>;
+                num = <?php echo $Goods_Left;?>;
                 document.getElementById('pro-qty').value = num;
             }
             else if(num < 1)

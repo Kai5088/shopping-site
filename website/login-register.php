@@ -173,9 +173,20 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
                             </div>
                             <div class="header__col header__right">
                                 <div class="toolbar-item d-none d-lg-block">
-                                    <a href="login-register.php" class="toolbar-btn">
-                                        <span>登入</span>
-                                    </a>
+                                <?php
+                                    if ( is_login() ) {
+                                        echo '<a href="my-account.php" class="toolbar-btn">' .
+                                            "<span>" . $_SESSION['account'] . "</span></a>，" .
+                                            '<a href="logout.php" class="toolbar-btn"><span>登出</span></a>'
+                                            ;
+                                    } else {
+                                        echo <<< EOL
+                                            <a href='login-register.php' class='toolbar-btn'>
+                                                <span>登入</span>
+                                            </a>
+                                            EOL;
+                                    }
+                                ?>
                                 </div>
                                 <div class="toolbar-item d-block d-lg-none">
                                     <a href="#offcanvasnav" class="hamburger-icon js-toolbar menu-btn">
@@ -200,7 +211,7 @@ if (isset($_POST['login_account']) && isset($_POST['login_pw'])) {
                                         $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
                                         $result = mysqli_query($db_link, $sql);   
                                         $rows_number = mysqli_num_rows($result);   
-                                        $rows_number = str_pad($rows_number, 2, '0', STR_PAD_LEFT);                          
+                          
                                         echo <<< EOL
                                             <div class="toolbar-item mini-cart-btn">
                                                 <a href="#miniCart" class="toolbar-btn js-toolbar">

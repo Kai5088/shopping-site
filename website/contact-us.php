@@ -149,7 +149,7 @@ include('connect-sql.php');
                                         $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
                                         $result = mysqli_query($db_link, $sql);   
                                         $rows_number = mysqli_num_rows($result);   
-                                        $rows_number = str_pad($rows_number, 2, '0', STR_PAD_LEFT);                          
+                          
                                         echo <<< EOL
                                             <div class="toolbar-item mini-cart-btn">
                                                 <a href="#miniCart" class="toolbar-btn js-toolbar">
