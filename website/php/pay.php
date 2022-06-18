@@ -19,6 +19,8 @@ while($row = $result->fetch_assoc())
     $subtotal = $Goods_Price * $Buy_Number;
     $Total_Price += $subtotal + 100;
     $Date_Time = new DateTime('now');
+    $timezone = new DateTimeZone('Asia/Taipei');
+    $Date_Time->setTimezone($timezone);
 
     //insert data into buyer_record
     $insert_sql = 'INSERT INTO `buyer_record` (`Cus_ID`, `Buyer_Record_Time`, `Goods_ID`, `Goods_Price`, `Buy_Record_Num`) VALUES 
