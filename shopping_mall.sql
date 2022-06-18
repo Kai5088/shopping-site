@@ -254,6 +254,12 @@ ALTER TABLE `login_manager`
 --
 
 --
+-- 使用資料表自動遞增(AUTO_INCREMENT) `buyer_record`
+--
+ALTER TABLE `buyer_record`
+  MODIFY `Buyer_Record_ID` bigint(20) NOT NULL AUTO_INCREMENT;
+
+--
 -- 使用資料表自動遞增(AUTO_INCREMENT) `cus_shopping_cart`
 --
 ALTER TABLE `cus_shopping_cart`
