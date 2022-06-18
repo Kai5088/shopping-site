@@ -215,106 +215,144 @@ if(!is_login())
                 <div class="container">
                     <div class="row">
                         <!-- Checkout Area Start -->  
-                        <div class="col-lg-6">
+                        <div class="col-lg-3">
                             <div class="checkout-title mt--10">
                                 <h2>確認帳戶資訊</h2>
                             </div>
+                            <?php
+                                $Cus_ID = $_SESSION['id'];
+
+                                $sql = "SELECT * FROM `login_customer` WHERE `Cus_ID` = '" . $Cus_ID . "';";
+                                $result = mysqli_query($db_link, $sql);  
+                                $row = $result->fetch_assoc();
+
+                                $Cus_Account = $row['Cus_Account'];
+                                $Cus_Password = $row['Cus_Password'];
+                                $Cus_Money = $row['Cus_Money'];
+                            ?>
                             <div class="checkout-form">
                                 <div class="form-row mb--20">
-                                <?php
-                                    $Cus_ID = $_SESSION['id'];
-
-                                    $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
-                                    $result = mysqli_query($db_link, $sql);                                    
-                                ?>
                                     <div class="form__group col-12">
-                                        <label for="billing_company" class="form__label">帳號</label>
-                                        <input type="text" class="form__input" readonly="readonly" value="<?php echo ?>">
+                                        <label for="billing_company" class="form__label">帳號名稱</label>
+                                        <input type="text" class="form__input" readonly="readonly" value="<?php echo $Cus_Account?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout-form">
+                                <div class="form-row mb--20">
+                                    <div class="form__group col-12">
+                                        <label for="billing_company" class="form__label">帳號ID</label>
+                                        <input type="text" class="form__input" readonly="readonly" value="<?php echo $Cus_ID?>">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="checkout-form">
+                                <div class="form-row mb--20">
+                                    <div class="form__group col-12">
+                                        <label for="billing_company" class="form__label">電子錢包餘額</label>
+                                        <input type="text" class="form__input" readonly="readonly" value="$<?php echo $Cus_Money?>">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 offset-xl-1 col-lg-6 mt-md--40">
+                        <div class="col-xl-9 offset-xl-0 col-lg-8 mt-md--40">
                             <div class="order-details">
                                 <div class="checkout-title mt--10">
-                                    <h2>Your Order</h2>
+                                    <h2>訂單</h2>
                                 </div>
                                 <div class="table-content table-responsive mb--30">
                                     <table class="table order-table order-table-2">
                                         <thead>
                                             <tr>
-                                                <th>Product</th>
-                                                <th class="text-right">Total</th>
+                                                <th style="font-size:16px"><strong>商品</strong></th>
+                                                <th class="text-right" style="font-size:16px"><strong>價格</strong></th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <th>Aliquam lobortis est 
-                                                    <strong><span>&#10005;</span>1</strong>
-                                                </th>
-                                                <td class="text-right">$80.00</td>
-                                            </tr>
-                                            <tr>
-                                                <th>Auctor gravida enim 
-                                                    <strong><span>&#10005;</span>1</strong>
-                                                </th>
-                                                <td class="text-right">$60.00</td>
-                                            </tr>
+                                            <?php
+                                                $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
+                                                $result = mysqli_query($db_link, $sql); 
+                                                $subtotal = 0;
+
+                                                while ($row = $result->fetch_assoc())
+                                                {
+                                                    $Goods_ID = $row['Goods_ID'];
+                                                    $Goods_Name = $row['Goods_Name'];
+                                                    $Goods_Price = $row['Goods_Price'];
+                                                    $Goods_Num = $row['Goods_Num'];
+                                                    $Goods_URL = $row['Goods_URL'];
+                                                    $sum = 0;
+                                                    $sum += $Goods_Num * $Goods_Price;
+                                                    $subtotal += $sum;
+                                                    echo <<< EOL
+                                                    <tr>
+                                                        <th>$Goods_Name 
+                                                            <strong><span>&nbsp;&nbsp;&#10005;</span>$Goods_Num</strong>
+                                                        </th>
+                                                        <td class="text-right">$$sum</td>
+                                                    </tr>
+                                                    EOL;
+                                                }
+                                            ?>
                                         </tbody>
                                         <tfoot>
                                             <tr class="cart-subtotal">
-                                                <th>Subtotal</th>
-                                                <td class="text-right">$56.00</td>
+                                                <th>小計</th>
+                                                <td class="text-right">$<?php echo $subtotal; ?></td>
                                             </tr>
                                             <tr class="shipping">
-                                                <th>Shipping</th>
+                                                <th>運費</th>
                                                 <td class="text-right">
-                                                    <span>Flat Rate; $20.00</span>
+                                                    <span>$100</span>
                                                 </td>
                                             </tr>
                                             <tr class="order-total">
-                                                <th>Order Total</th>
-                                                <td class="text-right"><span class="order-total-ammount">$56.00</span></td>
+                                                <th style="font-size:30px">總計</th>
+                                                <td class="text-right"><span class="order-total-ammount" style="font-size:30px">$<?php $Total_Price = $subtotal + 100; echo $Total_Price; ?></span></td>
                                             </tr>
                                         </tfoot>
                                     </table>
                                 </div>
                                 <div class="checkout-payment">
-                                    <form action="#" class="payment-form">
+                                    <form action="window.location.href='php/pay.php'" class="payment-form">
                                         <div class="payment-group mb--10">
                                             <div class="payment-radio">
-                                                <input type="radio" value="bank" name="payment-method" id="bank" checked>
-                                                <label class="payment-label" for="bank">Direct Bank Transfer</label>
+                                                <input type="radio" value="digital_wallet" checked>
+                                                <label class="payment-label">電子錢包付款</label>
                                             </div>
-                                            <div class="payment-info" data-method="bank">
-                                                <p>Make your payment directly into our bank account. Please use your Order ID as the payment reference. Your order will not be shipped until the funds have cleared in our account.</p>
-                                            </div>
-                                        </div>
-                                        <div class="payment-group mb--10">
-                                            <div class="payment-radio">
-                                                <input type="radio" value="cheque" name="payment-method" id="cheque">
-                                                <label class="payment-label" for="cheque">
-                                                    cheque payments
-                                                </label>
-                                            </div>
-                                            <div class="payment-info cheque hide-in-default" data-method="cheque">
-                                                <p>Please send a check to Store Name, Store Street, Store Town, Store State / County, Store Postcode.</p>
-                                            </div>
-                                        </div>
-                                        <div class="payment-group mb--10">
-                                            <div class="payment-radio">
-                                                <input type="radio" value="cash" name="payment-method" id="cash">
-                                                <label class="payment-label" for="cash">
-                                                    CASH ON DELIVERY
-                                                </label>
-                                            </div>
-                                            <div class="payment-info cash hide-in-default" data-method="cash">
-                                                <p>Pay with cash upon delivery.</p>
+                                            <?php 
+                                                $payment = $Cus_Money - $Total_Price;
+                                                if($payment >= 0)
+                                                {
+                                                    $payment_button = '<button type="submit" class="btn btn-size-md btn-fullwidth" style="color:green; font-size:20px;">確認並付款</button>';
+                                                    $color = "green";
+                                                }
+                                                else
+                                                {
+                                                    $payment_button = '<button type="submit" class="btn btn-size-md btn-fullwidth" style="color:red; font-size:20px;" disabled>餘額不足</button>';
+                                                    $color = "red";
+                                                }
+                                            ?>
+                                            <div class="payment-info">
+                                                <p>使用您帳號中的電子錢包餘額進行付款。</p>
+                                                <hr>
+                                                <table class="table order-table order-table-2">
+                                                    <tr>
+                                                        <th>結帳前餘額</th>
+                                                        <td class="text-right"> $<?php echo $Cus_Money?></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <th>付款金額</th>
+                                                        <td class="text-right">-$<?php echo $Total_Price?></td>
+                                                    </tr>
+                                                        <th>結帳後餘額</th>
+                                                        <td class="text-right" style="color:<?php echo $color;?>;"><strong>$<?php echo $payment;?></strong></td>
+                                                    </tr>
+                                                </table>
                                             </div>
                                         </div>
                                         <div class="payment-group mt--20">
-                                            <p class="mb--15">Your personal data will be used to process your order, support your experience throughout this website, and for other purposes described in our privacy policy.</p>
-                                            <button type="submit" class="btn btn-size-md btn-fullwidth">Place Order</button>
+                                            <?php echo $payment_button;?>
                                         </div>
                                     </form>
                                 </div>
