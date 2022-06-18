@@ -274,10 +274,8 @@ if(!is_login())
                                                                 echo <<< EOL
                                                                     <tr>
                                                                         <td>$Buyer_Record_Time</td>
-                                                                        <a href="product-details.php?Goods_ID=$Goods_ID">
-                                                                            <td><img src="$Goods_URL" style="width:100px;"></td>
-                                                                            <td class="wide-column">$Goods_Name</td>
-                                                                        </a>
+                                                                        <td><a href="product-details.php?Goods_ID=$Goods_ID"><img src="$Goods_URL" style="width:100px;"></a></td>
+                                                                        <td class="wide-column"><a href="product-details.php?Goods_ID=$Goods_ID">$Goods_Name</a></td>
                                                                         <td>$$Goods_Price</td>
                                                                         <td>共 $Buy_Record_Num 件</td>
                                                                     </tr>

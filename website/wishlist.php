@@ -244,7 +244,7 @@ if(!is_login())
                                                     $Goods_Num = $row['Goods_Num'];
                                                     $Goods_URL = $row['Goods_URL'];
                                                     $Stock_Status =  ($Goods_Num > 0) ? "尚有 ".$Goods_Num." 個" : "無庫存";
-                                                    $add_to_cart_button = ($Goods_Num > 0) ? '<a href="php/insert_data_into_shopping_cart.php?Goods_ID=$Goods_ID&num=1" class="btn">加入購物車</a>' : "";
+                                                    $add_to_cart_button = ($Goods_Num > 0) ? '<a href="php/insert_data_into_shopping_cart.php?Goods_ID=' . $Goods_ID .'&num=1" class="btn">加入購物車</a>' : "";
                                                     echo <<<EOL
                                                     <tr>
                                                         <td class="product-remove text-left"><a href="php/delete_data_from_temp_list.php?Cus_ID=$Cus_ID&Goods_ID=$Goods_ID"><i
