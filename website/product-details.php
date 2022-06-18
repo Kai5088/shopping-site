@@ -333,7 +333,7 @@ include('connect-sql.php');
                                 }
                                 else 
                                 {
-                                    echo '<button type="button" class="btn btn-shape-square btn-size-sm" disabled >商品已售罄</button>';                                
+                                    echo '<button type="button" class="btn btn-shape-square btn-size-sm" disabled style="color:red;">商品已售罄</button>';                                
                                 }
                                 echo <<<EOL
                                 </div>
