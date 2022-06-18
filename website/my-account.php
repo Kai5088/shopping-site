@@ -218,7 +218,7 @@ if(!is_login())
                             <div class="user-dashboard-tab flex-column flex-md-row">
                                 <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active" data-toggle="pill" role="tab" href="#dashboard" aria-controls="dashboard" aria-selected="true">狀態</a>
-                                    <a class="nav-link" data-toggle="pill" role="tab" href="#orders" aria-controls="orders" aria-selected="true">訂單</a>
+                                    <a class="nav-link" data-toggle="pill" role="tab" href="#order_history" aria-controls="order_history" aria-selected="true">購買紀錄</a>
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#addresses" aria-controls="addresses" aria-selected="true">地址</a>
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#accountdetails" aria-controls="accountdetails" aria-selected="true">帳號資訊</a>
                                     <a class="nav-link" href="login-register.php">登出</a>
@@ -230,38 +230,61 @@ if(!is_login())
                                              $_SESSION['account'] . "</strong>？點擊";
                                         echo <<< EOL
                                             <a href="logout.php"><b>這裡</b></a>登出）</p>
-                                            <p>您在帳號資訊可以查看最近訂單、管理運送和帳單地址及修改您的密碼和個人資訊。</p>
+                                            <p>您可以查看購買紀錄、修改您的密碼和個人資訊及管理電子錢包。</p>
                                         EOL;
                                          ?>
                                     </div>
-                                    <div class="tab-pane fade" id="orders">
+                                    <div class="tab-pane fade" id="order_history">
                                         <div class="message-box mb--30 d-none">
-                                            <p><i class="fa fa-check-circle"></i>No order has been made yet.</p>
-                                            <a href="shop.php">前往商店</a>
+                                            <p><i class="fa fa-check-circle"></i>您還沒有購買紀錄</p>
+                                            <a href="shop.php?Goods_Classify=ALL">前往商店</a>
                                         </div>
                                         <div class="table-content table-responsive">
                                             <table class="table text-center">
                                                 <thead>
                                                     <tr>
-                                                        <th>訂單</th>
-                                                        <th>日期</th>
-                                                        <th>狀態</th>
-                                                        <th>總計</th>
+                                                        <th>購買時間</th>
+                                                        <th>商品圖片</th>
+                                                        <th>商品名稱</th>
+                                                        <th>商品價格</th>
+                                                        <th>購買數量</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    <tr>
-                                                        <td>1</td>
-                                                        <td class="wide-column">2022/6/8</td>
-                                                        <td>處理中</td>
-                                                        <td class="wide-column">$49，共 1 件</td>
-                                                    </tr>
-                                                    <tr>
-                                                        <td>2</td>
-                                                        <td class="wide-column">2022/6/8</td>
-                                                        <td>處理中</td>
-                                                        <td class="wide-column">$49，共 1 件</td>
-                                                    </tr>
+                                                    <?php
+                                                        $Cus_ID = $_SESSION['id'];
+
+                                                        $sql = "SELECT * FROM `buyer_record` WHERE `Cus_ID` = '" . $Cus_ID . "' ORDER BY `Buyer_Record_Time` DESC;";
+                                                        $result = mysqli_query($db_link, $sql);
+                                                        if ($result->num_rows > 0) 
+                                                        {
+                                                            while($row = $result->fetch_assoc()) 
+                                                            {
+                                                                $Buyer_Record_Time = $row['Buyer_Record_Time'];
+                                                                $Goods_ID = $row['Goods_ID'];
+                                                                $Goods_Price = $row['Goods_Price'];
+                                                                $Buy_Record_Num = $row['Buy_Record_Num'];   
+
+                                                                $get_Goods_Name_sql = "SELECT * FROM `goods` WHERE `Goods_ID` = '$Goods_ID'";
+                                                                $get_Goods_Name_result = mysqli_query($db_link, $get_Goods_Name_sql);  
+                                                                $get_Goods_Name_row = $get_Goods_Name_result->fetch_assoc();
+
+                                                                $Goods_Name = $get_Goods_Name_row['Goods_Name'];
+                                                                $Goods_URL = $get_Goods_Name_row['Goods_URL'];
+                                                                echo <<< EOL
+                                                                    <tr>
+                                                                        <td>$Buyer_Record_Time</td>
+                                                                        <a href="product-details.php?Goods_ID=$Goods_ID">
+                                                                            <td><img src="$Goods_URL" style="width:100px;"></td>
+                                                                            <td class="wide-column">$Goods_Name</td>
+                                                                        </a>
+                                                                        <td>$$Goods_Price</td>
+                                                                        <td>共 $Buy_Record_Num 件</td>
+                                                                    </tr>
+                                                                EOL;
+                                                            }
+                                                        }
+                                                    ?>
                                                 </tbody>
                                             </table>
                                         </div>
