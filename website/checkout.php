@@ -314,7 +314,7 @@ if(!is_login())
                                     </table>
                                 </div>
                                 <div class="checkout-payment">
-                                    <form action="window.location.href='php/pay.php'" class="payment-form">
+                                    <form action="php/pay.php" class="payment-form">
                                         <div class="payment-group mb--10">
                                             <div class="payment-radio">
                                                 <input type="radio" value="digital_wallet" checked>
