@@ -71,21 +71,20 @@ if(!is_login())
                                             <a href="shop.php?Goods_Classify=ALL" class="mainmenu__link">商店</a>      
                                             <div class="inner-menu">
                                                 <ul class="sub-menu">
-                                                    <li>
-                                                        <a href="shop.php?Goods_Classify=laptop">筆記型電腦</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop.php?Goods_Classify=GPU">顯示卡</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop.php?Goods_Classify=keyboard">鍵盤</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop.php?Goods_Classify=mouse">滑鼠</a>
-                                                    </li>
-                                                    <li>
-                                                        <a href="shop.php?Goods_Classify=earphone">耳機</a>
-                                                    </li>
+                                                    <?php 
+                                                        $sql = "SELECT DISTINCT `Goods_Classify` FROM `goods` ORDER BY CHAR_LENGTH(`Goods_Classify`) DESC;";
+                                                        $result = mysqli_query($db_link, $sql);
+
+                                                        while($row = $result->fetch_assoc()) 
+                                                        {          
+                                                            $Goods_Classify = $row['Goods_Classify'];                                                           
+                                                            echo <<<EOL
+                                                                <li>
+                                                                    <a href="shop.php?Goods_Classify=$Goods_Classify">$Goods_Classify</a>
+                                                                </li>
+                                                            EOL; 
+                                                        }
+                                                    ?>
                                                 </ul>
                                             </div>                                                                                  
                                         </li>
@@ -365,31 +364,22 @@ if(!is_login())
                                         <span class="mm-text"><b>所有商品</b></span>
                                     </a>
                                 </li>
-                                <li>
-                                    <a href="shop.php?Goods_Classify=laptop">
-                                        <span class="mm-text">筆記型電腦</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.php?Goods_Classify=GPU">
-                                        <span class="mm-text">顯示卡</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.php?Goods_Classify=keyboard">
-                                        <span class="mm-text">鍵盤</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.php?Goods_Classify=mouse">
-                                        <span class="mm-text">滑鼠</span>
-                                    </a>
-                                </li>
-                                <li>
-                                    <a href="shop.php?Goods_Classify=earphone">
-                                        <span class="mm-text">耳機</span>
-                                    </a>
-                                </li>
+                                <?php 
+                                    $sql = "SELECT DISTINCT `Goods_Classify` FROM `goods` ORDER BY CHAR_LENGTH(`Goods_Classify`) DESC;";
+                                    $result = mysqli_query($db_link, $sql);
+
+                                    while($row = $result->fetch_assoc()) 
+                                    {          
+                                        $Goods_Classify = $row['Goods_Classify'];                                                           
+                                        echo <<<EOL
+                                            <li>
+                                                <a href="shop.php?Goods_Classify=$Goods_Classify">
+                                                    <span class="mm-text">$Goods_Classify</span>
+                                                </a>
+                                            </li>
+                                        EOL; 
+                                    }
+                                ?>
                             </ul>
                         </li>
                         <li class="has-children">
