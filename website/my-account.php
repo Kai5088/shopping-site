@@ -219,19 +219,18 @@ if(!is_login())
                                 <div class="user-dashboard-tab__head nav flex-md-column" role="tablist" aria-orientation="vertical">
                                     <a class="nav-link active" data-toggle="pill" role="tab" href="#dashboard" aria-controls="dashboard" aria-selected="true">狀態</a>
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#order_history" aria-controls="order_history" aria-selected="true">購買紀錄</a>
-                                    <a class="nav-link" data-toggle="pill" role="tab" href="#addresses" aria-controls="addresses" aria-selected="true">地址</a>
+                                    <a class="nav-link" data-toggle="pill" role="tab" href="#addresses" aria-controls="addresses" aria-selected="true">錢包</a>
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#accountdetails" aria-controls="accountdetails" aria-selected="true">帳號資訊</a>
                                     <a class="nav-link" href="login-register.php">登出</a>
                                 </div>
                                 <div class="user-dashboard-tab__content tab-content">
                                     <div class="tab-pane fade show active" id="dashboard">
                                         <?php
-                                        echo "<p>你好，<strong>" . $_SESSION['account'] . "</strong>。（不是<strong>" .
-                                             $_SESSION['account'] . "</strong>？點擊";
-                                        echo <<< EOL
-                                            <a href="logout.php"><b>這裡</b></a>登出）</p>
-                                            <p>您可以查看購買紀錄、修改您的密碼和個人資訊及管理電子錢包。</p>
-                                        EOL;
+                                        echo "<p style=\'font-size:120%\'>你好，<strong>" . $_SESSION['account'] . "</strong>。（不是<strong>" .
+                                             $_SESSION['account'] . "</strong>？點擊" .
+                                             '<a href="logout.php"><b>這裡</b></a>登出）</p>' .
+                                             '<p>您可以查看購買紀錄、修改您的密碼和個人資訊及管理電子錢包。</p>'
+                                        ;
                                          ?>
                                     </div>
                                     <div class="tab-pane fade" id="order_history">
@@ -322,20 +321,30 @@ if(!is_login())
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="addresses">
-                                        <p class="mb--20">下列地址會作為結帳時的預設資料。</p>
+                                        <p class="mb--20"></p>
                                         <div class="row">
                                             <div class="col-md-6 mb-sm--20">
                                                 <div class="text-block">
-                                                    <h4 class="mb--20">帳單地址</h4>
-                                                    <a href="">修改</a>
-                                                    <p>此欄位無資料</p>
+                                                    <h4 class="mb--20">儲值</h4>
+                                                    <a style="font-size:120%;" href="/php/refill_money.php">開始儲值</a><hr/>
+                                                    <p>點擊上方文字以儲值</p>
+                                                    <p>目前餘額：
+                                                    <?php
+                                                        $Cus_ID = $_SESSION['id'];
+
+                                                        $sql = "SELECT * FROM `login_customer` WHERE `Cus_ID` = '" . $Cus_ID . "';";
+                                                        $result = mysqli_query($db_link, $sql);
+                                                        $row = $result->fetch_assoc();
+                                                        echo $row['Cus_Money'];
+                                                    ?>
+                                                    </p>
                                                 </div>
                                             </div>
                                             <div class="col-md-6">
                                                 <div class="text-block">
-                                                    <h4 class="mb--20">運送地址</h4>
-                                                    <a href="">修改</a>
-                                                    <p>此欄位無資料</p>
+                                                    <h4 class="mb--20"></h4>
+                                                    <a href=""></a>
+                                                    <p></p>
                                                 </div>
                                             </div>
                                         </div>
