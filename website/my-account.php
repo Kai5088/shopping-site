@@ -281,6 +281,18 @@ if(!is_login())
                                                                 EOL;
                                                             }
                                                         }
+                                                        else
+                                                        {
+                                                            echo <<< EOL
+                                                                <tr>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                    <td class="wide-column">您尚未購買任何商品</td>
+                                                                    <td></td>
+                                                                    <td></td>
+                                                                </tr>
+                                                            EOL;
+                                                        }
                                                     ?>
                                                 </tbody>
                                             </table>
