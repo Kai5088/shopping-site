@@ -21,10 +21,10 @@
 			</select>
 		</div>
 
-		<input type="submit" name="" value="確定" class="btn btn-primary" onclick="appear()">
-		<div class="row" id="modify" style="display:none">
+		<button type="button" name="" class="btn btn-primary" onclick="appear();">確定</button>
+		<div class="row" id="modify" style="visibility: hidden;">
 			<select name="" class="form-select form-select-sm w-25">
-				<!-- 在架商品種類 -->
+				<!-- 修改在架商品種類 -->
 				<option></option>
 			</select>
 			<input type="text" name="" id="good_name" placeholder="商品名稱" class="col-sm-2">
@@ -32,31 +32,39 @@
 			<input type="text" name="" id="good_price" placeholder="價錢" class="col-sm-2">
 			<input type="text" name="" id="good_url" placeholder="URL" class="col-sm-3">
 		</div>
-		<input type="submit" name="" value="修改" class="btn btn-primary" id="modify_determine" style="display:none">
+		<input type="submit" name="" value="修改" class="btn btn-primary" id="modify_determine" style="visibility: hidden;">
 		<script>
+			var div_modify = document.getElementById("modify");
+			var modify_determine = document.getElementById("modify_determine");
 			function appear(){
-				var div_modify = document.getElementById("modify");
-				var modify_determine = document.getElementById("modify_determine");
-				if (div_modify.style.display === "none") {
-					div_modify.style.display = "block";
-					modify_determine.style.display = "block";
+				if (div_modify.style.visibility == "hidden") {
+					div_modify.style.visibility = "";
+					modify_determine.style.visibility = "";
 				}
 			}
 		</script>
+
 		<hr>
 
 	新增商品: 
 		<div class="row">
+			<select name="" class="form-select form-select-sm w-25">
+				<!-- 在架商品種類 -->
+				<option>1</option>
+				<option>2</option>
+				<option>3</option>
+			</select>
 			<select name="" class="form-select form-select-sm w-25" id="add_goods">
 				<!-- 在架商品種類 -->
 				<option>1</option>
 				<option>2</option>
 				<option value="last">新增商品分類</option>
 			</select>
-			<input type="text" name="" placeholder="新增的商品類別" class="col-sm-3" style="display:none" id="add_clasify">
 			<input type="text" name="" placeholder="商品名稱" class="col-sm-2">
 			<input type="text" name="" placeholder="數量" class="col-sm-2">
 			<input type="text" name="" placeholder="價錢" class="col-sm-2">
+			<input type="text" name="" placeholder="新增的商品類別" class="col-sm-3" style="display:none" id="add_clasify">
+
 			<input type="text" name="" placeholder="URL" class="col-sm-4">
 		</div>
 		<input type="submit" name="" value="新增" class="btn btn-primary">
