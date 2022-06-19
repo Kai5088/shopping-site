@@ -341,10 +341,12 @@ include('account-operation.php');
                             </div>
                         </div>
                     </div>
-                    <div class="row-3 ptb--20">
-                        <div class="col-12 text-center">
-                            <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第11組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
-                        </div>
+                    <div class="col footer-column-5 mb-sm--33">
+                    </div>
+                </div>
+                <div class="row ptb--20">
+                    <div class="col-12 text-center">
+                        <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第五組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
                     </div>
                 </div>
             </div>

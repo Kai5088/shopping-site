@@ -463,8 +463,8 @@ include('connect-sql.php');
         </div>
         <!-- Main Content Wrapper End -->
 
-            <!-- Footer Start-->
-            <footer class="footer bg-color pt--70 pt-xs--60" data-bg-color="#f4f8fa">
+        <!-- Footer Start-->
+        <footer class="footer bg-color pt--70 pt-xs--60" data-bg-color="#f4f8fa">
             <div class="container">
                 <div class="row border-bottom pb--60 pb-sm--28 pb-xs--49">
                     <div class="col footer-column-1 mb-sm--42">
@@ -481,15 +481,17 @@ include('connect-sql.php');
                             </div>
                         </div>
                     </div>
-                    <div class="row-3 ptb--20">
-                        <div class="col-12 text-center">
-                            <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第11組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
-                        </div>
+                    <div class="col footer-column-5 mb-sm--33">
+                    </div>
+                </div>
+                <div class="row ptb--20">
+                    <div class="col-12 text-center">
+                        <p class="copyright-text">Copyright &copy; 2022 資料庫程式設計第五組<a target="_blank" href="https://ecsb.ntcu.edu.tw/newweb/index.htm"></a></p>
                     </div>
                 </div>
             </div>
         </footer>
-            <!-- Footer End-->
+        <!-- Footer End-->
 
         <!-- OffCanvas Menu Start -->
         <aside class="offcanvas-navigation" id="offcanvasnav">
