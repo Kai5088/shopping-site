@@ -47,23 +47,16 @@
 
 	新增商品: 
 		<div class="row">
-			<select name="" class="form-select form-select-sm w-25">
-				<!-- 在架商品種類 -->
-				<option>1</option>
-				<option>2</option>
-				<option>3</option>
-			</select>
 			<select name="" class="form-select form-select-sm w-25" id="add_goods">
 				<!-- 在架商品種類 -->
 				<option>1</option>
 				<option>2</option>
 				<option value="last">新增商品分類</option>
 			</select>
+			<input type="text" name="" placeholder="新增的商品類別" class="col-sm-3" style="display:none" id="add_clasify">
 			<input type="text" name="" placeholder="商品名稱" class="col-sm-2">
 			<input type="text" name="" placeholder="數量" class="col-sm-2">
 			<input type="text" name="" placeholder="價錢" class="col-sm-2">
-			<input type="text" name="" placeholder="新增的商品類別" class="col-sm-3" style="display:none" id="add_clasify">
-
 			<input type="text" name="" placeholder="URL" class="col-sm-4">
 		</div>
 		<input type="submit" name="" value="新增" class="btn btn-primary">
