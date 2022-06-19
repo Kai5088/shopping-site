@@ -7,6 +7,32 @@ if(!is_login())
     header("Location: login-register.php"); 
     exit;
 }
+
+// 變更密碼
+if (isset($_POST['cur_pass']) && isset($_POST['new_pass']) && isset($_POST['conf_new_pass']))
+{
+    $cur_pass = $_POST['cur_pass'];
+    $new_pass = $_POST['new_pass'];
+    $conf_new_pass = $_POST['conf_new_pass'];
+
+    $sql_find_user = "SELECT * FROM login_customer WHERE Cus_ID = '" . $_SESSION['id'] . "'";
+    $data = mysqli_query($db_link, $sql_find_user);
+    $user = mysqli_fetch_assoc($data);
+
+    if ($cur_pass != $user['Cus_Password']) {
+        echo '<script language="javascript">alert("舊密碼不正確！")</script>';
+    } else if($new_pass != $conf_new_pass) {
+        echo '<script language="javascript">alert("確認密碼與新密碼不相同！")</script>';
+    } else if ($new_pass == $cur_pass) {
+        echo '<script language="javascript">alert("新密碼與舊密碼相同！")</script>';
+    } else {
+        $sql_set_pass = "UPDATE `login_customer` SET `Cus_Password` = '" .
+               $conf_new_pass .
+               "' WHERE `Cus_ID` = '" . $_SESSION['id'] . "';";
+        mysqli_query($db_link, $sql_set_pass);
+        echo '<script language="javascript">alert("密碼變更成功！")</script>';
+    }
+}
 ?>
 
 <!doctype html>
@@ -360,21 +386,13 @@ if(!is_login())
                                         </div>
                                     </div>
                                     <div class="tab-pane fade" id="accountdetails">
-                                        <form action="#" class="form form--account">
-                                            <div class="row mb--20">
-                                                <div class="col-12">
-                                                    <div class="form__group">
-                                                        <label class="form__label" for="email">電子郵件地址<span class="required">*</span></label>
-                                                        <input type="email" name="email" id="email" class="form__input">
-                                                    </div>
-                                                </div>
-                                            </div>
+                                    <form action="" method="post" class="form form--account">
                                             <fieldset class="form__fieldset mb--20">
                                                 <legend class="form__legend">變更密碼</legend>
                                                 <div class="row mb--20">
                                                     <div class="col-12">
                                                         <div class="form__group">
-                                                            <label class="form__label" for="cur_pass">目前密碼（留空以不變更）</label>
+                                                            <label class="form__label" for="cur_pass">目前密碼</label>
                                                             <input type="password" name="cur_pass" id="cur_pass" class="form__input">
                                                         </div>
                                                     </div>
@@ -382,7 +400,7 @@ if(!is_login())
                                                 <div class="row mb--20">
                                                     <div class="col-12">
                                                         <div class="form__group">
-                                                            <label class="form__label" for="new_pass">新密碼（留空以不變更）</label>
+                                                            <label class="form__label" for="new_pass">新密碼</label>
                                                             <input type="password" name="new_pass" id="new_pass" class="form__input">
                                                         </div>
                                                     </div>
@@ -399,7 +417,7 @@ if(!is_login())
                                             <div class="row">
                                                 <div class="col-12">
                                                     <div class="form__group">
-                                                        <input type="submit" value="Save Changes" class="btn">
+                                                        <input type="submit" value="儲存變更" class="btn">
                                                     </div>
                                                 </div>
                                             </div>
