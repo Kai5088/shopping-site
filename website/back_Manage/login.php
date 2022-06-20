@@ -27,13 +27,14 @@
 	<div class="row">
 		
 		<div class="col">
-			<form class="form-signin" action="" method="">
+			<form class="form-signin" action="LoginSystem.php" method="post" >
 				<h1 class="h3 mb-3 font-weight-normal">請輸入使用者帳號及密碼登入</h1>
 		        <label for="inputEmail" class="sr-only">Account</label>
-		        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Account" required autofocus>
+		        <input type="text" id="inputEmail" name="account" class="form-control" placeholder="Account" required autofocus>
 		        <label for="inputPassword" class="sr-only">Password</label>
-		        <input type="password" id="inputPassword" name="passowrd" class="form-control" placeholder="Password" required>
+		        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Password" required>
 		        <button class="btn btn-lg btn-primary btn-block" type="submit">登入</button>
+
 			</form>
 		</div>
 		
