@@ -69,49 +69,15 @@
 	<form id="form" name="form" method="post" action="insert.php">
 		<div class="row">
 		
-			<select name="select1" class="form-select form-select-sm w-25" id="add_goods">
-				<!-- 在架商品種類 -->
-				<option value="">--- Select ---</option>
-				
-				<?php
-
-            while ($cat = mysqli_fetch_array(
-                                $goods_class,MYSQLI_ASSOC)):;
-
-                ?>
-                    <option value="<?php echo $cat['Goods_Classify'];
-                    ?>">
-                               <?php echo $cat['Goods_Classify'];?>
-                    </option>
-                <?php
-              endwhile;
-                ?>
-				<option value="last">新增商品分類</option>
-			</select>
+			<input type="text" name="select1" placeholder="商品分類" class="col-sm-2">
 			<input type="text" name="select2" placeholder="商品名稱" class="col-sm-2">
 			<input type="text" name="select3" placeholder="數量" class="col-sm-2">
 			<input type="text" name="select4" placeholder="價錢" class="col-sm-2">
 			<input type="text" name="select5" placeholder="規格" class="col-sm-2">
 			<input type="text" name="select6" placeholder="描述" class="col-sm-2">
-			<input type="text" name="select8" placeholder="新增的商品類別" class="col-sm-3" style="display:none" id="add_clasify">
-
 			<input type="text" name="select7" placeholder="URL" class="col-sm-4">
 		</div>
 		<input type="submit" name="" value="新增" class="btn btn-primary">
-		<script type="text/javascript">
-			var select = document.querySelector("#add_goods");
-			select.addEventListener("change", selectfun);
-
-			function selectfun(){
-				if (this.value === "last") {
-					document.getElementById("add_clasify").style.display = "block";
-				}
-				else{
-					document.getElementById("add_clasify").style.display = "none";
-				}
-			}
-		</script>
-		<hr>
 
 		</form>
 	刪除商品: 
