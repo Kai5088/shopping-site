@@ -261,8 +261,24 @@ include('connect-sql.php');
                         $sql = 'SELECT Goods_ID FROM `goods`';
                         $result = mysqli_query($db_link, $sql);
                         $num_rows = mysqli_num_rows($result);
-                        $prev_href = ($_GET['Goods_ID'] == 1) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']-1;
-                        $next_href = ($_GET['Goods_ID'] == $num_rows) ? "#" : "product-details.php?Goods_ID=" . $_GET['Goods_ID']+1;
+                        $good_array = array();
+                        if($num_rows > 0)
+                        {
+                            while($row = $result->fetch_assoc())
+                            {
+                                array_push($good_array, $row['Goods_ID']);
+                            }
+                            sort($good_array);
+                        }
+                        $current_index = array_search($_GET['Goods_ID'], $good_array);
+                        if($current_index != 0)
+                            $prev_href = "product-details.php?Goods_ID=" . (string)$good_array[$current_index - 1];
+                        else 
+                            $prev_href = "#";   
+                        if($current_index != count($good_array) - 1)
+                            $next_href = "product-details.php?Goods_ID=" . (string)$good_array[$current_index + 1];
+                        else
+                            $next_href = "#";
                         if(is_login())
                         {
                             $temp_button = <<<EOL
@@ -275,7 +291,7 @@ include('connect-sql.php');
                                 <button type="button" class="btn btn-shape-square btn-size-sm"
                                     onclick="jump();change_num();" onmouseover="change_num()" + "document.writeln(num)">
                                     加入購物車
-                                </button>                            
+                                </button>
                             EOL;
                         }
                         else 
