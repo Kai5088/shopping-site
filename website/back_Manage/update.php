@@ -9,30 +9,49 @@ $S5=trim($_POST['select5']);
 $S6=trim($_POST['select6']);
 $S7=trim($_POST['select7']);
 //刪除資料表中的資料
-if($S1==''){
-$sql = "UPDATE goods SET  Goods_Name='$S2',Goods_Num='$S3',Goods_Price='$S4',Goods_Specs='$S5',Goods_Statement='$S6',Goods_URL='$S7' WHERE Goods_Name='$S0';";
+$sql="UPDATE goods SET  ";
+if($S1!=''){
+$sql .= "Goods_Classify='$S1' "; $count=1;
 }
-else if($S2==''){
-$sql = "UPDATE goods SET Goods_Classify='$S1', Goods_Num='$S3',Goods_Price='$S4',Goods_Specs='$S5',Goods_Statement='$S6',Goods_URL='$S7' WHERE Goods_Name='$S0';";
+if($S2!=''){
+	if($count==1){
+		$sql .=",";
+	}
+$sql .= "Goods_Name='$S2' "; $count=1;
 }
-else if($S3==''){
-$sql = "UPDATE goods SET Goods_Classify='$S1', Goods_Name='$S2',Goods_Price='$S4',Goods_Specs='$S5',Goods_Statement='$S6',Goods_URL='$S7' WHERE Goods_Name='$S0';";
+if($S3!=''){
+		if($count==1){
+		$sql .=",";
+	}
+$sql .= "Goods_Num='$S3' "; $count=1;
 }
-else if($S4==''){
-$sql = "UPDATE goods SET Goods_Classify='$S1', Goods_Name='$S2',Goods_Num='$S3',Goods_Specs='$S5',Goods_Statement='$S6',Goods_URL='$S7' WHERE Goods_Name='$S0';";
+if($S4!=''){
+		if($count==1){
+		$sql .=",";
+	}
+$sql .= "Goods_Price='$S4' "; $count=1;
 }
-else if($S5==''){
-$sql = "UPDATE goods SET Goods_Classify='$S1', Goods_Name='$S2',Goods_Num='$S3',Goods_Price='$S4',Goods_Statement='$S6',Goods_URL='$S7' WHERE Goods_Name='$S0';";
+if($S5!=''){
+		if($count==1){
+		$sql .=",";
+	}
+$sql .= "Goods_Specs='$S5' "; $count=1;
 }
-else if($S6==''){
-$sql = "UPDATE goods SET Goods_Classify='$S1', Goods_Name='$S2',Goods_Num='$S3',Goods_Price='$S4',Goods_Specs='$S5',Goods_URL='$S7' WHERE Goods_Name='$S0';";
+if($S6!=''){
+		if($count==1){
+		$sql .=",";
+	} 
+$sql .= "Goods_Statement='$S6' "; $count=1;
 }
-else if($S7==''){
-$sql = "UPDATE goods SET Goods_Classify='$S1', Goods_Name='$S2',Goods_Num='$S3',Goods_Price='$S4',Goods_Specs='$S5',Goods_Statement='$S6', WHERE Goods_Name='$S0';";
+if($S7!=''){
+		if($count==1){
+		$sql .=",";
+	}
+$sql .= "Goods_URL='$S7' "; 
 }
-else{
-$sql = "UPDATE goods SET Goods_Classify='$S1', Goods_Name='$S2',Goods_Num='$S3',Goods_Price='$S4',Goods_Specs='$S5',Goods_Statement='$S6',Goods_URL='$S7' WHERE Goods_Name='$S0';";
-}
+
+$sql .= " WHERE Goods_Name='$S0';";
+
 mysqli_query($conn,$sql);
 header( "location:manager.php"); 
 ?>
