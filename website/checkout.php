@@ -276,24 +276,38 @@ if(!is_login())
                                                 $result = mysqli_query($db_link, $sql); 
                                                 $subtotal = 0;
 
-                                                while ($row = $result->fetch_assoc())
+                                                if($result->num_rows > 0)
                                                 {
-                                                    $Goods_ID = $row['Goods_ID'];
-                                                    $Goods_Name = $row['Goods_Name'];
-                                                    $Goods_Price = $row['Goods_Price'];
-                                                    $Goods_Num = $row['Goods_Num'];
-                                                    $Goods_URL = $row['Goods_URL'];
-                                                    $sum = 0;
-                                                    $sum += $Goods_Num * $Goods_Price;
-                                                    $subtotal += $sum;
+                                                    while ($row = $result->fetch_assoc())
+                                                    {
+                                                        $Goods_ID = $row['Goods_ID'];
+                                                        $Goods_Name = $row['Goods_Name'];
+                                                        $Goods_Price = $row['Goods_Price'];
+                                                        $Goods_Num = $row['Goods_Num'];
+                                                        $Goods_URL = $row['Goods_URL'];
+                                                        $sum = 0;
+                                                        $sum += $Goods_Num * $Goods_Price;
+                                                        $subtotal += $sum;
+                                                        echo <<< EOL
+                                                        <tr>
+                                                            <th>$Goods_Name 
+                                                                <strong><span>&nbsp;&nbsp;&#10005;</span>$Goods_Num</strong>
+                                                            </th>
+                                                            <td class="text-right">$$sum</td>
+                                                        </tr>
+                                                        EOL;
+                                                    }
+                                                }
+                                                else 
+                                                {
                                                     echo <<< EOL
                                                     <tr>
-                                                        <th>$Goods_Name 
-                                                            <strong><span>&nbsp;&nbsp;&#10005;</span>$Goods_Num</strong>
+                                                        <th style="color:red; font-size:20px;">
+                                                            <strong>您的購物車中沒有商品！</strong>
                                                         </th>
-                                                        <td class="text-right">$$sum</td>
+                                                        <td class="text-right"></td>
                                                     </tr>
-                                                    EOL;
+                                                    EOL;                                                      
                                                 }
                                             ?>
                                         </tbody>
@@ -324,15 +338,25 @@ if(!is_login())
                                             </div>
                                             <?php 
                                                 $payment = $Cus_Money - $Total_Price;
-                                                if($payment >= 0)
+                                                $sql = "SELECT * FROM `cus_shopping_cart` WHERE `Buyer_Record_ID` = '" . $Cus_ID . "';";
+                                                $result = mysqli_query($db_link, $sql); 
+
+                                                if($result->num_rows > 0)
                                                 {
-                                                    $payment_button = '<button type="submit" class="btn btn-size-md btn-fullwidth" style="color:green; font-size:20px;">確認並付款</button>';
-                                                    $color = "green";
+                                                    if($payment >= 0)
+                                                    {
+                                                        $payment_button = '<button type="submit" class="btn btn-size-md btn-fullwidth" style="color:green; font-size:20px;">確認並付款</button>';
+                                                        $color = "green";
+                                                    }
+                                                    else
+                                                    {
+                                                        $payment_button = '<button type="submit" class="btn btn-size-md btn-fullwidth" style="color:red; font-size:20px;" disabled>餘額不足</button>';
+                                                        $color = "red";
+                                                    }
                                                 }
                                                 else
                                                 {
-                                                    $payment_button = '<button type="submit" class="btn btn-size-md btn-fullwidth" style="color:red; font-size:20px;" disabled>餘額不足</button>';
-                                                    $color = "red";
+                                                    $payment_button = '<button type="submit" class="btn btn-size-md btn-fullwidth" style="color:red; font-size:20px;" disabled>您的購物車中沒有商品！</button>';
                                                 }
                                             ?>
                                             <div class="payment-info">
