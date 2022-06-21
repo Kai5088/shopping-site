@@ -411,7 +411,7 @@ include('connect-sql.php');
 
                                     shuffle($IDs);
 
-                                    for($i = 0; $i < 6; $i++)
+                                    for($i = 0; $i < ((count($IDs) < 6)? count($IDs): 6); $i++)
                                     {
                                         if($IDs[$i] == $_GET['Goods_ID'])
                                             continue;

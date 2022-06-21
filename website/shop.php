@@ -198,6 +198,8 @@ include('connect-sql.php');
                             <li class="current"><span>商店</span></li>
                             <?php
                                 $Breadcrumb = $_GET["Goods_Classify"];
+                                if($Breadcrumb == "ALL")
+                                    $Breadcrumb = "所有商品";
                                 echo <<< EOL
                                     <li class="current"><span>$Breadcrumb</span></li>
                                 EOL;
