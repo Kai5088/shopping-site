@@ -215,51 +215,27 @@ include('connect-sql.php');
                         <div class="row">
                             <div class="col-lg-4 col-md-5 mb-sm--30">
                                 <div class="heading mb--32">
-                                    <h2>Get In Touch</h2>
+                                    <h2>聯絡方式</h2>
                                     <hr class="delimeter">
                                 </div>
                                 <div class="contact-info mb--20">
                                     <p>
                                         <i class="fa fa-map-marker"></i>
-                                        <span>221b Baker St, Marylebone <br>London NW1 6XE, UK</span>
+                                        <span>403台灣台中市西區民生路140號</span>
                                     </p>
                                     <p>
                                         <i class="fa fa-phone"></i>
-                                        <span>+1-202-242-8157</span>
+                                        <span>04-2218-3199</span>
                                     </p>
                                     <p>
                                         <i class="fa fa-fax"></i> 
-                                        <span>+1-202-501-1829</span>
+                                        <span>04-2218-3199</span>
                                     </p>
                                     <p>
                                         <i class="fa fa-clock-o"></i> 
-                                        <span>Mon – Fri : 9:00 – 18:00</span>
+                                        <span>一 – 五 : 15:00 – 15:01</span>
                                     </p>
                                 </div>
-                                <div class="social social-rounded space-10">
-                                    <a href="#" class="social__link">
-                                        <i class="fa fa-facebook"></i>
-                                    </a>
-                                    <a href="#" class="social__link">
-                                        <i class="fa fa-twitter"></i>
-                                    </a>
-                                    <a href="https://www.plus.google.com" class="social__link">
-                                        <i class="fa fa-google-plus"></i>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-md-7 offset-lg-1">
-                                <div class="heading mb--40">
-                                    <h2>Contact Us</h2>
-                                    <hr class="delimeter">
-                                </div>
-                                <form action="mail.php" class="form" id="contact-form">
-                                    <input type="email" name="con_email" id="con_email" class="form__input mb--30" placeholder="Email*">
-                                    <input type="text" name="con_name" id="con_name" class="form__input mb--30" placeholder="Name*">
-                                    <textarea class="form__input form__input--textarea mb--30" placeholder="Message" id="con_message" name="con_message"></textarea>
-                                    <button type="submit" class="btn btn-shape-round form__submit">Send Request</button>
-                                    <div class="form__output"></div>
-                                </form>
                             </div>
                         </div>
                     </div>
