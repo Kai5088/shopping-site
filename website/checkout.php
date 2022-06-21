@@ -29,6 +29,9 @@ if(!is_login())
 
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/main.css">
+
+    <!-- Bot pop up css -->
+    <link rel="stylesheet" href="assets/css/bot-pop-up.css">
 </head>
 
 <body> 
@@ -725,11 +728,25 @@ if(!is_login())
         <div class="global-overlay"></div>
         <!-- Global Overlay End -->
 
-        <!-- Scroll To Top Start -->
-        <a class="scroll-to-top" href=""><i class="fa fa-angle-double-up"></i></a>
-        <!-- Scroll To Top End -->
+
     </div>
     <!-- Main Wrapper End -->
+
+    <!-- Bot Start -->
+
+    <button class="open-button" onclick="openForm()">機器人</button>
+
+    <div class="chat-popup col-md-3" id="myForm">
+        <div class="chat-container">
+
+            <iframe class="chat-iframe" src="phpChatBot/index.php">
+            </iframe>
+
+            <button class="bot_btn" onclick="closeForm()">關閉視窗</button>
+        </div>
+    </div>
+
+    <!-- Bot End -->
 
     <!-- ************************* JS Files ************************* -->
 
@@ -738,6 +755,9 @@ if(!is_login())
 
     <!-- Main JS -->
     <script src="assets/js/main.js"></script>
+
+    <!-- Bot-pop-up JS -->
+    <script src="assets\js\bot-pop-up.js"></script>
 </body>
 
 </html>

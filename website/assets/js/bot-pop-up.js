@@ -1,9 +1,7 @@
-function openBot() 
-{
-    document.getElementById("bot-div").style.display = "block";
-}
+function openForm() {
+    document.getElementById("myForm").style.display = "block";
+  }
   
-function closeBot() 
-{
-    document.getElementById("bot-div").style.display = "none";
-}
+  function closeForm() {
+    document.getElementById("myForm").style.display = "none";
+  }
