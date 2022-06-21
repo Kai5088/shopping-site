@@ -246,7 +246,7 @@ if (isset($_POST['cur_pass']) && isset($_POST['new_pass']) && isset($_POST['conf
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#order_history" aria-controls="order_history" aria-selected="true">購買紀錄</a>
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#addresses" aria-controls="addresses" aria-selected="true">錢包</a>
                                     <a class="nav-link" data-toggle="pill" role="tab" href="#accountdetails" aria-controls="accountdetails" aria-selected="true">帳號資訊</a>
-                                    <a class="nav-link" href="login-register.php">登出</a>
+                                    <a class="nav-link" href="logout.php">登出</a>
                                 </div>
                                 <div class="user-dashboard-tab__content tab-content">
                                     <div class="tab-pane fade show active" id="dashboard">
@@ -361,7 +361,7 @@ if (isset($_POST['cur_pass']) && isset($_POST['new_pass']) && isset($_POST['conf
                                             <div class="col-md-6 mb-sm--20">
                                                 <div class="text-block">
                                                     <h4 class="mb--20">儲值</h4>
-                                                    <a style="font-size:120%;" href="/php/refill_money.php">開始儲值</a><hr/>
+                                                    <a style="font-size:120%;" href="php/refill_money.php">開始儲值</a><hr/>
                                                     <p>點擊上方文字以儲值</p>
                                                     <p>目前餘額：
                                                     <?php
