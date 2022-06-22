@@ -50,11 +50,11 @@ else{
 
 }
 
-function ask_price_speak1($con,$txt,$ortxt)
+function ask_price_speak1($con,$txt,$ortxt,$cl)
 {
 	
 	
-	$sql="SELECT * FROM `goods` WHERE Goods_Price>=$txt ORDER BY Goods_Price ASC LIMIT 0, 1";
+	$sql="SELECT * FROM `goods` WHERE Goods_Price>=$txt AND Goods_Classify like '%$cl%'ORDER BY Goods_Price ASC LIMIT 0, 1 ";
 $res=mysqli_query($con,$sql);
 // if(mysqli_num_rows($res)>0){echo "fuck";}
 if(mysqli_num_rows($res)>0){
@@ -75,11 +75,11 @@ else{
 
 }
 
-function ask_price_speak2($con,$txt,$ortxt)
+function ask_price_speak2($con,$txt,$ortxt,$cl)
 {
 	
 	
-	$sql="SELECT * FROM `goods` WHERE Goods_Price<=$txt ORDER BY Goods_Price DESC LIMIT 0, 1";
+	$sql="SELECT * FROM `goods` WHERE Goods_Price<=$txt AND Goods_Classify like '%$cl%' ORDER BY Goods_Price DESC LIMIT 0, 1";
 $res=mysqli_query($con,$sql);
 // if(mysqli_num_rows($res)>0){echo "fuck";}
 if(mysqli_num_rows($res)>0){
@@ -148,16 +148,54 @@ static $i1 = 0;
 if (preg_match("/(.*幹你*)|(.*肏你*)|(.*操你*)|(.*fuck*)/", $txt))
 {
 	$ortxt = $txt;
-	counter($con);
+	$txt = "幹你";
+	// counter($con);
 	speak($con,$txt,$ortxt);
 	
 }
-
-if (preg_match("/(.*本日推薦|隨機推薦|random*)/", $txt))
+else if (preg_match("/(.*本日推薦|隨機推薦|random*)/", $txt))
 {
 	$ortxt = $txt;
 	counter($con);
 	random_select($con,$ortxt);
+	
+}
+else if(preg_match("/(.*價格*)/", $txt))
+{
+	$result =explode("價格",$txt);
+	if(preg_match("/(.*元以上的)/", $result[1])){
+		$rresult =explode("元以上的",$result[1]);
+		$ortxt = $txt;$c =explode("嗎",$rresult[1]);$cl =$c[0];
+		if($cl == "筆電"||$cl == "notebook"||$cl == "Notebook"||$cl == "nb"||$cl == "NB"||$cl == "計算機"||$cl == "電腦"||$cl == "電競筆電")
+		 	$cl = "筆記型電腦";
+		else if($cl == "headphone")
+			$cl = "耳機";
+		else if($cl == "keyboard")
+			$cl = "鍵盤";
+		ask_price_speak1($con,TRIM($rresult[0]),$ortxt,TRIM($cl));
+		
+	}
+	else if(preg_match("/(.*元以下的)/", $result[1])){
+		$rresult =explode("元以下的",$result[1]);
+		$ortxt = $txt;$c =explode("嗎",$rresult[1]);$cl =$c[0];
+		if($cl == "筆電"||$cl == "notebook"||$cl == "Notebook"||$cl == "nb"||$cl == "NB"||$cl == "計算機"||$cl == "電腦"||$cl == "電競筆電")
+		 	$cl = "筆記型電腦";
+		else if($cl == "headphone")
+			$cl = "耳機";
+		else if($cl == "keyboard")
+			$cl = "鍵盤";
+		ask_price_speak2($con,TRIM($rresult[0]),$ortxt,TRIM($cl));
+	}
+		// $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
+		
+	// $str_sec = explode("價格",$result[0]);
+	// if(preg_match("/(.*以上)/", $result[1])){
+	// 	$ortxt = $result[0];$result[0] = $str_sec[1];ask_price_speak1($con,TRIM($result[0]),$ortxt);
+	// }
+	// else{
+	// 	$ortxt = $result[0];$result[0] = $str_sec[1];ask_price_speak2($con,TRIM($result[0]),$ortxt);
+	// }
+	// // $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
 	
 }
 else if(preg_match("/(.*你好*)|(.*好棒*)|(.*麼棒*)|(.*good*job*)/", $txt))
@@ -169,42 +207,31 @@ else if(preg_match("/(.*購物車*)/", $txt))
 	$ortxt = $txt;$txt = '購物車';speak($con,$txt,$ortxt);
 	
 }
-else if(preg_match("/(.*你們有賣筆電|你們有賣筆電|你們有賣鍵盤|你們有賣耳機*)/", $txt))
+else if(preg_match("/(.*想買*)/", $txt))
 {
-	$ortxt = $txt;$txt = '我們有賣';speak($con,$txt,$ortxt);
+	
+	$str_sec_0 = explode("想買",$txt);
+	$str_sec = explode("嗎",$str_sec_0[1]);
+	$ortxt = $txt;$txt = $str_sec[0];ask_product_speak($con,TRIM($txt),$ortxt);
+
 	
 }
 
 else if(preg_match("/(.*想要買*)/", $txt))
 {
 	
-	$str_sec = explode("想要買",$txt);
-	//  print("fuck you");
-	//print_r($str_sec);
-	// print($str_sec[1]);
-	$ortxt = $txt;$txt = $str_sec[1];ask_product_speak($con,TRIM($txt),$ortxt);
+	$str_sec_0 = explode("想要買",$txt);
+	$str_sec = explode("嗎",$str_sec_0[1]);
+	$ortxt = $txt;$txt = $str_sec[0];ask_product_speak($con,TRIM($txt),$ortxt);
 	// $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
 	
 }
 else if(preg_match("/(.*你們有賣|有沒有賣*)/", $txt))
 {
 	
-	$str_sec = explode("賣",$txt);
-	$ortxt = $txt;$txt = $str_sec[1];ask_product_speak($con,TRIM($txt),$ortxt);
-	// $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
-	
-}
-else if(preg_match("/(.*價格*)/", $txt))
-{
-	$pattern = "/ /";
-	$result =preg_split($pattern, $txt);
-	$str_sec = explode("價格",$result[0]);
-	if(preg_match("/(.*以上)/", $result[1])){
-		$ortxt = $result[0];$result[0] = $str_sec[1];ask_price_speak1($con,TRIM($result[0]),$ortxt);
-	}
-	else{
-		$ortxt = $result[0];$result[0] = $str_sec[1];ask_price_speak2($con,TRIM($result[0]),$ortxt);
-	}
+	$str_sec_0 = explode("賣",$txt);
+	$str_sec = explode("嗎",$str_sec_0[1]);
+	$ortxt = $txt;$txt = $str_sec[0];ask_product_speak($con,TRIM($txt),$ortxt);
 	// $ortxt = $txt;$ortxt = $txt;$txt = '我想要買';speak($con,$txt,$ortxt);
 	
 }
@@ -215,7 +242,12 @@ else if(preg_match("/(.*你們有賣李彥宏*)/", $txt))
 }
 else if(preg_match("/(.*早安|午安|晚安*)/", $txt))
 {
-	$ortxt = $txt;$txt = '我們有賣';speak($con,$txt,$ortxt);
+	$ortxt = $txt;$txt = '安';speak($con,$txt,$ortxt);
+	
+}
+else if(preg_match("/(.*哪裡人|住哪裡*)/", $txt))
+{
+	$ortxt = $txt;$txt = '哪裡人';speak($con,$txt,$ortxt);
 	
 }
 else if(preg_match("/(.*刪除所有訊息|clear*)/", $txt))
