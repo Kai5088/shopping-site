@@ -29,6 +29,9 @@ if(!is_login())
 
     <!-- style css -->
     <link rel="stylesheet" href="assets/css/main.css">
+    
+    <!-- Bot pop up css -->
+    <link rel="stylesheet" href="assets/css/bot-pop-up.css">
 </head>
 
 <body>
